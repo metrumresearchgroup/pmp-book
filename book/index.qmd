@@ -1,0 +1,22 @@
+---
+title: Preface
+---
+
+<img src=pmp-hex.png align=right width=150px></img>This is a simple 
+introduction to the pmmplots package for R. I hope this will be useful for 
+those who are new to the package and those who just need a  reminder on the 
+syntax. 
+
+
+# Source {.unnumbered}
+
+The pmtables package is maintained [here](https://github.com/metrumresearchgroup/pmplots).
+
+The code for this book is maintained [here](https://github.com/metrumresearchgroup/pmp-book).
+
+# Build {.unnumbered}
+
+```{r}
+packageVersion("pmtables")
+date()
+```

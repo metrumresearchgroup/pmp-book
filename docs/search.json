@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The pmplots Gallery",
+    "section": "",
+    "text": "Source\nThe pmtables package is maintained here.\nThe code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmtables\")\n\n[1] '0.4.1.9003'\n\ndate()\n\n[1] \"Mon May  2 16:48:24 2022\""
+  },
+  {
+    "objectID": "col-label.html",
+    "href": "col-label.html",
+    "title": "2  col//title specification",
+    "section": "",
+    "text": "This is a way to specify the column name for source data along with the axis label\nWhen only the column is given, then the column name will be used for the column title:"
+  },
+  {
+    "objectID": "col-label.html#generate-using-the-yspec-package",
+    "href": "col-label.html#generate-using-the-yspec-package",
+    "title": "2  col//title specification",
+    "section": "2.1 Generate using the yspec package",
+    "text": "2.1 Generate using the yspec package\nYou can also pull col//title data from a yspec object. Load the yspec package and generate an example data specification object\n\nlibrary(yspec)\nspec <- ys_help$spec()\n\nTypically, you’ll want to select a subset of columns and then call axis_col_labs()\n\nspec %>% \n  ys_select(WT, AGE, BMI) %>% \n  axis_col_labs()\n\n                WT                AGE                BMI \n \"WT//weight (kg)\" \"AGE//age (years)\" \"BMI//BMI (m2/kg)\""
+  },
+  {
+    "objectID": "dv-pred.html",
+    "href": "dv-pred.html",
+    "title": "3  Observed vs predicted",
+    "section": "",
+    "text": "dv_pred(df, yname = .yname)"
+  },
+  {
+    "objectID": "dv-pred.html#observed-versus-population-predicted---loglog",
+    "href": "dv-pred.html#observed-versus-population-predicted---loglog",
+    "title": "3  Observed vs predicted",
+    "section": "3.2 Observed versus population predicted - log/log",
+    "text": "3.2 Observed versus population predicted - log/log\n\ndv_pred(df, loglog=TRUE, yname = .yname)"
+  },
+  {
+    "objectID": "dv-pred.html#observed-versus-individual-predicted-dv_ipred",
+    "href": "dv-pred.html#observed-versus-individual-predicted-dv_ipred",
+    "title": "3  Observed vs predicted",
+    "section": "3.3 Observed versus individual predicted (dv_ipred)",
+    "text": "3.3 Observed versus individual predicted (dv_ipred)\n\ndv_ipred(df, yname=.yname)"
+  },
+  {
+    "objectID": "dv-pred.html#observed-versus-individual-predicted---loglog",
+    "href": "dv-pred.html#observed-versus-individual-predicted---loglog",
+    "title": "3  Observed vs predicted",
+    "section": "3.4 Observed versus individual predicted - log/log",
+    "text": "3.4 Observed versus individual predicted - log/log\n\ndv_ipred(df, loglog=TRUE, yname = .yname)"
+  },
+  {
+    "objectID": "dv-pred.html#observed-versus-both-pred-and-ipred",
+    "href": "dv-pred.html#observed-versus-both-pred-and-ipred",
+    "title": "3  Observed vs predicted",
+    "section": "3.5 Observed versus both PRED and IPRED",
+    "text": "3.5 Observed versus both PRED and IPRED\n\ndv_preds(df) %>% pm_grid(ncol=2)"
+  },
+  {
+    "objectID": "residuals.html",
+    "href": "residuals.html",
+    "title": "4  Residual plots",
+    "section": "",
+    "text": "res_time(df)"
+  },
+  {
+    "objectID": "residuals.html#residuals-versus-time-after-first-dose-res_tafd",
+    "href": "residuals.html#residuals-versus-time-after-first-dose-res_tafd",
+    "title": "4  Residual plots",
+    "section": "4.2 Residuals versus time after first dose (res_tafd)",
+    "text": "4.2 Residuals versus time after first dose (res_tafd)\n\nres_tafd(df)"
+  },
+  {
+    "objectID": "residuals.html#residuals-versus-time-after-dose-res_tad",
+    "href": "residuals.html#residuals-versus-time-after-dose-res_tad",
+    "title": "4  Residual plots",
+    "section": "4.3 Residuals versus time after dose (res_tad)",
+    "text": "4.3 Residuals versus time after dose (res_tad)\n\nres_tad(df)"
+  },
+  {
+    "objectID": "residuals.html#residuals-versus-population-predicted-res_pred",
+    "href": "residuals.html#residuals-versus-population-predicted-res_pred",
+    "title": "4  Residual plots",
+    "section": "4.4 Residuals versus population predicted (res_pred)",
+    "text": "4.4 Residuals versus population predicted (res_pred)\n\nres_pred(df)"
+  },
+  {
+    "objectID": "residuals.html#res-versus-continuous-covariate-res_cont",
+    "href": "residuals.html#res-versus-continuous-covariate-res_cont",
+    "title": "4  Residual plots",
+    "section": "4.5 RES versus continuous covariate (res_cont)",
+    "text": "4.5 RES versus continuous covariate (res_cont)\n\nres_cont(df, x=\"WT//Weight (kg)\")\n\n\n\n\nThis function is also vectorized in x.\n\nc(\"WT\", \"CRCL\", \"AST\") %>% map(.f = partial(res_cont,df)) %>% pm_grid()"
+  },
+  {
+    "objectID": "residuals.html#res-by-categorical-covariate-res_cat",
+    "href": "residuals.html#res-by-categorical-covariate-res_cat",
+    "title": "4  Residual plots",
+    "section": "4.6 RES by categorical covariate (res_cat)",
+    "text": "4.6 RES by categorical covariate (res_cat)\n\ndplyr::count(df, STUDYc)\n\n# A tibble: 4 × 2\n  STUDYc      n\n  <fct>   <int>\n1 SAD       424\n2 MAD      1199\n3 Renal     960\n4 Hepatic   559\n\nres_cat(df, x=\"STUDYc//Study type\")"
+  },
+  {
+    "objectID": "residuals.html#residual-histogram-res_hist",
+    "href": "residuals.html#residual-histogram-res_hist",
+    "title": "4  Residual plots",
+    "section": "4.7 Residual histogram (res_hist)",
+    "text": "4.7 Residual histogram (res_hist)\n\nres_hist(df)"
+  },
+  {
+    "objectID": "residuals.html#weighted-residuals-versus-time-wres_time",
+    "href": "residuals.html#weighted-residuals-versus-time-wres_time",
+    "title": "4  Residual plots",
+    "section": "5.1 Weighted residuals versus time (wres_time)",
+    "text": "5.1 Weighted residuals versus time (wres_time)\n\nwres_time(df)"
+  },
+  {
+    "objectID": "residuals.html#weighted-residuals-versus-time-after-first-dose-wres_tafd",
+    "href": "residuals.html#weighted-residuals-versus-time-after-first-dose-wres_tafd",
+    "title": "4  Residual plots",
+    "section": "5.2 Weighted residuals versus time after first dose (wres_tafd)",
+    "text": "5.2 Weighted residuals versus time after first dose (wres_tafd)\n\nwres_tafd(df)"
+  },
+  {
+    "objectID": "residuals.html#weighted-residuals-versus-time-after-dose-wres_tad",
+    "href": "residuals.html#weighted-residuals-versus-time-after-dose-wres_tad",
+    "title": "4  Residual plots",
+    "section": "5.3 Weighted residuals versus time after dose (wres_tad)",
+    "text": "5.3 Weighted residuals versus time after dose (wres_tad)\n\nwres_tad(df)"
+  },
+  {
+    "objectID": "residuals.html#weighted-esiduals-versus-population-predicted-wres_pred",
+    "href": "residuals.html#weighted-esiduals-versus-population-predicted-wres_pred",
+    "title": "4  Residual plots",
+    "section": "5.4 Weighted esiduals versus population predicted (wres_pred)",
+    "text": "5.4 Weighted esiduals versus population predicted (wres_pred)\n\nwres_pred(df)"
+  },
+  {
+    "objectID": "residuals.html#wres-versus-continuous-covariate-wres_cont",
+    "href": "residuals.html#wres-versus-continuous-covariate-wres_cont",
+    "title": "4  Residual plots",
+    "section": "5.5 WRES versus continuous covariate (wres_cont)",
+    "text": "5.5 WRES versus continuous covariate (wres_cont)\nThis function is also vectorized in x.\n\nwres_cont(df, x=\"WT//Weight (kg)\")"
+  },
+  {
+    "objectID": "residuals.html#wres-by-categorical-covariate-wres_cat",
+    "href": "residuals.html#wres-by-categorical-covariate-wres_cat",
+    "title": "4  Residual plots",
+    "section": "5.6 WRES by categorical covariate (wres_cat)",
+    "text": "5.6 WRES by categorical covariate (wres_cat)\n\nwres_cat(df, x=\"STUDYc//Study type\")"
+  },
+  {
+    "objectID": "residuals.html#weighted-residual-histogram-wres_hist",
+    "href": "residuals.html#weighted-residual-histogram-wres_hist",
+    "title": "4  Residual plots",
+    "section": "5.7 Weighted residual histogram (wres_hist)",
+    "text": "5.7 Weighted residual histogram (wres_hist)\n\nwres_hist(df)"
+  },
+  {
+    "objectID": "residuals.html#wres-qq-plot-wres_q",
+    "href": "residuals.html#wres-qq-plot-wres_q",
+    "title": "4  Residual plots",
+    "section": "5.8 WRES QQ plot (wres_q)",
+    "text": "5.8 WRES QQ plot (wres_q)\n\nwres_q(df)"
+  },
+  {
+    "objectID": "residuals.html#cwres-versus-time-cwres_time",
+    "href": "residuals.html#cwres-versus-time-cwres_time",
+    "title": "4  Residual plots",
+    "section": "6.1 CWRES versus time (cwres_time)",
+    "text": "6.1 CWRES versus time (cwres_time)\n\ncwres_time(df)"
+  },
+  {
+    "objectID": "residuals.html#conditional-weighted-residuals-versus-time-after-first-dose-cwres_tafd",
+    "href": "residuals.html#conditional-weighted-residuals-versus-time-after-first-dose-cwres_tafd",
+    "title": "4  Residual plots",
+    "section": "6.2 Conditional weighted residuals versus time after first dose (cwres_tafd)",
+    "text": "6.2 Conditional weighted residuals versus time after first dose (cwres_tafd)\n\ncwres_tafd(df)"
+  },
+  {
+    "objectID": "residuals.html#cwres-versus-time-after-dose-cwres_tad",
+    "href": "residuals.html#cwres-versus-time-after-dose-cwres_tad",
+    "title": "4  Residual plots",
+    "section": "6.3 CWRES versus time after dose (cwres_tad)",
+    "text": "6.3 CWRES versus time after dose (cwres_tad)\n\ncwres_tad(df)"
+  },
+  {
+    "objectID": "residuals.html#cwres-versus-continuous-covariate-cwres_cont",
+    "href": "residuals.html#cwres-versus-continuous-covariate-cwres_cont",
+    "title": "4  Residual plots",
+    "section": "6.4 CWRES versus continuous covariate (cwres_cont)",
+    "text": "6.4 CWRES versus continuous covariate (cwres_cont)\n\ncwres_cont(df, x=\"WT//Weight (kg)\")\n\n\n\n\nVectorized version ::: {.cell}\ncwres_cont(df, covs) %>%  pm_grid(ncol=2)\n\n\n\n:::"
+  },
+  {
+    "objectID": "residuals.html#cwres-by-categorical-covariate-cwres_cat",
+    "href": "residuals.html#cwres-by-categorical-covariate-cwres_cat",
+    "title": "4  Residual plots",
+    "section": "6.5 CWRES by categorical covariate (cwres_cat)",
+    "text": "6.5 CWRES by categorical covariate (cwres_cat)\n\ncwres_cat(df, x=\"STUDYc//Study type\")\n\n\n\n\n\ncwres_cat(df, x=\"STUDYc//Study type\", shown=FALSE)\n\n\n\n\nVectorized version\n\ncwres_cat(df, x = c(\"STUDYc//Study\", \"RF//Renal Function\"))\n\n[[1]]\n\n\n\n\n\n\n[[2]]"
+  },
+  {
+    "objectID": "residuals.html#conditional-weighted-residual-histogram-cwres_hist",
+    "href": "residuals.html#conditional-weighted-residual-histogram-cwres_hist",
+    "title": "4  Residual plots",
+    "section": "6.6 Conditional weighted residual histogram (cwres_hist)",
+    "text": "6.6 Conditional weighted residual histogram (cwres_hist)\n\ncwres_hist(df)"
+  },
+  {
+    "objectID": "residuals.html#cwres-versus-population-predicted-cwres_pred",
+    "href": "residuals.html#cwres-versus-population-predicted-cwres_pred",
+    "title": "4  Residual plots",
+    "section": "6.7 CWRES versus population predicted (cwres_pred)",
+    "text": "6.7 CWRES versus population predicted (cwres_pred)\n\ncwres_pred(df)"
+  },
+  {
+    "objectID": "residuals.html#cwres-qq-plot-cwres_q",
+    "href": "residuals.html#cwres-qq-plot-cwres_q",
+    "title": "4  Residual plots",
+    "section": "6.8 CWRES QQ plot (cwres_q)",
+    "text": "6.8 CWRES QQ plot (cwres_q)\n\ncwres_q(df)"
+  },
+  {
+    "objectID": "eta.html",
+    "href": "eta.html",
+    "title": "5  ETA plots",
+    "section": "",
+    "text": "etas <- c(\"ETA1//ETA-CL\", \"ETA2//ETA-V2\", \"ETA3//ETA-KA\")\ncovs <- c(\"WT//Weight (kg)\", \"ALB//Albumin (g/dL)\", \"SCR//Creatinine (mg/dL)\")"
+  },
+  {
+    "objectID": "eta.html#eta-versus-continuous-covariates-eta_cont",
+    "href": "eta.html#eta-versus-continuous-covariates-eta_cont",
+    "title": "5  ETA plots",
+    "section": "5.1 ETA versus continuous covariates (eta_cont)",
+    "text": "5.1 ETA versus continuous covariates (eta_cont)\nGrouped by eta ::: {.cell}\neta_cont(id, x=covs,y=etas[2]) %>% pm_grid()\n\n\n\n:::\nGrouped by covariate ::: {.cell}\neta_cont(id, x=covs[1], y=etas) %>% pm_grid(ncol=2)\n\n\n\n:::"
+  },
+  {
+    "objectID": "eta.html#eta-by-categorical-covariates-eta_cat",
+    "href": "eta.html#eta-by-categorical-covariates-eta_cat",
+    "title": "5  ETA plots",
+    "section": "5.2 ETA by categorical covariates (eta_cat)",
+    "text": "5.2 ETA by categorical covariates (eta_cat)\n\np <- eta_cat(id, x=\"STUDYc//Study type\", y=etas)\n\n\npm_grid(p)"
+  },
+  {
+    "objectID": "eta.html#eta-histograms-eta_hist",
+    "href": "eta.html#eta-histograms-eta_hist",
+    "title": "5  ETA plots",
+    "section": "5.3 ETA histograms (eta_hist)",
+    "text": "5.3 ETA histograms (eta_hist)\n\netas <- c(\"ETA1//ETA-CL\", \"ETA2//ETA-V2\", \"ETA3//ETA-KA\")\np <- eta_hist(id,etas, bins=10)\n\n\npm_grid(p)"
+  },
+  {
+    "objectID": "eta.html#eta-pairs-plot-eta_pairs",
+    "href": "eta.html#eta-pairs-plot-eta_pairs",
+    "title": "5  ETA plots",
+    "section": "5.4 ETA pairs plot (eta_pairs)",
+    "text": "5.4 ETA pairs plot (eta_pairs)\n\np <- eta_pairs(id, etas)\n\n\nprint(p)"
+  }
+]

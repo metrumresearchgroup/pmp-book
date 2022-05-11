@@ -1,0 +1,37 @@
+
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+
+# Observed vs predicted
+
+## Observed versus population predicted (`dv_pred`)
+
+```{r}
+dv_pred(df, yname = .yname)
+```
+
+
+## Observed versus population predicted - log/log
+```{r}
+dv_pred(df, loglog=TRUE, yname = .yname)
+```
+
+
+## Observed versus individual predicted (`dv_ipred`)
+```{r}
+dv_ipred(df, yname=.yname)
+```
+
+## Observed versus individual predicted - log/log
+```{r}
+dv_ipred(df, loglog=TRUE, yname = .yname)
+```
+
+
+## Observed versus both PRED and IPRED
+```{r, fig.width = 6}
+dv_preds(df) %>% pm_grid(ncol=2)
+```

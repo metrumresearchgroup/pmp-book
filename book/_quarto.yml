@@ -1,0 +1,46 @@
+project:
+  type: book
+  output-dir: docs
+
+execute:
+  freeze: auto
+
+book:
+  title: "The pmplots Gallery"
+  subtitle: "Plots for Pharmacometrics"
+  author: "Kyle Baron, Pharm.D., Ph.D."
+  date: today
+  date-format: medium
+  search: 
+    location: navbar
+    type: overlay
+  chapters:
+    - index.qmd
+    - col-label.qmd
+    - dv-pred.qmd
+    - residuals.qmd
+    - eta.qmd
+    #- stable.qmd
+  navbar: 
+    background: white
+    foreground: darkgrey
+    right:
+      - text: metrumrg
+        href: https://metrumrg.com
+      - icon: github
+        href: https://github.com/metrumresearchgroup/pmplots
+      - icon: twitter
+        href: https://twitter.com/MetrumRG
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    code-line-numbers: true
+    fontsize: "15pt"
+    linkcolor: "#00b4f1"
+    title-block-banner: "#00b4f1"
+    title-block-banner-color: "white"
+  # pdf:
+  #   documentclass: scrreprt

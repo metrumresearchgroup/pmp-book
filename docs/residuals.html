@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.299">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The pmplots Gallery - 4&nbsp; Residual plots</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<link href="./eta.html" rel="next">
+<link href="./dv-pred.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+    .quarto-title-banner {
+      color: white;
+background: #00b4f1;
+    }
+    </style>
+
+
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">The pmplots Gallery</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://metrumrg.com">metrumrg</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmplots"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MetrumRG"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Residual plots</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Residual plots</span></h1>
+                </div>
+  </div>
+    
+  
+
+
+
+  <div class="quarto-title-meta">
+
+      
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./col-label.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>col//title</code> specification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dv-pred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Observed vs predicted</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./residuals.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Residual plots</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eta.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ETA plots</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#residuals-versus-time-res_time" id="toc-residuals-versus-time-res_time" class="nav-link active" data-scroll-target="#residuals-versus-time-res_time"> <span class="header-section-number">4.1</span> Residuals versus time (<code>res_time</code>)</a></li>
+  <li><a href="#residuals-versus-time-after-first-dose-res_tafd" id="toc-residuals-versus-time-after-first-dose-res_tafd" class="nav-link" data-scroll-target="#residuals-versus-time-after-first-dose-res_tafd"> <span class="header-section-number">4.2</span> Residuals versus time after first dose (<code>res_tafd</code>)</a></li>
+  <li><a href="#residuals-versus-time-after-dose-res_tad" id="toc-residuals-versus-time-after-dose-res_tad" class="nav-link" data-scroll-target="#residuals-versus-time-after-dose-res_tad"> <span class="header-section-number">4.3</span> Residuals versus time after dose (<code>res_tad</code>)</a></li>
+  <li><a href="#residuals-versus-population-predicted-res_pred" id="toc-residuals-versus-population-predicted-res_pred" class="nav-link" data-scroll-target="#residuals-versus-population-predicted-res_pred"> <span class="header-section-number">4.4</span> Residuals versus population predicted (<code>res_pred</code>)</a></li>
+  <li><a href="#res-versus-continuous-covariate-res_cont" id="toc-res-versus-continuous-covariate-res_cont" class="nav-link" data-scroll-target="#res-versus-continuous-covariate-res_cont"> <span class="header-section-number">4.5</span> RES versus continuous covariate (<code>res_cont</code>)</a></li>
+  <li><a href="#res-by-categorical-covariate-res_cat" id="toc-res-by-categorical-covariate-res_cat" class="nav-link" data-scroll-target="#res-by-categorical-covariate-res_cat"> <span class="header-section-number">4.6</span> RES by categorical covariate (<code>res_cat</code>)</a></li>
+  <li><a href="#residual-histogram-res_hist" id="toc-residual-histogram-res_hist" class="nav-link" data-scroll-target="#residual-histogram-res_hist"> <span class="header-section-number">4.7</span> Residual histogram (<code>res_hist</code>)</a></li>
+  <li><a href="#weighted-residuals" id="toc-weighted-residuals" class="nav-link" data-scroll-target="#weighted-residuals"> <span class="header-section-number">5</span> Weighted residuals</a>
+  <ul class="collapse">
+  <li><a href="#weighted-residuals-versus-time-wres_time" id="toc-weighted-residuals-versus-time-wres_time" class="nav-link" data-scroll-target="#weighted-residuals-versus-time-wres_time"> <span class="header-section-number">5.1</span> Weighted residuals versus time (<code>wres_time</code>)</a></li>
+  <li><a href="#weighted-residuals-versus-time-after-first-dose-wres_tafd" id="toc-weighted-residuals-versus-time-after-first-dose-wres_tafd" class="nav-link" data-scroll-target="#weighted-residuals-versus-time-after-first-dose-wres_tafd"> <span class="header-section-number">5.2</span> Weighted residuals versus time after first dose (<code>wres_tafd</code>)</a></li>
+  <li><a href="#weighted-residuals-versus-time-after-dose-wres_tad" id="toc-weighted-residuals-versus-time-after-dose-wres_tad" class="nav-link" data-scroll-target="#weighted-residuals-versus-time-after-dose-wres_tad"> <span class="header-section-number">5.3</span> Weighted residuals versus time after dose (<code>wres_tad</code>)</a></li>
+  <li><a href="#weighted-esiduals-versus-population-predicted-wres_pred" id="toc-weighted-esiduals-versus-population-predicted-wres_pred" class="nav-link" data-scroll-target="#weighted-esiduals-versus-population-predicted-wres_pred"> <span class="header-section-number">5.4</span> Weighted esiduals versus population predicted (<code>wres_pred</code>)</a></li>
+  <li><a href="#wres-versus-continuous-covariate-wres_cont" id="toc-wres-versus-continuous-covariate-wres_cont" class="nav-link" data-scroll-target="#wres-versus-continuous-covariate-wres_cont"> <span class="header-section-number">5.5</span> WRES versus continuous covariate (<code>wres_cont</code>)</a></li>
+  <li><a href="#wres-by-categorical-covariate-wres_cat" id="toc-wres-by-categorical-covariate-wres_cat" class="nav-link" data-scroll-target="#wres-by-categorical-covariate-wres_cat"> <span class="header-section-number">5.6</span> WRES by categorical covariate (<code>wres_cat</code>)</a></li>
+  <li><a href="#weighted-residual-histogram-wres_hist" id="toc-weighted-residual-histogram-wres_hist" class="nav-link" data-scroll-target="#weighted-residual-histogram-wres_hist"> <span class="header-section-number">5.7</span> Weighted residual histogram (<code>wres_hist</code>)</a></li>
+  <li><a href="#wres-qq-plot-wres_q" id="toc-wres-qq-plot-wres_q" class="nav-link" data-scroll-target="#wres-qq-plot-wres_q"> <span class="header-section-number">5.8</span> WRES QQ plot (<code>wres_q</code>)</a></li>
+  </ul></li>
+  <li><a href="#conditional-weighted-residuals-cwres" id="toc-conditional-weighted-residuals-cwres" class="nav-link" data-scroll-target="#conditional-weighted-residuals-cwres"> <span class="header-section-number">6</span> Conditional weighted residuals (CWRES)</a>
+  <ul class="collapse">
+  <li><a href="#cwres-versus-time-cwres_time" id="toc-cwres-versus-time-cwres_time" class="nav-link" data-scroll-target="#cwres-versus-time-cwres_time"> <span class="header-section-number">6.1</span> CWRES versus time (<code>cwres_time</code>)</a></li>
+  <li><a href="#conditional-weighted-residuals-versus-time-after-first-dose-cwres_tafd" id="toc-conditional-weighted-residuals-versus-time-after-first-dose-cwres_tafd" class="nav-link" data-scroll-target="#conditional-weighted-residuals-versus-time-after-first-dose-cwres_tafd"> <span class="header-section-number">6.2</span> Conditional weighted residuals versus time after first dose (<code>cwres_tafd</code>)</a></li>
+  <li><a href="#cwres-versus-time-after-dose-cwres_tad" id="toc-cwres-versus-time-after-dose-cwres_tad" class="nav-link" data-scroll-target="#cwres-versus-time-after-dose-cwres_tad"> <span class="header-section-number">6.3</span> CWRES versus time after dose (<code>cwres_tad</code>)</a></li>
+  <li><a href="#cwres-versus-continuous-covariate-cwres_cont" id="toc-cwres-versus-continuous-covariate-cwres_cont" class="nav-link" data-scroll-target="#cwres-versus-continuous-covariate-cwres_cont"> <span class="header-section-number">6.4</span> CWRES versus continuous covariate (<code>cwres_cont</code>)</a></li>
+  <li><a href="#cwres-by-categorical-covariate-cwres_cat" id="toc-cwres-by-categorical-covariate-cwres_cat" class="nav-link" data-scroll-target="#cwres-by-categorical-covariate-cwres_cat"> <span class="header-section-number">6.5</span> CWRES by categorical covariate (<code>cwres_cat</code>)</a></li>
+  <li><a href="#conditional-weighted-residual-histogram-cwres_hist" id="toc-conditional-weighted-residual-histogram-cwres_hist" class="nav-link" data-scroll-target="#conditional-weighted-residual-histogram-cwres_hist"> <span class="header-section-number">6.6</span> Conditional weighted residual histogram (<code>cwres_hist</code>)</a></li>
+  <li><a href="#cwres-versus-population-predicted-cwres_pred" id="toc-cwres-versus-population-predicted-cwres_pred" class="nav-link" data-scroll-target="#cwres-versus-population-predicted-cwres_pred"> <span class="header-section-number">6.7</span> CWRES versus population predicted (<code>cwres_pred</code>)</a></li>
+  <li><a href="#cwres-qq-plot-cwres_q" id="toc-cwres-qq-plot-cwres_q" class="nav-link" data-scroll-target="#cwres-qq-plot-cwres_q"> <span class="header-section-number">6.8</span> CWRES QQ plot (<code>cwres_q</code>)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="residuals-versus-time-res_time" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="residuals-versus-time-res_time"><span class="header-section-number">4.1</span> Residuals versus time (<code>res_time</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">res_time</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="residuals-versus-time-after-first-dose-res_tafd" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="residuals-versus-time-after-first-dose-res_tafd"><span class="header-section-number">4.2</span> Residuals versus time after first dose (<code>res_tafd</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">res_tafd</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="residuals-versus-time-after-dose-res_tad" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="residuals-versus-time-after-dose-res_tad"><span class="header-section-number">4.3</span> Residuals versus time after dose (<code>res_tad</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">res_tad</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="residuals-versus-population-predicted-res_pred" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="residuals-versus-population-predicted-res_pred"><span class="header-section-number">4.4</span> Residuals versus population predicted (<code>res_pred</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">res_pred</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="res-versus-continuous-covariate-res_cont" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="res-versus-continuous-covariate-res_cont"><span class="header-section-number">4.5</span> RES versus continuous covariate (<code>res_cont</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">res_cont</span>(df, <span class="at">x=</span><span class="st">"WT//Weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This function is also vectorized in x.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"CRCL"</span>, <span class="st">"AST"</span>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="at">.f =</span> <span class="fu">partial</span>(res_cont,df)) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="res-by-categorical-covariate-res_cat" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="res-by-categorical-covariate-res_cat"><span class="header-section-number">4.6</span> RES by categorical covariate (<code>res_cat</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>dplyr<span class="sc">::</span><span class="fu">count</span>(df, STUDYc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  STUDYc      n
+  &lt;fct&gt;   &lt;int&gt;
+1 SAD       424
+2 MAD      1199
+3 Renal     960
+4 Hepatic   559</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">res_cat</span>(df, <span class="at">x=</span><span class="st">"STUDYc//Study type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="residual-histogram-res_hist" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="residual-histogram-res_hist"><span class="header-section-number">4.7</span> Residual histogram (<code>res_hist</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">res_hist</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="weighted-residuals" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Weighted residuals</h1>
+<section id="weighted-residuals-versus-time-wres_time" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="weighted-residuals-versus-time-wres_time"><span class="header-section-number">5.1</span> Weighted residuals versus time (<code>wres_time</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">wres_time</span>(df) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="weighted-residuals-versus-time-after-first-dose-wres_tafd" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="weighted-residuals-versus-time-after-first-dose-wres_tafd"><span class="header-section-number">5.2</span> Weighted residuals versus time after first dose (<code>wres_tafd</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">wres_tafd</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="weighted-residuals-versus-time-after-dose-wres_tad" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="weighted-residuals-versus-time-after-dose-wres_tad"><span class="header-section-number">5.3</span> Weighted residuals versus time after dose (<code>wres_tad</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">wres_tad</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="weighted-esiduals-versus-population-predicted-wres_pred" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="weighted-esiduals-versus-population-predicted-wres_pred"><span class="header-section-number">5.4</span> Weighted esiduals versus population predicted (<code>wres_pred</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">wres_pred</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="wres-versus-continuous-covariate-wres_cont" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="wres-versus-continuous-covariate-wres_cont"><span class="header-section-number">5.5</span> WRES versus continuous covariate (<code>wres_cont</code>)</h2>
+<p>This function is also vectorized in x.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">wres_cont</span>(df, <span class="at">x=</span><span class="st">"WT//Weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="wres-by-categorical-covariate-wres_cat" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="wres-by-categorical-covariate-wres_cat"><span class="header-section-number">5.6</span> WRES by categorical covariate (<code>wres_cat</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">wres_cat</span>(df, <span class="at">x=</span><span class="st">"STUDYc//Study type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="weighted-residual-histogram-wres_hist" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="weighted-residual-histogram-wres_hist"><span class="header-section-number">5.7</span> Weighted residual histogram (<code>wres_hist</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">wres_hist</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="wres-qq-plot-wres_q" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="wres-qq-plot-wres_q"><span class="header-section-number">5.8</span> WRES QQ plot (<code>wres_q</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">wres_q</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="conditional-weighted-residuals-cwres" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Conditional weighted residuals (CWRES)</h1>
+<section id="cwres-versus-time-cwres_time" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="cwres-versus-time-cwres_time"><span class="header-section-number">6.1</span> CWRES versus time (<code>cwres_time</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">cwres_time</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="conditional-weighted-residuals-versus-time-after-first-dose-cwres_tafd" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="conditional-weighted-residuals-versus-time-after-first-dose-cwres_tafd"><span class="header-section-number">6.2</span> Conditional weighted residuals versus time after first dose (<code>cwres_tafd</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">cwres_tafd</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="cwres-versus-time-after-dose-cwres_tad" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="cwres-versus-time-after-dose-cwres_tad"><span class="header-section-number">6.3</span> CWRES versus time after dose (<code>cwres_tad</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">cwres_tad</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="cwres-versus-continuous-covariate-cwres_cont" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="cwres-versus-continuous-covariate-cwres_cont"><span class="header-section-number">6.4</span> CWRES versus continuous covariate (<code>cwres_cont</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">cwres_cont</span>(df, <span class="at">x=</span><span class="st">"WT//Weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Vectorized version ::: {.cell}</p>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">cwres_cont</span>(df, covs) <span class="sc">%&gt;%</span>  <span class="fu">pm_grid</span>(<span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="576"></p>
+</div>
+<p>:::</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="cwres-by-categorical-covariate-cwres_cat" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="cwres-by-categorical-covariate-cwres_cat"><span class="header-section-number">6.5</span> CWRES by categorical covariate (<code>cwres_cat</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">cwres_cat</span>(df, <span class="at">x=</span><span class="st">"STUDYc//Study type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">cwres_cat</span>(df, <span class="at">x=</span><span class="st">"STUDYc//Study type"</span>, <span class="at">shown=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Vectorized version</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">cwres_cat</span>(df, <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"STUDYc//Study"</span>, <span class="st">"RF//Renal Function"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[2]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-48-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="conditional-weighted-residual-histogram-cwres_hist" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="conditional-weighted-residual-histogram-cwres_hist"><span class="header-section-number">6.6</span> Conditional weighted residual histogram (<code>cwres_hist</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">cwres_hist</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="cwres-versus-population-predicted-cwres_pred" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="cwres-versus-population-predicted-cwres_pred"><span class="header-section-number">6.7</span> CWRES versus population predicted (<code>cwres_pred</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">cwres_pred</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="cwres-qq-plot-cwres_q" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="cwres-qq-plot-cwres_q"><span class="header-section-number">6.8</span> CWRES QQ plot (<code>cwres_q</code>)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">cwres_q</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="residuals_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./dv-pred.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Observed vs predicted</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./eta.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ETA plots</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
