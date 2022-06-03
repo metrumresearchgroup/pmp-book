@@ -1,3 +1,5 @@
+book/docs
+book/_freeze
 .DS_Store
 source/tables.tex
 pmt-book.log
