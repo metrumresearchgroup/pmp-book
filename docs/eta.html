@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.299">
+<meta name="generator" content="quarto-0.9.508">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The pmplots Gallery - 5&nbsp; ETA plots</title>
+<title>The pmplots Gallery - 6&nbsp; ETA plots</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,20 +80,22 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<link href="./residuals.html" rel="prev">
+<meta name="quarto:offset" content="./">
+<link href="./wrap.html" rel="next">
+<link href="./npde.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -117,7 +119,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <style>
-    .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner {
       color: white;
 background: #00b4f1;
     }
@@ -126,7 +128,7 @@ background: #00b4f1;
 
 </head>
 
-<body class="floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,6 +155,11 @@ background: #00b4f1;
 </i> 
  </a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https:/github.com/metrumrg/pmp-book/tree/main/book/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -160,7 +167,7 @@ background: #00b4f1;
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ETA plots</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ETA plots</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -171,14 +178,11 @@ background: #00b4f1;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ETA plots</span></h1>
-                </div>
+      <h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ETA plots</span></h1>
+                      </div>
   </div>
     
   
-
-
-
   <div class="quarto-title-meta">
 
       
@@ -218,7 +222,42 @@ background: #00b4f1;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./eta.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ETA plots</span></a>
+  <a href="./npde.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NPDE plots</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eta.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ETA plots</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrapped plots</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pairs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pairs plots</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vectorized.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vectorized plots</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./custom.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Some customization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dv-pred-ipred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></a>
   </div>
 </li>
     </ul>
@@ -230,12 +269,14 @@ background: #00b4f1;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#eta-versus-continuous-covariates-eta_cont" id="toc-eta-versus-continuous-covariates-eta_cont" class="nav-link active" data-scroll-target="#eta-versus-continuous-covariates-eta_cont"> <span class="header-section-number">5.1</span> ETA versus continuous covariates (<code>eta_cont</code>)</a></li>
-  <li><a href="#eta-by-categorical-covariates-eta_cat" id="toc-eta-by-categorical-covariates-eta_cat" class="nav-link" data-scroll-target="#eta-by-categorical-covariates-eta_cat"> <span class="header-section-number">5.2</span> ETA by categorical covariates (<code>eta_cat</code>)</a></li>
-  <li><a href="#eta-histograms-eta_hist" id="toc-eta-histograms-eta_hist" class="nav-link" data-scroll-target="#eta-histograms-eta_hist"> <span class="header-section-number">5.3</span> ETA histograms (<code>eta_hist</code>)</a></li>
-  <li><a href="#eta-pairs-plot-eta_pairs" id="toc-eta-pairs-plot-eta_pairs" class="nav-link" data-scroll-target="#eta-pairs-plot-eta_pairs"> <span class="header-section-number">5.4</span> ETA pairs plot (<code>eta_pairs</code>)</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"> <span class="header-section-number">6.1</span> Setup</a></li>
+  <li><a href="#data-used-on-this-page" id="toc-data-used-on-this-page" class="nav-link" data-scroll-target="#data-used-on-this-page"> <span class="header-section-number">6.2</span> Data used on this page</a></li>
+  <li><a href="#eta-versus-continuous-eta_cont" id="toc-eta-versus-continuous-eta_cont" class="nav-link" data-scroll-target="#eta-versus-continuous-eta_cont"> <span class="header-section-number">6.3</span> ETA versus continuous <code>[eta_cont]</code></a></li>
+  <li><a href="#eta-by-categorical-eta_cat" id="toc-eta-by-categorical-eta_cat" class="nav-link" data-scroll-target="#eta-by-categorical-eta_cat"> <span class="header-section-number">6.4</span> ETA by categorical <code>[eta_cat]</code></a></li>
+  <li><a href="#eta-histograms-eta_hist" id="toc-eta-histograms-eta_hist" class="nav-link" data-scroll-target="#eta-histograms-eta_hist"> <span class="header-section-number">6.5</span> ETA histograms <code>[eta_hist]</code></a></li>
+  <li><a href="#eta-pairs-eta_pairs" id="toc-eta-pairs-eta_pairs" class="nav-link" data-scroll-target="#eta-pairs-eta_pairs"> <span class="header-section-number">6.6</span> ETA pairs <code>[eta_pairs]</code></a></li>
   </ul>
-</nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumrg/pmp-book/blob/main/book/eta.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumrg/pmp-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -243,63 +284,135 @@ background: #00b4f1;
 
 
 
+<section id="setup" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">6.1</span> Setup</h2>
+<p>We start by defining a set of ETAs to use in the plots.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>etas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ETA1//ETA-CL"</span>, <span class="st">"ETA2//ETA-V2"</span>, <span class="st">"ETA3//ETA-KA"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>covs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"WT//Weight (kg)"</span>, <span class="st">"ALB//Albumin (g/dL)"</span>, <span class="st">"SCR//Creatinine (mg/dL)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>etas <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ETA1//ETA-CL"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ETA2//ETA-V2"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ETA3//ETA-KA"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div style="page-break-after: always;"></div>
-<section id="eta-versus-continuous-covariates-eta_cont" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="eta-versus-continuous-covariates-eta_cont"><span class="header-section-number">5.1</span> ETA versus continuous covariates (<code>eta_cont</code>)</h2>
-<p>Grouped by eta ::: {.cell}</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">eta_cont</span>(id, <span class="at">x=</span>covs,<span class="at">y=</span>etas[<span class="dv">2</span>]) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="eta_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="576"></p>
+<p>This is in the <code>col-label</code> format described earlier. We also set out a set of covariates that we can use for ETA diagnostics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"WT//Weight (kg)"</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ALB//Albumin (g/dL)"</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SCR//Creatinine (mg/dL)"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>:::</p>
-<p>Grouped by covariate ::: {.cell}</p>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">eta_cont</span>(id, <span class="at">x=</span>covs[<span class="dv">1</span>], <span class="at">y=</span>etas) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>(<span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="eta_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="576"></p>
-</div>
-<p>:::</p>
-<div style="page-break-after: always;"></div>
 </section>
-<section id="eta-by-categorical-covariates-eta_cat" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="eta-by-categorical-covariates-eta_cat"><span class="header-section-number">5.2</span> ETA by categorical covariates (<code>eta_cat</code>)</h2>
+<section id="data-used-on-this-page" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="data-used-on-this-page"><span class="header-section-number">6.2</span> Data used on this page</h2>
+<p>We are exclusively using a data set that is one row per individual</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Preview the data used on this page
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p <span class="ot">&lt;-</span> <span class="fu">eta_cat</span>(id, <span class="at">x=</span><span class="st">"STUDYc//Study type"</span>, <span class="at">y=</span>etas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(id), <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   C NUM ID SUBJ TIME SEQ CMT EVID AMT DV   AGE    WT   CRCL  ALB   BMI    AAG
+1 NA   1  1    1    0   0   1    1   5  0 28.03 55.16 114.45 4.40 21.67 106.36
+2 NA  17  2    2    0   0   1    1   5  0 34.67 51.74 100.54 3.88 23.85  61.79
+3 NA  33  3    3    0   0   1    1   5  0 26.24 54.84  99.05 3.84 19.43  50.10
+   SCR   AST   ALT     HT CP TAFD TAD LDOS MDV BLQ PHASE STUDY   RF 102 IPRED
+1 1.14 11.88 12.66 159.55  0    0   0    5   1   0     1     1 norm   1     0
+2 0.98 15.09 27.44 147.27  0    0   0    5   1   0     1     1 norm   1     0
+3 1.05 35.85 31.26 168.02  0    0   0    5   1   0     1     1 norm   1     0
+  CWRESI NPDE PRED RES WRES     CL     V2     KA      ETA1      ETA2      ETA3
+1      0    0    0   0    0 2.5927 40.287 1.4520 -0.075300 -0.184030 -0.095308
+2      0    0    0   0    0 1.9339 32.925 1.6044  0.024467 -0.321810 -0.340470
+3      0    0    0   0    0 3.2407 50.967 1.4195 -0.097942  0.056922  0.132150
+  DOSE STUDYc    CPc
+1    5    SAD normal
+2    5    SAD normal
+3    5    SAD normal</code></pre>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">pm_grid</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="eta_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
-<div style="page-break-after: always;"></div>
+</div>
+</div>
 </section>
-<section id="eta-histograms-eta_hist" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="eta-histograms-eta_hist"><span class="header-section-number">5.3</span> ETA histograms (<code>eta_hist</code>)</h2>
+<section id="eta-versus-continuous-eta_cont" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="eta-versus-continuous-eta_cont"><span class="header-section-number">6.3</span> ETA versus continuous <code>[eta_cont]</code></h2>
+<p>Grouped by eta</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>etas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ETA1//ETA-CL"</span>, <span class="st">"ETA2//ETA-V2"</span>, <span class="st">"ETA3//ETA-KA"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>p <span class="ot">&lt;-</span> <span class="fu">eta_hist</span>(id,etas, <span class="at">bins=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">pm_grid</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cont</span>(id, <span class="at">x =</span> covs, <span class="at">y =</span> etas[<span class="dv">2</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="eta_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="576"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="eta_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
 </div>
 </div>
-<div style="page-break-after: always;"></div>
+</div>
+<p>Grouped by covariate</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cont</span>(id, <span class="at">x =</span> covs[<span class="dv">1</span>], <span class="at">y =</span> etas) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="eta_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="eta-pairs-plot-eta_pairs" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="eta-pairs-plot-eta_pairs"><span class="header-section-number">5.4</span> ETA pairs plot (<code>eta_pairs</code>)</h2>
+<section id="eta-by-categorical-eta_cat" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="eta-by-categorical-eta_cat"><span class="header-section-number">6.4</span> ETA by categorical <code>[eta_cat]</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>p <span class="ot">&lt;-</span> <span class="fu">eta_pairs</span>(id, etas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cat</span>(id, <span class="at">x =</span> <span class="st">"STUDYc//Study type"</span>, <span class="at">y =</span> etas) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="eta_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="576"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="eta_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eta-histograms-eta_hist" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="eta-histograms-eta_hist"><span class="header-section-number">6.5</span> ETA histograms <code>[eta_hist]</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_hist</span>(id, etas, <span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="eta_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eta-pairs-eta_pairs" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="eta-pairs-eta_pairs"><span class="header-section-number">6.6</span> ETA pairs <code>[eta_pairs]</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_pairs</span>(id, etas) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="eta_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -307,7 +420,7 @@ background: #00b4f1;
 </section>
 
 </main> <!-- /main -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const icon = "";
   const anchorJS = new window.AnchorJS();
@@ -388,11 +501,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./residuals.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Residual plots</span></span>
+      <a href="./npde.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NPDE plots</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./wrap.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrapped plots</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

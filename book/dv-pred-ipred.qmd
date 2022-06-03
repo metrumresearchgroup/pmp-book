@@ -1,0 +1,17 @@
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+# DV-PRED-IPRED
+
+- This returns a list of plots; we show only one here (the first 9 IDs) 
+as an example
+
+```{r, fig.height = 6, fig.width=6}
+dd1 <- filter(df, ID <= 15)
+
+# dv_pred_ipred(dd1, nrow = 3, ncol = 3, ylab = "Concentration (ng/mL)", log_y=TRUE)
+```
+
+
+\newpage

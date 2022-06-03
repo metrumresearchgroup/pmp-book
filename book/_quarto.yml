@@ -11,6 +11,10 @@ book:
   author: "Kyle Baron, Pharm.D., Ph.D."
   date: today
   date-format: medium
+  repo-url: https://github.com/metrumrg/pmp-book
+  repo-subdir: book
+  repo-branch: main
+  repo-actions: [source, issue]
   search: 
     location: navbar
     type: overlay
@@ -19,7 +23,14 @@ book:
     - col-label.qmd
     - dv-pred.qmd
     - residuals.qmd
+    - npde.qmd
     - eta.qmd
+    - wrap.qmd
+    - pairs.qmd
+    - vectorized.qmd
+    - custom.qmd
+    - data-summary.qmd
+    - dv-pred-ipred.qmd
     #- stable.qmd
   navbar: 
     background: white
@@ -37,10 +48,9 @@ format:
     theme: cosmo
     toc: true
     number-sections: true
-    code-line-numbers: true
+    fig-align: center
+    #code-line-numbers: true
     fontsize: "15pt"
     linkcolor: "#00b4f1"
     title-block-banner: "#00b4f1"
     title-block-banner-color: "white"
-  # pdf:
-  #   documentclass: scrreprt

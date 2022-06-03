@@ -1,0 +1,112 @@
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# Wrapped plots
+
+## Setup
+
+Wrapped plots are like the other standardized plots we have 
+seen in the gallery so far, but they allow for a simple faceting
+using `ggplot2::facet_wrap()`.
+
+:::{.callout-note collapse=true appearance="simple"}
+
+## Preview the data used on this page
+
+The data are identical to the data used for the other series of
+plots and do not require any special configuration.
+
+
+```{r}
+head(as.data.frame(df), n=3)
+```
+
+:::
+
+## Histogram
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+wrap_hist(
+  df, 
+  x = c("WT", "ALB", "SCR"), 
+  scales = "free", 
+  bins = 10, 
+  ncol = 2
+)
+```
+
+## ETA versus continuous
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+wrap_eta_cont(
+  df, 
+  y = "ETA1", 
+  x = c("WT", "ALB"), 
+  scales = "free_x"
+)
+```
+
+## Continuous on categorical
+
+```{r, fig.height = 5, fig.width = 5}
+#| fig-height: 5
+#| fig-width: 7
+wrap_cont_cat(
+  df, 
+  y = c("WT", "CRCL", "AAG"), 
+  x = "STUDYc", 
+  ncol = 2
+) 
+```
+
+## Continuous on continuous
+
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+wrap_cont_cont(
+  df, 
+  y = "CWRES" , 
+  x = c("WT", "CRCL", "AAG"), 
+  ncol = 2, scales = "free_x"
+) 
+```
+
+
+## Residuals versus time
+
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+wrap_res_time(
+  df, 
+  y = c("RES", "WRES", "CWRES"), 
+  ncol = 2, scales = "free_y"
+) 
+```
+
+## DV/PRED and DV/IPRED
+
+```{r}
+#| fig-height: 4
+#| fig-width: 7
+wrap_dv_preds(df, ncol = 2)
+```
+
+## Use labels in the strip
+```{r}
+#| fig-width: 7
+#| fig-height: 4
+wrap_eta_cont(
+  df, 
+  y = "ETA1", 
+  x = c("WT//Weight (kg)", "ALB//Albumin (g/dL)"),
+  scales = "free_x", 
+  use_labels = TRUE
+)
+```
+

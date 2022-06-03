@@ -1,0 +1,31 @@
+
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# Data summary
+
+## Continuous variable by categorical variable (`cont_cat`)
+```{r}
+cont_cat(id, x="STUDYc", y="WT")
+```
+
+\newpage
+
+## General histogram (`cont_hist`)
+
+```{r}
+cont_hist(id, x = "WT", bins = 20)
+```
+
+\newpage
+
+## Split and plot (`split_plot`)
+```{r}
+p <- split_plot(df, sp="STUDYc", fun=dv_ipred)
+```
+
+```{r,fig.width=6, fig.height=7}
+pm_grid(p)
+```

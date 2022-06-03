@@ -7,60 +7,86 @@ source("global.R")
 
 # ETA plots
 
+## Setup
+
+We start by defining a set of ETAs to use in the plots. 
+
 ```{r}
-etas <- c("ETA1//ETA-CL", "ETA2//ETA-V2", "ETA3//ETA-KA")
-covs <- c("WT//Weight (kg)", "ALB//Albumin (g/dL)", "SCR//Creatinine (mg/dL)")
+etas <- c(
+  "ETA1//ETA-CL", 
+  "ETA2//ETA-V2", 
+  "ETA3//ETA-KA"
+)
 ```
 
-\newpage
+This is in the `col-label` format described earlier. We also set out a set 
+of covariates that we can use for ETA diagnostics.
 
-## ETA versus continuous covariates (`eta_cont`)
+```{r}
+covs <- c(
+  "WT//Weight (kg)", 
+  "ALB//Albumin (g/dL)", 
+  "SCR//Creatinine (mg/dL)"
+)
+```
+
+## Data used on this page
+
+We are exclusively using a data set that is one row per individual
+
+:::{.callout-note collapse=true appearance="simple"}
+
+## Preview the data used on this page
+
+```{r}
+head(as.data.frame(id), n=3)
+```
+
+:::
+
+
+## ETA versus continuous `[eta_cont]`
 
 Grouped by eta
-```{r, fig.width=6, fig.height=7}
-eta_cont(id, x=covs,y=etas[2]) %>% pm_grid()
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+eta_cont(id, x = covs, y = etas[2]) %>% 
+  pm_grid()
 ```
 
 Grouped by covariate
-```{r, fig.width=6, fig.height=7}
-eta_cont(id, x=covs[1], y=etas) %>% pm_grid(ncol=2)
-```
-
-\newpage
-
-## ETA by categorical covariates (`eta_cat`)
 
 ```{r}
-p <- eta_cat(id, x="STUDYc//Study type", y=etas)
+#| fig-width: 6
+#| fig-height: 6
+eta_cont(id, x = covs[1], y = etas) %>% 
+  pm_grid(ncol = 2)
 ```
 
-```{r, fig.width=6, fig.height=7}
-pm_grid(p)
-```
-
-\newpage
-
-## ETA histograms (`eta_hist`)
-
+## ETA by categorical `[eta_cat]`
 
 ```{r}
-etas <- c("ETA1//ETA-CL", "ETA2//ETA-V2", "ETA3//ETA-KA")
-p <- eta_hist(id,etas, bins=10)
+#| fig-width: 6
+#| fig-height: 6
+eta_cat(id, x = "STUDYc//Study type", y = etas) %>% 
+  pm_grid()
 ```
 
-```{r,fig.width=6, fig.height=7}
-pm_grid(p)
-```
-
-\newpage
-
-## ETA pairs plot (`eta_pairs`)
+## ETA histograms `[eta_hist]`
 
 ```{r}
-p <- eta_pairs(id, etas)
+#| fig-width: 6
+#| fig-height: 6
+eta_hist(id, etas, bins = 10) %>% 
+  pm_grid()
 ```
 
+## ETA pairs  `[eta_pairs]`
 
-```{r,fig.width=6, fig.height=6}
-print(p)
+```{r}
+#| fig-width: 6
+#| fig-height: 5
+eta_pairs(id, etas) 
 ```

@@ -1,0 +1,9 @@
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+# Vectorized plots
+
+```{r}
+pm_scatter(df, x = "TIME", y = c("RES", "WRES", "CWRES"))
+```
