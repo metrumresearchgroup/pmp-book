@@ -29,9 +29,9 @@ book:
     - wrap.qmd
     - pairs.qmd
     - vectorized.qmd
-    - custom.qmd
     - data-summary.qmd
-
+    - custom.qmd
+    
   navbar: 
     background: white
     foreground: darkgrey
