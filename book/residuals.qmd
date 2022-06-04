@@ -1,3 +1,7 @@
+---
+fig-height: 4.5
+fig-width: 4.5
+---
 
 ```{r setup, include = FALSE}
 source("global.R")
@@ -6,193 +10,194 @@ source("global.R")
 
 # Residual plots
 
+## Residuals
 
-## Residuals versus time (`res_time`)
+### Versus TIME `[res_time]`
+
 ```{r}
 res_time(df)
 ```
 
-\newpage
+### Versus TAFD `[res_tafd]`
 
-## Residuals versus time after first dose (`res_tafd`)
 ```{r}
 res_tafd(df)
 ```
 
-\newpage
+### Versus TAD `[res_tad]`
 
-## Residuals versus time after dose (`res_tad`)
 ```{r}
 res_tad(df)
 ```
 
-\newpage
+### Versus PRED `[res_pred]`
 
-## Residuals versus population predicted (`res_pred`)
 ```{r}
 res_pred(df)
 ```
 
-\newpage
 
-## RES versus continuous covariate (`res_cont`)
+### Versus continuous `[res_cont]`
 
 ```{r}
-res_cont(df, x="WT//Weight (kg)")
+res_cont(df, x = "WT//Weight (kg)")
 ```
 
 This function is also vectorized in x.
 
-```{r, fig.height = 6, fig.width = 6}
-c("WT", "CRCL", "AST") %>% map(.f = partial(res_cont,df)) %>% pm_grid()
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+res_cont(df, c("WT", "CRCL", "AST")) %>% 
+  pm_grid()
 ```
 
-\newpage
 
-## RES by categorical covariate (`res_cat`)
+### By categorical `[res_cat]`
+
 ```{r}
 dplyr::count(df, STUDYc)
-res_cat(df, x="STUDYc//Study type")
+
+res_cat(df, x = "STUDYc//Study type")
 ```
 
-\newpage
 
-## Residual histogram (`res_hist`)
+### Histogram `[res_hist]`
 
 ```{r}
 res_hist(df)
 ```
 
-\newpage
 
-# Weighted residuals
+## WRES
 
-## Weighted residuals versus time (`wres_time`)
+### Versus TIME `[wres_time]`
+
 ```{r}
 wres_time(df) 
 ```
 
-\newpage
 
-## Weighted residuals versus time after first dose (`wres_tafd`)
+### Versus TAFD `[wres_tafd]`
 ```{r}
 wres_tafd(df)
 ```
 
-\newpage
+### Versus TAD `[wres_tad]`
 
-## Weighted residuals versus time after dose (`wres_tad`)
 ```{r}
 wres_tad(df)
 ```
 
-\newpage
 
-## Weighted esiduals versus population predicted (`wres_pred`)
+### Versus PRED `[wres_pred]`
 ```{r}
 wres_pred(df)
 ```
 
-\newpage
-
-## WRES versus continuous covariate (`wres_cont`)
+### Versus continuous `[wres_cont]`
 
 This function is also vectorized in x.
 
 ```{r}
-wres_cont(df, x="WT//Weight (kg)")
+wres_cont(df, x = "WT//Weight (kg)")
 ```
 
-\newpage
 
-## WRES by categorical covariate (`wres_cat`)
+###  By categorical `[wres_cat]`
+
 ```{r}
-wres_cat(df, x="STUDYc//Study type")
+wres_cat(df, x = "STUDYc//Study type")
 ```
 
-\newpage
+### Histogram `[wres_hist]`
 
-## Weighted residual histogram (`wres_hist`)
 ```{r}
 wres_hist(df)
 ```
 
-\newpage
 
-## WRES QQ plot (`wres_q`)
+### QQ plot `[wres_q]`
+
 ```{r}
 wres_q(df)
 ```
 
-\newpage
 
-# Conditional weighted residuals (CWRES)
+## CWRES
 
-## CWRES versus time (`cwres_time`)
+### Versus TINE `[cwres_time]`
+
 ```{r}
 cwres_time(df)
 ```
 
-\newpage
+### Versus TAFD `[cwres_tafd]`
 
-## Conditional weighted residuals versus time after first dose (`cwres_tafd`)
 ```{r}
 cwres_tafd(df)
 ```
 
-\newpage
+### Versus TAD `[cwres_tad]`
 
-## CWRES versus time after dose (`cwres_tad`)
 ```{r}
 cwres_tad(df)
 ```
 
-\newpage
-
-## CWRES versus continuous covariate (`cwres_cont`)
-```{r}
-cwres_cont(df, x="WT//Weight (kg)")
-```
-
-Vectorized version
-```{r, fig.height = 6, fig.width = 6}
-cwres_cont(df, covs) %>%  pm_grid(ncol=2)
-```
-
-\newpage
-
-## CWRES by categorical covariate (`cwres_cat`)
-```{r}
-cwres_cat(df, x="STUDYc//Study type")
-```
+### Versus continuous `[cwres_cont]`
 
 ```{r}
-cwres_cat(df, x="STUDYc//Study type", shown=FALSE)
+cwres_cont(df, x = "WT//Weight (kg)")
 ```
 
 Vectorized version
 
 ```{r}
-cwres_cat(df, x = c("STUDYc//Study", "RF//Renal Function"))
+#| fig-height: 6
+#| fig-width: 6
+cwres_cont(df, covs) %>% 
+  pm_grid(ncol=2)
 ```
 
-\newpage
 
-## Conditional weighted residual histogram (`cwres_hist`)
+### By categorical `[cwres_cat]`
+
+```{r}
+cwres_cat(df, x = "STUDYc//Study type") 
+```
+
+```{r}
+cwres_cat(
+  df, 
+  x = "STUDYc//Study type", 
+  shown = FALSE
+)
+```
+
+Vectorized version
+
+```{r}
+cwres_cat(
+  df, 
+  x = c("STUDYc//Study", "RF//Renal Function")
+) %>% pm_grid()
+```
+
+
+### Histogram `[cwres_hist]`
+
 ```{r}
 cwres_hist(df)
 ```
 
-\newpage
+### Versus PRED `[cwres_pred]`
 
-## CWRES versus population predicted (`cwres_pred`)
 ```{r}
 cwres_pred(df)
 ```
 
-\newpage
+### QQ plot `[cwres_q]`
 
-## CWRES QQ plot (`cwres_q`)
 ```{r}
 cwres_q(df)
 ```

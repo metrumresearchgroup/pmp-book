@@ -88,7 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./residuals.html" rel="next">
+<link href="./dv-pred-ipred.html" rel="next">
 <link href="./col-label.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -155,6 +155,11 @@ background: #00b4f1;
 </i> 
  </a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https:/github.com/metrumrg/pmp-book/tree/main/book/"><i class="bi bi-github" role="img" aria-label="Source Code">
+</i> 
+ </a>
+  </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -202,7 +207,7 @@ background: #00b4f1;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./col-label.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>col//title</code> specification</span></a>
+  <a href="./col-label.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">col - label specification</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -212,47 +217,47 @@ background: #00b4f1;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./residuals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Residual plots</span></a>
+  <a href="./dv-pred-ipred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./npde.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NPDE plots</span></a>
+  <a href="./residuals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Residual plots</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./eta.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ETA plots</span></a>
+  <a href="./npde.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NPDE plots</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./wrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrapped plots</span></a>
+  <a href="./eta.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ETA plots</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pairs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pairs plots</span></a>
+  <a href="./wrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Wrapped plots</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vectorized.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vectorized plots</span></a>
+  <a href="./pairs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pairs plots</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./custom.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Some customization</span></a>
+  <a href="./vectorized.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Vectorized plots</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data summary</span></a>
+  <a href="./custom.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Customize plots</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dv-pred-ipred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></a>
+  <a href="./data-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data summary</span></a>
   </div>
 </li>
     </ul>
@@ -264,13 +269,11 @@ background: #00b4f1;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#observed-versus-population-predicted-dv_pred" id="toc-observed-versus-population-predicted-dv_pred" class="nav-link active" data-scroll-target="#observed-versus-population-predicted-dv_pred"> <span class="header-section-number">3.1</span> Observed versus population predicted (<code>dv_pred</code>)</a></li>
-  <li><a href="#observed-versus-population-predicted---loglog" id="toc-observed-versus-population-predicted---loglog" class="nav-link" data-scroll-target="#observed-versus-population-predicted---loglog"> <span class="header-section-number">3.2</span> Observed versus population predicted - log/log</a></li>
-  <li><a href="#observed-versus-individual-predicted-dv_ipred" id="toc-observed-versus-individual-predicted-dv_ipred" class="nav-link" data-scroll-target="#observed-versus-individual-predicted-dv_ipred"> <span class="header-section-number">3.3</span> Observed versus individual predicted (<code>dv_ipred</code>)</a></li>
-  <li><a href="#observed-versus-individual-predicted---loglog" id="toc-observed-versus-individual-predicted---loglog" class="nav-link" data-scroll-target="#observed-versus-individual-predicted---loglog"> <span class="header-section-number">3.4</span> Observed versus individual predicted - log/log</a></li>
-  <li><a href="#observed-versus-both-pred-and-ipred" id="toc-observed-versus-both-pred-and-ipred" class="nav-link" data-scroll-target="#observed-versus-both-pred-and-ipred"> <span class="header-section-number">3.5</span> Observed versus both PRED and IPRED</a></li>
+  <li><a href="#dv-versus-pred-dv_pred" id="toc-dv-versus-pred-dv_pred" class="nav-link active" data-scroll-target="#dv-versus-pred-dv_pred"> <span class="header-section-number">3.1</span> DV versus PRED <code>[dv_pred]</code></a></li>
+  <li><a href="#dv-versus-ipred-dv_ipred" id="toc-dv-versus-ipred-dv_ipred" class="nav-link" data-scroll-target="#dv-versus-ipred-dv_ipred"> <span class="header-section-number">3.2</span> DV versus IPRED <code>[dv_ipred]</code></a></li>
+  <li><a href="#dv-versus-both-pred-and-ipred-dv_preds" id="toc-dv-versus-both-pred-and-ipred-dv_preds" class="nav-link" data-scroll-target="#dv-versus-both-pred-and-ipred-dv_preds"> <span class="header-section-number">3.3</span> DV versus both PRED and IPRED <code>[dv_preds]</code></a></li>
   </ul>
-</nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumrg/pmp-book/blob/main/book/dv-pred.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumrg/pmp-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -278,48 +281,80 @@ background: #00b4f1;
 
 
 
-<section id="observed-versus-population-predicted-dv_pred" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="observed-versus-population-predicted-dv_pred"><span class="header-section-number">3.1</span> Observed versus population predicted (<code>dv_pred</code>)</h2>
+<p>We define a variable that can be passed as <code>yname</code>, or the name of <code>DV</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">dv_pred</span>(df, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>.yname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "MRG1557 (ng/mL)"</code></pre>
+</div>
+</div>
+<section id="dv-versus-pred-dv_pred" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="dv-versus-pred-dv_pred"><span class="header-section-number">3.1</span> DV versus PRED <code>[dv_pred]</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="432"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="observed-versus-population-predicted---loglog" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="observed-versus-population-predicted---loglog"><span class="header-section-number">3.2</span> Observed versus population predicted - log/log</h2>
+<section id="dv-versus-pred---loglog" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="dv-versus-pred---loglog">DV versus PRED - log/log</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">dv_pred</span>(df, <span class="at">loglog=</span><span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">loglog=</span><span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="432"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="observed-versus-individual-predicted-dv_ipred" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="observed-versus-individual-predicted-dv_ipred"><span class="header-section-number">3.3</span> Observed versus individual predicted (<code>dv_ipred</code>)</h2>
+<section id="dv-versus-ipred-dv_ipred" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="dv-versus-ipred-dv_ipred"><span class="header-section-number">3.2</span> DV versus IPRED <code>[dv_ipred]</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">yname=</span>.yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="432"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="observed-versus-individual-predicted---loglog" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="observed-versus-individual-predicted---loglog"><span class="header-section-number">3.4</span> Observed versus individual predicted - log/log</h2>
+<section id="dv-versus-ipred---loglog" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="dv-versus-ipred---loglog">DV versus IPRED - log/log</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">loglog=</span><span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">loglog =</span> <span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="432"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="observed-versus-both-pred-and-ipred" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="observed-versus-both-pred-and-ipred"><span class="header-section-number">3.5</span> Observed versus both PRED and IPRED</h2>
+<section id="dv-versus-both-pred-and-ipred-dv_preds" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="dv-versus-both-pred-and-ipred-dv_preds"><span class="header-section-number">3.3</span> DV versus both PRED and IPRED <code>[dv_preds]</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">dv_preds</span>(df) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>(<span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_preds</span>(df, <span class="at">yname =</span> .yname) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="576"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="768"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -409,12 +444,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./col-label.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>col//title</code> specification</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">col - label specification</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./residuals.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Residual plots</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./dv-pred-ipred.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

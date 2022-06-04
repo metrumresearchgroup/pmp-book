@@ -22,6 +22,7 @@ book:
     - index.qmd
     - col-label.qmd
     - dv-pred.qmd
+    - dv-pred-ipred.qmd
     - residuals.qmd
     - npde.qmd
     - eta.qmd
@@ -30,7 +31,7 @@ book:
     - vectorized.qmd
     - custom.qmd
     - data-summary.qmd
-    - dv-pred-ipred.qmd
+
     #- stable.qmd
   navbar: 
     background: white

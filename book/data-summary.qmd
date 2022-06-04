@@ -1,4 +1,7 @@
-
+---
+fig-height: 4.5
+fig-width: 4.5
+---
 
 ```{r setup, include = FALSE}
 source("global.R")
@@ -6,26 +9,42 @@ source("global.R")
 
 # Data summary
 
-## Continuous variable by categorical variable (`cont_cat`)
+## General boxplot `[pm_box]`
+
 ```{r}
-cont_cat(id, x="STUDYc", y="WT")
+pm_box(id, x = "STUDYc", y = "WT")
 ```
 
-\newpage
+This is also called `cont_cat()`.
 
-## General histogram (`cont_hist`)
+## Vectorized {.unnumbered .unlisted}
+
+```{r}
+covs <- c("WT", "AGE", "ALB")
+
+pm_box(id, x = "STUDYc", y = covs) %>%
+  pm_grid(ncol = 3)
+```
+
+## General scatter plot `[pm_scatter]`
+
+```{r}
+pm_scatter(id, x = "WT", y = "CRCL")
+```
+
+This is also called `cont_cont()`.
+
+## Vectorized {.unnumbered .unlisted}
+
+```{r}
+covs <- c("WT", "AGE", "ALB")
+
+pm_scatter(id, x = "SCR", y = covs) %>%
+  pm_grid(ncol = 3)
+```
+
+## General histogram `[cont_hist]`
 
 ```{r}
 cont_hist(id, x = "WT", bins = 20)
-```
-
-\newpage
-
-## Split and plot (`split_plot`)
-```{r}
-p <- split_plot(df, sp="STUDYc", fun=dv_ipred)
-```
-
-```{r,fig.width=6, fig.height=7}
-pm_grid(p)
 ```

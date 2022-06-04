@@ -1,3 +1,7 @@
+---
+fig-height: 4.5
+fig-width: 4.5
+---
 
 ```{r setup, include = FALSE}
 source("global.R")
@@ -8,8 +12,6 @@ source("global.R")
 ## Versus TIME `[npde_time]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_time(df)
 ```
 
@@ -17,8 +19,6 @@ npde_time(df)
 ## Versus TAD `[npde_tad]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_tad(df)
 ```
 
@@ -26,24 +26,18 @@ npde_tad(df)
 ## Versus TAFD `[npde_tafd]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_tafd(df)
 ```
 
 ## Versus PRED `[npde_pred]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_pred(df)
 ```
 
 ## Versus continuous  `[npde_cont]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_cont(df, "WT")
 ```
 
@@ -65,16 +59,12 @@ npde_cont(df, covariates) %>%
 ## Versus categorical  `[npde_cat]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_cat(df, "STUDYc")
 ```
 
 ## QQ-plot  `[npde_q]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_q(df)
 ```
 
@@ -82,8 +72,6 @@ npde_q(df)
 ## Histogram `[npde_hist]`
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
 npde_hist(df)
 ```
 

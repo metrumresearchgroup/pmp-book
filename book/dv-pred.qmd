@@ -1,37 +1,47 @@
-
+---
+fig-height: 4.5
+fig-width: 4.5
+---
 
 ```{r setup, include = FALSE}
 source("global.R")
 ```
 
-
 # Observed vs predicted
 
-## Observed versus population predicted (`dv_pred`)
+We define a variable that can be passed as `yname`, or the name of `DV`
+
+```{r}
+.yname
+```
+
+## DV versus PRED `[dv_pred]`
 
 ```{r}
 dv_pred(df, yname = .yname)
 ```
 
+## DV versus PRED - log/log {.unnumbered .unlisted}
 
-## Observed versus population predicted - log/log
 ```{r}
 dv_pred(df, loglog=TRUE, yname = .yname)
 ```
 
+## DV versus IPRED `[dv_ipred]`
 
-## Observed versus individual predicted (`dv_ipred`)
 ```{r}
-dv_ipred(df, yname=.yname)
+dv_ipred(df, yname = .yname)
 ```
 
-## Observed versus individual predicted - log/log
+## DV versus IPRED - log/log {.unnumbered .unlisted}
+
 ```{r}
-dv_ipred(df, loglog=TRUE, yname = .yname)
+dv_ipred(df, loglog = TRUE, yname = .yname)
 ```
 
+## DV versus both PRED and IPRED `[dv_preds]`
 
-## Observed versus both PRED and IPRED
-```{r, fig.width = 6}
-dv_preds(df) %>% pm_grid(ncol=2)
+```{r}
+#| fig-width: 8
+dv_preds(df, yname = .yname) %>% pm_grid(ncol = 2)
 ```
