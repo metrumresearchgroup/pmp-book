@@ -31,14 +31,12 @@ book:
     - vectorized.qmd
     - data-summary.qmd
     - custom.qmd
-    
   navbar: 
     background: white
     foreground: darkgrey
     right:
       - icon: globe2
         href: https://metrumrg.com
-
 
 format:
   html:
