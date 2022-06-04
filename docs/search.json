@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The pmplots Gallery",
     "section": "",
-    "text": "This is truly intended to be a Gallery. In some chapters, you will see a great deal of repition in plots (like CWRES versus TIME, WRES, versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions in the package. One execption to this is the page on customization. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.\n\nSource\nThe pmtables package is maintained here. The code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmplots\")\n\n[1] '0.3.5.9000'\n\ndate()\n\n[1] \"Sat Jun  4 00:48:38 2022\""
+    "text": "This is truly intended to be a Gallery. In some chapters, you will see a great deal of repition in plots (like CWRES versus TIME, WRES, versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions in the package. One execption to this is the page on customization. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.\n\nSource\nThe pmtables package is maintained here. The code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmplots\")\n\n[1] '0.3.5.9000'\n\ndate()\n\n[1] \"Sat Jun  4 08:23:38 2022\""
   },
   {
     "objectID": "col-label.html",
