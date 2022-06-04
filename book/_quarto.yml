@@ -11,7 +11,7 @@ book:
   author: "Kyle Baron, Pharm.D., Ph.D."
   date: today
   date-format: medium
-  repo-url: https://github.com/metrumrg/pmp-book
+  repo-url: https://github.com/metrumresearchgroup/pmp-book
   repo-subdir: book
   repo-branch: main
   repo-actions: [source, issue]
@@ -37,12 +37,9 @@ book:
     background: white
     foreground: darkgrey
     right:
-      - text: metrumrg
+      - icon: globe2
         href: https://metrumrg.com
-      - icon: github
-        href: https://github.com/metrumresearchgroup/pmplots
-      - icon: twitter
-        href: https://twitter.com/MetrumRG
+
 
 format:
   html:
