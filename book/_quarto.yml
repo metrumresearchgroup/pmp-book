@@ -37,7 +37,7 @@ book:
     foreground: darkgrey
     right:
       - text: pmtables
-        href: https://metrumresearchgroup.github.io/pmp-book
+        href: https://metrumresearchgroup.github.io/pmt-book
       - icon: book
         href: https://metrumresearchgroup.github.io/pmplots
       - icon: globe2
