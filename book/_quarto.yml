@@ -37,6 +37,8 @@ book:
     right:
       - text: pmtables
         href: https://metrumresearchgroup.github.io/pmt-book
+      - icon: book
+        href: https://metrumresearchgroup.github.io/pmplots
       - icon: globe2
         href: https://metrumrg.com
 

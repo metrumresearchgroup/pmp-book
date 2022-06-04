@@ -19,6 +19,9 @@ this page; it is long but you will find some very helpful examples of what
 you can do with pmplots.
 
 
+You can find `documentation` for pmplots [here](https://metrumresearchgroup.github.io/pmplots/).
+
+
 # Source {.unnumbered}
 
 The pmtables package is maintained [here](https://github.com/metrumresearchgroup/pmplots).
