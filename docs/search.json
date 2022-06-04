@@ -7,325 +7,339 @@
     "text": "This is truly intended to be a Gallery. In some chapters, you will see a great deal of repetion in plots (like CWRES versus TIME, WRES versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions available in the package. One exception to this is the page on customization. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.\nYou can find documentation for pmplots here.\n\nSource\nThe pmtables package is maintained here. The code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmplots\")\n\n[1] '0.3.5.9000'\n\ndate()\n\n[1] \"Sat Jun  4 14:18:44 2022\""
   },
   {
+    "objectID": "quick-start.html",
+    "href": "quick-start.html",
+    "title": "2  Quick start",
+    "section": "",
+    "text": "pmplots is a package for R to make simple, standardized plots in a pharmacometric data analysis environment. The goal with this package isn’t to create a new grammar of graphics, but rather to create a standard set of commonly-used plots in pharmacometrics analyses.\nThis quick start chapter is meant to give you a brief orientation about how pmplots works. A more complete treatment is given in subsequent chapters."
+  },
+  {
+    "objectID": "quick-start.html#basic-idea",
+    "href": "quick-start.html#basic-idea",
+    "title": "2  Quick start",
+    "section": "2.1 Basic idea",
+    "text": "2.1 Basic idea\nThe most basic functionality provided by pmplots is a set of funcitons which accept data frame with standardized names and returns a single plot.\nWe will load some example data from the package to illustrate. This is a data set that is similar to what we usually have after a NONMEM estimation run\n\ndata <- pmplots::pmplots_data_obs()\nhead(as.data.frame(data), n = 3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT      DV   AGE    WT   CRCL ALB   BMI\n1 NA   2  1    1 0.61   1   2    0  NA  61.005 28.03 55.16 114.45 4.4 21.67\n2 NA   3  1    1 1.15   1   2    0  NA  90.976 28.03 55.16 114.45 4.4 21.67\n3 NA   4  1    1 1.73   1   2    0  NA 122.210 28.03 55.16 114.45 4.4 21.67\n     AAG  SCR   AST   ALT     HT CP TAFD  TAD LDOS MDV BLQ PHASE STUDY   RF 102\n1 106.36 1.14 11.88 12.66 159.55  0 0.61 0.61    5   0   0     1     1 norm   1\n2 106.36 1.14 11.88 12.66 159.55  0 1.15 1.15    5   0   0     1     1 norm   1\n3 106.36 1.14 11.88 12.66 159.55  0 1.73 1.73    5   0   0     1     1 norm   1\n   IPRED    CWRESI     NPDE   PRED      RES     WRES     CL     V2    KA\n1 69.502 -0.621370 -0.62293 60.886  0.11865 -0.56749 2.5927 40.287 1.452\n2 91.230  0.089509  0.27064 78.945 12.03100  0.13248 2.5927 40.287 1.452\n3 97.076  1.598600  1.55480 83.523 38.68700  1.62720 2.5927 40.287 1.452\n     ETA1     ETA2      ETA3 DOSE STUDYc    CPc     CWRES\n1 -0.0753 -0.18403 -0.095308    5    SAD normal -0.621370\n2 -0.0753 -0.18403 -0.095308    5    SAD normal  0.089509\n3 -0.0753 -0.18403 -0.095308    5    SAD normal  1.598600\n\n\nAnother data set is based on data in the previous code chunk, but subset to just one record per individual\n\nid <- pmplots::pmplots_data_id()\n\nSome of the “standard” column names include\n\nID\nTIME\nNPDE\nPRED\nETA1\n\nWe frequently see these names in NONMEM output and pmplots is set up to take advantage of this.\nSo to create a plot of DV (observed data points) versus PRED (population predictions) we call dv_pred()\n\ndv_pred(data)\n\n\n\n\n\n\n\n\n\nThis default plot has the following features\n\nThe x- and y-axes are forced to have the same limits\nThere is reference line at x = y\nThere is a loess smooth through the data points\n\nThe idea is to create a simple, standardized plot with only minimal code. Of course, there are ways to customize this plot\n\ndv_pred(data, yname = \"concentration (ng/mL)\", smooth = NULL)\n\n\n\n\n\n\n\n\n\nThese functions return gg objects so you can also continue to customize the plot as you normally would with ggplot2\n\ndv_pred(data) + \n  facet_wrap(~STUDYc) + \n  ggtitle(\"DV versus PRED\")\n\n\n\n\n\n\n\n\n\nOther plots including DV, PRED and IPRED include\n\ndv_time() (DV vs TIME)\ndv_ipred() (DV vs IPRED)\ndv_preds() (DV vs both PRED and IPRED)"
+  },
+  {
     "objectID": "col-label.html",
     "href": "col-label.html",
-    "title": "2  col - label specification",
+    "title": "3  col - label specification",
     "section": "",
     "text": "This is a way to specify the column name for source data along with the axis label\nWhen only the column is given, then the column name will be used for the column title:"
   },
   {
     "objectID": "col-label.html#generate-using-the-yspec-package",
     "href": "col-label.html#generate-using-the-yspec-package",
-    "title": "2  col - label specification",
-    "section": "2.1 Generate using the yspec package",
-    "text": "2.1 Generate using the yspec package\nYou can also pull col//title data from a yspec object. Load the yspec package and generate an example data specification object\n\nlibrary(yspec)\nspec <- ys_help$spec()\n\nTypically, you’ll want to select a subset of columns and then call axis_col_labs()\n\nspec %>% \n  ys_select(WT, AGE, BMI) %>% \n  axis_col_labs()\n\n                WT                AGE                BMI \n \"WT//weight (kg)\" \"AGE//age (years)\" \"BMI//BMI (m2/kg)\""
+    "title": "3  col - label specification",
+    "section": "3.1 Generate using the yspec package",
+    "text": "3.1 Generate using the yspec package\nYou can also pull col//title data from a yspec object. Load the yspec package and generate an example data specification object\n\nlibrary(yspec)\nspec <- ys_help$spec()\n\nTypically, you’ll want to select a subset of columns and then call axis_col_labs()\n\nspec %>% \n  ys_select(WT, AGE, BMI) %>% \n  axis_col_labs()\n\n                WT                AGE                BMI \n \"WT//weight (kg)\" \"AGE//age (years)\" \"BMI//BMI (m2/kg)\""
   },
   {
     "objectID": "dv-pred.html",
     "href": "dv-pred.html",
-    "title": "3  Observed vs predicted",
+    "title": "4  Observed vs predicted",
     "section": "",
     "text": "We define a variable that can be passed as yname, or the name of DV"
   },
   {
     "objectID": "dv-pred.html#dv-versus-pred-dv_pred",
     "href": "dv-pred.html#dv-versus-pred-dv_pred",
-    "title": "3  Observed vs predicted",
-    "section": "3.1 DV versus PRED [dv_pred]",
-    "text": "3.1 DV versus PRED [dv_pred]\n\ndv_pred(df, yname = .yname)"
+    "title": "4  Observed vs predicted",
+    "section": "4.1 DV versus PRED [dv_pred]",
+    "text": "4.1 DV versus PRED [dv_pred]\n\ndv_pred(df, yname = .yname)"
   },
   {
     "objectID": "dv-pred.html#dv-versus-pred---loglog",
     "href": "dv-pred.html#dv-versus-pred---loglog",
-    "title": "3  Observed vs predicted",
+    "title": "4  Observed vs predicted",
     "section": "DV versus PRED - log/log",
     "text": "DV versus PRED - log/log\n\ndv_pred(df, loglog=TRUE, yname = .yname)"
   },
   {
     "objectID": "dv-pred.html#dv-versus-ipred-dv_ipred",
     "href": "dv-pred.html#dv-versus-ipred-dv_ipred",
-    "title": "3  Observed vs predicted",
-    "section": "3.2 DV versus IPRED [dv_ipred]",
-    "text": "3.2 DV versus IPRED [dv_ipred]\n\ndv_ipred(df, yname = .yname)"
+    "title": "4  Observed vs predicted",
+    "section": "4.2 DV versus IPRED [dv_ipred]",
+    "text": "4.2 DV versus IPRED [dv_ipred]\n\ndv_ipred(df, yname = .yname)"
   },
   {
     "objectID": "dv-pred.html#dv-versus-ipred---loglog",
     "href": "dv-pred.html#dv-versus-ipred---loglog",
-    "title": "3  Observed vs predicted",
+    "title": "4  Observed vs predicted",
     "section": "DV versus IPRED - log/log",
     "text": "DV versus IPRED - log/log\n\ndv_ipred(df, loglog = TRUE, yname = .yname)"
   },
   {
     "objectID": "dv-pred.html#dv-versus-both-pred-and-ipred-dv_preds",
     "href": "dv-pred.html#dv-versus-both-pred-and-ipred-dv_preds",
-    "title": "3  Observed vs predicted",
-    "section": "3.3 DV versus both PRED and IPRED [dv_preds]",
-    "text": "3.3 DV versus both PRED and IPRED [dv_preds]\n\ndv_preds(df, yname = .yname) %>% pm_grid(ncol = 2)"
+    "title": "4  Observed vs predicted",
+    "section": "4.3 DV versus both PRED and IPRED [dv_preds]",
+    "text": "4.3 DV versus both PRED and IPRED [dv_preds]\n\ndv_preds(df, yname = .yname) %>% pm_grid(ncol = 2)"
   },
   {
     "objectID": "dv-pred-ipred.html",
     "href": "dv-pred-ipred.html",
-    "title": "4  dv-pred-ipred",
+    "title": "5  dv-pred-ipred",
     "section": "",
     "text": "In this example, we’ll just plot 9 subjects in a single plot\n\ndd1 <- filter(df, ID <= 9)\n\nPlease see the ?dv_pred_ipred help file as there are many arguments which allow you to customize the output\n\ndv_pred_ipred(\n  dd1, \n  facets = \"ID\", \n  id_per_plot = 9\n)\n\n$`1`\n\n\n\n\n\n\n\n\n\n\nSome arguments to note\n\nlog_y - log transformed y-axis\nangle - for rotating x-axis tick labels\nxlab - x-axis title\nylab - y-axis title\nnrow - for arranging facets on a page\nncol - for arranging facets on a page\nfun - a function which modifies every plot in the output list\n\nThere are also a whole series of arguments for configuring the points and lines on the plot for DV, PRED and IPRED."
   },
   {
     "objectID": "residuals.html",
     "href": "residuals.html",
-    "title": "5  Residual plots",
+    "title": "6  Residual plots",
     "section": "",
     "text": "res_time(df)\n\n\n\n\n\n\n\n\n\n\n\n\n\nres_tafd(df)\n\n\n\n\n\n\n\n\n\n\n\n\n\nres_tad(df)\n\n\n\n\n\n\n\n\n\n\n\n\n\nres_pred(df)\n\n\n\n\n\n\n\n\n\n\n\n\n\nres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\n\n\n\n\n\nThis function is also vectorized in x.\n\nres_cont(df, c(\"WT\", \"CRCL\", \"AST\")) %>% \n  pm_grid()\n\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr::count(df, STUDYc)\n\n# A tibble: 4 × 2\n  STUDYc      n\n  <fct>   <int>\n1 SAD       424\n2 MAD      1199\n3 Renal     960\n4 Hepatic   559\n\nres_cat(df, x = \"STUDYc//Study type\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nres_hist(df)"
   },
   {
     "objectID": "residuals.html#wres",
     "href": "residuals.html#wres",
-    "title": "5  Residual plots",
-    "section": "5.2 WRES",
-    "text": "5.2 WRES\n\n5.2.1 Versus TIME [wres_time]\n\nwres_time(df) \n\n\n\n\n\n\n\n\n\n\n\n5.2.2 Versus TAFD [wres_tafd]\n\nwres_tafd(df)\n\n\n\n\n\n\n\n\n\n\n\n5.2.3 Versus TAD [wres_tad]\n\nwres_tad(df)\n\n\n\n\n\n\n\n\n\n\n\n5.2.4 Versus PRED [wres_pred]\n\nwres_pred(df)\n\n\n\n\n\n\n\n\n\n\n\n5.2.5 Versus continuous [wres_cont]\nThis function is also vectorized in x.\n\nwres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\n\n\n\n\n\n\n\n5.2.6 By categorical [wres_cat]\n\nwres_cat(df, x = \"STUDYc//Study type\")\n\n\n\n\n\n\n\n\n\n\n\n5.2.7 Histogram [wres_hist]\n\nwres_hist(df)\n\n\n\n\n\n\n\n\n\n\n\n5.2.8 QQ plot [wres_q]\n\nwres_q(df)"
+    "title": "6  Residual plots",
+    "section": "6.2 WRES",
+    "text": "6.2 WRES\n\n6.2.1 Versus TIME [wres_time]\n\nwres_time(df) \n\n\n\n\n\n\n\n\n\n\n\n6.2.2 Versus TAFD [wres_tafd]\n\nwres_tafd(df)\n\n\n\n\n\n\n\n\n\n\n\n6.2.3 Versus TAD [wres_tad]\n\nwres_tad(df)\n\n\n\n\n\n\n\n\n\n\n\n6.2.4 Versus PRED [wres_pred]\n\nwres_pred(df)\n\n\n\n\n\n\n\n\n\n\n\n6.2.5 Versus continuous [wres_cont]\nThis function is also vectorized in x.\n\nwres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\n\n\n\n\n\n\n\n6.2.6 By categorical [wres_cat]\n\nwres_cat(df, x = \"STUDYc//Study type\")\n\n\n\n\n\n\n\n\n\n\n\n6.2.7 Histogram [wres_hist]\n\nwres_hist(df)\n\n\n\n\n\n\n\n\n\n\n\n6.2.8 QQ plot [wres_q]\n\nwres_q(df)"
   },
   {
     "objectID": "residuals.html#cwres",
     "href": "residuals.html#cwres",
-    "title": "5  Residual plots",
-    "section": "5.3 CWRES",
-    "text": "5.3 CWRES\n\n5.3.1 Versus TINE [cwres_time]\n\ncwres_time(df)\n\n\n\n\n\n\n\n\n\n\n\n5.3.2 Versus TAFD [cwres_tafd]\n\ncwres_tafd(df)\n\n\n\n\n\n\n\n\n\n\n\n5.3.3 Versus TAD [cwres_tad]\n\ncwres_tad(df)\n\n\n\n\n\n\n\n\n\n\n\n5.3.4 Versus continuous [cwres_cont]\n\ncwres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\n\n\n\n\n\nVectorized version\n\ncwres_cont(df, covs) %>% \n  pm_grid(ncol=2)\n\n\n\n\n\n\n\n\n\n\n\n5.3.5 By categorical [cwres_cat]\n\ncwres_cat(df, x = \"STUDYc//Study type\") \n\n\n\n\n\n\n\n\n\n\ncwres_cat(\n  df, \n  x = \"STUDYc//Study type\", \n  shown = FALSE\n)\n\n\n\n\n\n\n\n\n\nVectorized version\n\ncwres_cat(\n  df, \n  x = c(\"STUDYc//Study\", \"RF//Renal Function\")\n) %>% pm_grid()\n\n\n\n\n\n\n\n\n\n\n\n5.3.6 Histogram [cwres_hist]\n\ncwres_hist(df)\n\n\n\n\n\n\n\n\n\n\n\n5.3.7 Versus PRED [cwres_pred]\n\ncwres_pred(df)\n\n\n\n\n\n\n\n\n\n\n\n5.3.8 QQ plot [cwres_q]\n\ncwres_q(df)"
+    "title": "6  Residual plots",
+    "section": "6.3 CWRES",
+    "text": "6.3 CWRES\n\n6.3.1 Versus TINE [cwres_time]\n\ncwres_time(df)\n\n\n\n\n\n\n\n\n\n\n\n6.3.2 Versus TAFD [cwres_tafd]\n\ncwres_tafd(df)\n\n\n\n\n\n\n\n\n\n\n\n6.3.3 Versus TAD [cwres_tad]\n\ncwres_tad(df)\n\n\n\n\n\n\n\n\n\n\n\n6.3.4 Versus continuous [cwres_cont]\n\ncwres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\n\n\n\n\n\nVectorized version\n\ncwres_cont(df, covs) %>% \n  pm_grid(ncol=2)\n\n\n\n\n\n\n\n\n\n\n\n6.3.5 By categorical [cwres_cat]\n\ncwres_cat(df, x = \"STUDYc//Study type\") \n\n\n\n\n\n\n\n\n\n\ncwres_cat(\n  df, \n  x = \"STUDYc//Study type\", \n  shown = FALSE\n)\n\n\n\n\n\n\n\n\n\nVectorized version\n\ncwres_cat(\n  df, \n  x = c(\"STUDYc//Study\", \"RF//Renal Function\")\n) %>% pm_grid()\n\n\n\n\n\n\n\n\n\n\n\n6.3.6 Histogram [cwres_hist]\n\ncwres_hist(df)\n\n\n\n\n\n\n\n\n\n\n\n6.3.7 Versus PRED [cwres_pred]\n\ncwres_pred(df)\n\n\n\n\n\n\n\n\n\n\n\n6.3.8 QQ plot [cwres_q]\n\ncwres_q(df)"
   },
   {
     "objectID": "npde.html",
     "href": "npde.html",
-    "title": "6  NPDE plots",
+    "title": "7  NPDE plots",
     "section": "",
     "text": "npde_time(df)"
   },
   {
     "objectID": "npde.html#versus-tad-npde_tad",
     "href": "npde.html#versus-tad-npde_tad",
-    "title": "6  NPDE plots",
-    "section": "6.2 Versus TAD [npde_tad]",
-    "text": "6.2 Versus TAD [npde_tad]\n\nnpde_tad(df)"
+    "title": "7  NPDE plots",
+    "section": "7.2 Versus TAD [npde_tad]",
+    "text": "7.2 Versus TAD [npde_tad]\n\nnpde_tad(df)"
   },
   {
     "objectID": "npde.html#versus-tafd-npde_tafd",
     "href": "npde.html#versus-tafd-npde_tafd",
-    "title": "6  NPDE plots",
-    "section": "6.3 Versus TAFD [npde_tafd]",
-    "text": "6.3 Versus TAFD [npde_tafd]\n\nnpde_tafd(df)"
+    "title": "7  NPDE plots",
+    "section": "7.3 Versus TAFD [npde_tafd]",
+    "text": "7.3 Versus TAFD [npde_tafd]\n\nnpde_tafd(df)"
   },
   {
     "objectID": "npde.html#versus-pred-npde_pred",
     "href": "npde.html#versus-pred-npde_pred",
-    "title": "6  NPDE plots",
-    "section": "6.4 Versus PRED [npde_pred]",
-    "text": "6.4 Versus PRED [npde_pred]\n\nnpde_pred(df)"
+    "title": "7  NPDE plots",
+    "section": "7.4 Versus PRED [npde_pred]",
+    "text": "7.4 Versus PRED [npde_pred]\n\nnpde_pred(df)"
   },
   {
     "objectID": "npde.html#versus-continuous-npde_cont",
     "href": "npde.html#versus-continuous-npde_cont",
-    "title": "6  NPDE plots",
-    "section": "6.5 Versus continuous [npde_cont]",
-    "text": "6.5 Versus continuous [npde_cont]\n\nnpde_cont(df, \"WT\")\n\n\n\n\n\n\n\n\n\n\n6.5.1 Vectorized\nThese plots can take in a vector of continuous column names and return a list of plots which can be arranged.\n\ncovariates <- c(\"WT\", \"AGE\", \"ALB\")\n\nnpde_cont(df, covariates) %>% \n  pm_grid()"
+    "title": "7  NPDE plots",
+    "section": "7.5 Versus continuous [npde_cont]",
+    "text": "7.5 Versus continuous [npde_cont]\n\nnpde_cont(df, \"WT\")\n\n\n\n\n\n\n\n\n\n\n7.5.1 Vectorized\nThese plots can take in a vector of continuous column names and return a list of plots which can be arranged.\n\ncovariates <- c(\"WT\", \"AGE\", \"ALB\")\n\nnpde_cont(df, covariates) %>% \n  pm_grid()"
   },
   {
     "objectID": "npde.html#versus-categorical-npde_cat",
     "href": "npde.html#versus-categorical-npde_cat",
-    "title": "6  NPDE plots",
-    "section": "6.6 Versus categorical [npde_cat]",
-    "text": "6.6 Versus categorical [npde_cat]\n\nnpde_cat(df, \"STUDYc\")"
+    "title": "7  NPDE plots",
+    "section": "7.6 Versus categorical [npde_cat]",
+    "text": "7.6 Versus categorical [npde_cat]\n\nnpde_cat(df, \"STUDYc\")"
   },
   {
     "objectID": "npde.html#qq-plot-npde_q",
     "href": "npde.html#qq-plot-npde_q",
-    "title": "6  NPDE plots",
-    "section": "6.7 QQ-plot [npde_q]",
-    "text": "6.7 QQ-plot [npde_q]\n\nnpde_q(df)"
+    "title": "7  NPDE plots",
+    "section": "7.7 QQ-plot [npde_q]",
+    "text": "7.7 QQ-plot [npde_q]\n\nnpde_q(df)"
   },
   {
     "objectID": "npde.html#histogram-npde_hist",
     "href": "npde.html#histogram-npde_hist",
-    "title": "6  NPDE plots",
-    "section": "6.8 Histogram [npde_hist]",
-    "text": "6.8 Histogram [npde_hist]\n\nnpde_hist(df)"
+    "title": "7  NPDE plots",
+    "section": "7.8 Histogram [npde_hist]",
+    "text": "7.8 Histogram [npde_hist]\n\nnpde_hist(df)"
   },
   {
     "objectID": "eta.html",
     "href": "eta.html",
-    "title": "7  ETA plots",
+    "title": "8  ETA plots",
     "section": "",
     "text": "We start by defining a set of ETAs to use in the plots.\n\netas <- c(\n  \"ETA1//ETA-CL\", \n  \"ETA2//ETA-V2\", \n  \"ETA3//ETA-KA\"\n)\n\nThis is in the col-label format described earlier. We also set out a set of covariates that we can use for ETA diagnostics.\n\ncovs <- c(\n  \"WT//Weight (kg)\", \n  \"ALB//Albumin (g/dL)\", \n  \"SCR//Creatinine (mg/dL)\"\n)"
   },
   {
     "objectID": "eta.html#data-used-on-this-page",
     "href": "eta.html#data-used-on-this-page",
-    "title": "7  ETA plots",
-    "section": "7.2 Data used on this page",
-    "text": "7.2 Data used on this page\nWe are exclusively using a data set that is one row per individual\n\n\n\n\n\n\nPreview the data used on this page\n\n\n\n\n\n\nhead(as.data.frame(id), n=3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT DV   AGE    WT   CRCL  ALB   BMI    AAG\n1 NA   1  1    1    0   0   1    1   5  0 28.03 55.16 114.45 4.40 21.67 106.36\n2 NA  17  2    2    0   0   1    1   5  0 34.67 51.74 100.54 3.88 23.85  61.79\n3 NA  33  3    3    0   0   1    1   5  0 26.24 54.84  99.05 3.84 19.43  50.10\n   SCR   AST   ALT     HT CP TAFD TAD LDOS MDV BLQ PHASE STUDY   RF 102 IPRED\n1 1.14 11.88 12.66 159.55  0    0   0    5   1   0     1     1 norm   1     0\n2 0.98 15.09 27.44 147.27  0    0   0    5   1   0     1     1 norm   1     0\n3 1.05 35.85 31.26 168.02  0    0   0    5   1   0     1     1 norm   1     0\n  CWRESI NPDE PRED RES WRES     CL     V2     KA      ETA1      ETA2      ETA3\n1      0    0    0   0    0 2.5927 40.287 1.4520 -0.075300 -0.184030 -0.095308\n2      0    0    0   0    0 1.9339 32.925 1.6044  0.024467 -0.321810 -0.340470\n3      0    0    0   0    0 3.2407 50.967 1.4195 -0.097942  0.056922  0.132150\n  DOSE STUDYc    CPc\n1    5    SAD normal\n2    5    SAD normal\n3    5    SAD normal"
+    "title": "8  ETA plots",
+    "section": "8.2 Data used on this page",
+    "text": "8.2 Data used on this page\nWe are exclusively using a data set that is one row per individual\n\n\n\n\n\n\nPreview the data used on this page\n\n\n\n\n\n\nhead(as.data.frame(id), n=3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT DV   AGE    WT   CRCL  ALB   BMI    AAG\n1 NA   1  1    1    0   0   1    1   5  0 28.03 55.16 114.45 4.40 21.67 106.36\n2 NA  17  2    2    0   0   1    1   5  0 34.67 51.74 100.54 3.88 23.85  61.79\n3 NA  33  3    3    0   0   1    1   5  0 26.24 54.84  99.05 3.84 19.43  50.10\n   SCR   AST   ALT     HT CP TAFD TAD LDOS MDV BLQ PHASE STUDY   RF 102 IPRED\n1 1.14 11.88 12.66 159.55  0    0   0    5   1   0     1     1 norm   1     0\n2 0.98 15.09 27.44 147.27  0    0   0    5   1   0     1     1 norm   1     0\n3 1.05 35.85 31.26 168.02  0    0   0    5   1   0     1     1 norm   1     0\n  CWRESI NPDE PRED RES WRES     CL     V2     KA      ETA1      ETA2      ETA3\n1      0    0    0   0    0 2.5927 40.287 1.4520 -0.075300 -0.184030 -0.095308\n2      0    0    0   0    0 1.9339 32.925 1.6044  0.024467 -0.321810 -0.340470\n3      0    0    0   0    0 3.2407 50.967 1.4195 -0.097942  0.056922  0.132150\n  DOSE STUDYc    CPc\n1    5    SAD normal\n2    5    SAD normal\n3    5    SAD normal"
   },
   {
     "objectID": "eta.html#eta-versus-continuous-eta_cont",
     "href": "eta.html#eta-versus-continuous-eta_cont",
-    "title": "7  ETA plots",
-    "section": "7.3 ETA versus continuous [eta_cont]",
-    "text": "7.3 ETA versus continuous [eta_cont]\nGrouped by eta\n\neta_cont(id, x = covs, y = etas[2]) %>% \n  pm_grid()\n\n\n\n\n\n\n\n\n\nGrouped by covariate\n\neta_cont(id, x = covs[1], y = etas) %>% \n  pm_grid(ncol = 2)"
+    "title": "8  ETA plots",
+    "section": "8.3 ETA versus continuous [eta_cont]",
+    "text": "8.3 ETA versus continuous [eta_cont]\nGrouped by eta\n\neta_cont(id, x = covs, y = etas[2]) %>% \n  pm_grid()\n\n\n\n\n\n\n\n\n\nGrouped by covariate\n\neta_cont(id, x = covs[1], y = etas) %>% \n  pm_grid(ncol = 2)"
   },
   {
     "objectID": "eta.html#eta-by-categorical-eta_cat",
     "href": "eta.html#eta-by-categorical-eta_cat",
-    "title": "7  ETA plots",
-    "section": "7.4 ETA by categorical [eta_cat]",
-    "text": "7.4 ETA by categorical [eta_cat]\n\neta_cat(id, x = \"STUDYc//Study type\", y = etas) %>% \n  pm_grid()"
+    "title": "8  ETA plots",
+    "section": "8.4 ETA by categorical [eta_cat]",
+    "text": "8.4 ETA by categorical [eta_cat]\n\neta_cat(id, x = \"STUDYc//Study type\", y = etas) %>% \n  pm_grid()"
   },
   {
     "objectID": "eta.html#eta-histograms-eta_hist",
     "href": "eta.html#eta-histograms-eta_hist",
-    "title": "7  ETA plots",
-    "section": "7.5 ETA histograms [eta_hist]",
-    "text": "7.5 ETA histograms [eta_hist]\n\neta_hist(id, etas, bins = 10) %>% \n  pm_grid()"
+    "title": "8  ETA plots",
+    "section": "8.5 ETA histograms [eta_hist]",
+    "text": "8.5 ETA histograms [eta_hist]\n\neta_hist(id, etas, bins = 10) %>% \n  pm_grid()"
   },
   {
     "objectID": "eta.html#eta-pairs-eta_pairs",
     "href": "eta.html#eta-pairs-eta_pairs",
-    "title": "7  ETA plots",
-    "section": "7.6 ETA pairs [eta_pairs]",
-    "text": "7.6 ETA pairs [eta_pairs]\n\neta_pairs(id, etas)"
+    "title": "8  ETA plots",
+    "section": "8.6 ETA pairs [eta_pairs]",
+    "text": "8.6 ETA pairs [eta_pairs]\n\neta_pairs(id, etas)"
   },
   {
     "objectID": "wrap.html",
     "href": "wrap.html",
-    "title": "8  Wrapped plots",
+    "title": "9  Wrapped plots",
     "section": "",
     "text": "Wrapped plots are like the other standardized plots we have seen in the gallery so far, but they allow for a simple faceting using ggplot2::facet_wrap().\n\n\n\n\n\n\nPreview the data used on this page\n\n\n\n\n\nThe data are identical to the data used for the other series of plots and do not require any special configuration.\n\nhead(as.data.frame(df), n=3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT      DV   AGE    WT   CRCL ALB   BMI\n1 NA   2  1    1 0.61   1   2    0  NA  61.005 28.03 55.16 114.45 4.4 21.67\n2 NA   3  1    1 1.15   1   2    0  NA  90.976 28.03 55.16 114.45 4.4 21.67\n3 NA   4  1    1 1.73   1   2    0  NA 122.210 28.03 55.16 114.45 4.4 21.67\n     AAG  SCR   AST   ALT     HT CP TAFD  TAD LDOS MDV BLQ PHASE STUDY   RF 102\n1 106.36 1.14 11.88 12.66 159.55  0 0.61 0.61    5   0   0     1     1 norm   1\n2 106.36 1.14 11.88 12.66 159.55  0 1.15 1.15    5   0   0     1     1 norm   1\n3 106.36 1.14 11.88 12.66 159.55  0 1.73 1.73    5   0   0     1     1 norm   1\n   IPRED    CWRESI     NPDE   PRED      RES     WRES     CL     V2    KA\n1 69.502 -0.621370 -0.62293 60.886  0.11865 -0.56749 2.5927 40.287 1.452\n2 91.230  0.089509  0.27064 78.945 12.03100  0.13248 2.5927 40.287 1.452\n3 97.076  1.598600  1.55480 83.523 38.68700  1.62720 2.5927 40.287 1.452\n     ETA1     ETA2      ETA3 DOSE STUDYc    CPc     CWRES\n1 -0.0753 -0.18403 -0.095308    5    SAD normal -0.621370\n2 -0.0753 -0.18403 -0.095308    5    SAD normal  0.089509\n3 -0.0753 -0.18403 -0.095308    5    SAD normal  1.598600"
   },
   {
     "objectID": "wrap.html#histogram",
     "href": "wrap.html#histogram",
-    "title": "8  Wrapped plots",
-    "section": "8.2 Histogram",
-    "text": "8.2 Histogram\n\nwrap_hist(\n  df, \n  x = c(\"WT\", \"ALB\", \"SCR\"), \n  scales = \"free\", \n  bins = 10, \n  ncol = 2\n)"
+    "title": "9  Wrapped plots",
+    "section": "9.2 Histogram",
+    "text": "9.2 Histogram\n\nwrap_hist(\n  df, \n  x = c(\"WT\", \"ALB\", \"SCR\"), \n  scales = \"free\", \n  bins = 10, \n  ncol = 2\n)"
   },
   {
     "objectID": "wrap.html#eta-versus-continuous",
     "href": "wrap.html#eta-versus-continuous",
-    "title": "8  Wrapped plots",
-    "section": "8.3 ETA versus continuous",
-    "text": "8.3 ETA versus continuous\n\nwrap_eta_cont(\n  df, \n  y = \"ETA1\", \n  x = c(\"WT\", \"ALB\"), \n  scales = \"free_x\"\n)"
+    "title": "9  Wrapped plots",
+    "section": "9.3 ETA versus continuous",
+    "text": "9.3 ETA versus continuous\n\nwrap_eta_cont(\n  df, \n  y = \"ETA1\", \n  x = c(\"WT\", \"ALB\"), \n  scales = \"free_x\"\n)"
   },
   {
     "objectID": "wrap.html#continuous-on-categorical",
     "href": "wrap.html#continuous-on-categorical",
-    "title": "8  Wrapped plots",
-    "section": "8.4 Continuous on categorical",
-    "text": "8.4 Continuous on categorical\n\nwrap_cont_cat(\n  df, \n  y = c(\"WT\", \"CRCL\", \"AAG\"), \n  x = \"STUDYc\", \n  ncol = 2\n)"
+    "title": "9  Wrapped plots",
+    "section": "9.4 Continuous on categorical",
+    "text": "9.4 Continuous on categorical\n\nwrap_cont_cat(\n  df, \n  y = c(\"WT\", \"CRCL\", \"AAG\"), \n  x = \"STUDYc\", \n  ncol = 2\n)"
   },
   {
     "objectID": "wrap.html#continuous-on-continuous",
     "href": "wrap.html#continuous-on-continuous",
-    "title": "8  Wrapped plots",
-    "section": "8.5 Continuous on continuous",
-    "text": "8.5 Continuous on continuous\n\nwrap_cont_cont(\n  df, \n  y = \"CWRES\" , \n  x = c(\"WT\", \"CRCL\", \"AAG\"), \n  ncol = 2, scales = \"free_x\"\n)"
+    "title": "9  Wrapped plots",
+    "section": "9.5 Continuous on continuous",
+    "text": "9.5 Continuous on continuous\n\nwrap_cont_cont(\n  df, \n  y = \"CWRES\" , \n  x = c(\"WT\", \"CRCL\", \"AAG\"), \n  ncol = 2, scales = \"free_x\"\n)"
   },
   {
     "objectID": "wrap.html#residuals-versus-time",
     "href": "wrap.html#residuals-versus-time",
-    "title": "8  Wrapped plots",
-    "section": "8.6 Residuals versus time",
-    "text": "8.6 Residuals versus time\n\nwrap_res_time(\n  df, \n  y = c(\"RES\", \"WRES\", \"CWRES\"), \n  ncol = 2, scales = \"free_y\"\n)"
+    "title": "9  Wrapped plots",
+    "section": "9.6 Residuals versus time",
+    "text": "9.6 Residuals versus time\n\nwrap_res_time(\n  df, \n  y = c(\"RES\", \"WRES\", \"CWRES\"), \n  ncol = 2, scales = \"free_y\"\n)"
   },
   {
     "objectID": "wrap.html#dvpred-and-dvipred",
     "href": "wrap.html#dvpred-and-dvipred",
-    "title": "8  Wrapped plots",
-    "section": "8.7 DV/PRED and DV/IPRED",
-    "text": "8.7 DV/PRED and DV/IPRED\n\nwrap_dv_preds(df, ncol = 2)"
+    "title": "9  Wrapped plots",
+    "section": "9.7 DV/PRED and DV/IPRED",
+    "text": "9.7 DV/PRED and DV/IPRED\n\nwrap_dv_preds(df, ncol = 2)"
   },
   {
     "objectID": "wrap.html#use-labels-in-the-strip",
     "href": "wrap.html#use-labels-in-the-strip",
-    "title": "8  Wrapped plots",
-    "section": "8.8 Use labels in the strip",
-    "text": "8.8 Use labels in the strip\n\nwrap_eta_cont(\n  df, \n  y = \"ETA1\", \n  x = c(\"WT//Weight (kg)\", \"ALB//Albumin (g/dL)\"),\n  scales = \"free_x\", \n  use_labels = TRUE\n)"
+    "title": "9  Wrapped plots",
+    "section": "9.8 Use labels in the strip",
+    "text": "9.8 Use labels in the strip\n\nwrap_eta_cont(\n  df, \n  y = \"ETA1\", \n  x = c(\"WT//Weight (kg)\", \"ALB//Albumin (g/dL)\"),\n  scales = \"free_x\", \n  use_labels = TRUE\n)"
   },
   {
     "objectID": "pairs.html",
     "href": "pairs.html",
-    "title": "9  Pairs plots",
+    "title": "10  Pairs plots",
     "section": "",
     "text": "This is a simple wrapper around GGally::ggpairs with some customizations that have been developed internally at Metrum over the years.\n\ncols <- c(\"WT//Weight\", \"ALB//Albumin\", \"SCR//Serum creat\")\npairs_plot(id, cols)"
   },
   {
     "objectID": "pairs.html#customized-lower-triangle",
     "href": "pairs.html#customized-lower-triangle",
-    "title": "9  Pairs plots",
-    "section": "9.2 Customized lower triangle",
-    "text": "9.2 Customized lower triangle\nPass a function that customizes the scatter plots on the lower triangle. This function should accept a gg object and add a geom to it\n\nmy_lower <- function(p) {\n  p + geom_point(aes(color = STUDYc)) + \n    geom_smooth(se = FALSE, color = \"black\")\n}\n\n\npairs_plot(id, c(\"WT\", \"ALB\"), lower_plot = my_lower)"
+    "title": "10  Pairs plots",
+    "section": "10.2 Customized lower triangle",
+    "text": "10.2 Customized lower triangle\nPass a function that customizes the scatter plots on the lower triangle. This function should accept a gg object and add a geom to it\n\nmy_lower <- function(p) {\n  p + geom_point(aes(color = STUDYc)) + \n    geom_smooth(se = FALSE, color = \"black\")\n}\n\n\npairs_plot(id, c(\"WT\", \"ALB\"), lower_plot = my_lower)"
   },
   {
     "objectID": "vectorized.html",
     "href": "vectorized.html",
-    "title": "10  Vectorized plots",
+    "title": "11  Vectorized plots",
     "section": "",
     "text": "pm_scatter(\n  df, \n  x = \"TIME\", \n  y = c(\"RES\", \"WRES\", \"CWRES\")\n)\n\n[[1]]\n\n\n\n\n\n\n\n\n\n\n\n[[2]]\n\n\n\n\n\n\n\n\n\n\n\n[[3]]\n\n\n\n\n\n\n\n\n\n\nNote that we typically use pm_grid() to arrange the plots\n\npm_scatter(\n  df, \n  x = \"TIME\", \n  y = c(\"RES\", \"WRES\", \"CWRES\")\n) %>% pm_grid(ncol = 2)\n\n\n\n\n\n\n\n\n\npm_grid() uses the excellent patchwork package to arrange a list of plots into some sort of grid."
   },
   {
     "objectID": "data-summary.html",
     "href": "data-summary.html",
-    "title": "11  Data summary",
+    "title": "12  Data summary",
     "section": "",
     "text": "pm_box(id, x = \"STUDYc\", y = \"WT\")\n\n\n\n\n\n\n\n\n\nThis is also called cont_cat()."
   },
   {
     "objectID": "data-summary.html#vectorized",
     "href": "data-summary.html#vectorized",
-    "title": "11  Data summary",
+    "title": "12  Data summary",
     "section": "Vectorized",
     "text": "Vectorized\n\ncovs <- c(\"WT\", \"AGE\", \"ALB\")\n\npm_box(id, x = \"STUDYc\", y = covs) %>%\n  pm_grid(ncol = 3)"
   },
   {
     "objectID": "data-summary.html#general-scatter-plot-pm_scatter",
     "href": "data-summary.html#general-scatter-plot-pm_scatter",
-    "title": "11  Data summary",
-    "section": "11.2 General scatter plot [pm_scatter]",
-    "text": "11.2 General scatter plot [pm_scatter]\n\npm_scatter(id, x = \"WT\", y = \"CRCL\")\n\n\n\n\n\n\n\n\n\nThis is also called cont_cont()."
+    "title": "12  Data summary",
+    "section": "12.2 General scatter plot [pm_scatter]",
+    "text": "12.2 General scatter plot [pm_scatter]\n\npm_scatter(id, x = \"WT\", y = \"CRCL\")\n\n\n\n\n\n\n\n\n\nThis is also called cont_cont()."
   },
   {
     "objectID": "data-summary.html#vectorized-1",
     "href": "data-summary.html#vectorized-1",
-    "title": "11  Data summary",
+    "title": "12  Data summary",
     "section": "Vectorized",
     "text": "Vectorized\n\ncovs <- c(\"SCR\", \"AGE\", \"ALB\")\n\npm_scatter(id, x = \"WT\", y = covs) %>%\n  pm_grid(ncol = 3)"
   },
   {
     "objectID": "data-summary.html#general-histogram-cont_hist",
     "href": "data-summary.html#general-histogram-cont_hist",
-    "title": "11  Data summary",
-    "section": "11.3 General histogram [cont_hist]",
-    "text": "11.3 General histogram [cont_hist]\n\ncont_hist(id, x = \"WT\", bins = 20)"
+    "title": "12  Data summary",
+    "section": "12.3 General histogram [cont_hist]",
+    "text": "12.3 General histogram [cont_hist]\n\ncont_hist(id, x = \"WT\", bins = 20)"
   },
   {
     "objectID": "custom.html",
     "href": "custom.html",
-    "title": "12  Customize plots",
+    "title": "13  Customize plots",
     "section": "",
     "text": "dv_pred(df, x = \"PRED//Concentration ($\\\\mu$g)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\ndata <- data.frame(\n  m = rnorm(100), \n  s = rnorm(100), \n  n = rnorm(100)\n)\n\nx <- c(\"m//$\\\\mu$\", \"s//$\\\\sigma$\", \"n//$\\\\nu$\")\n\npairs_plot(data,x)\n\n\n\n\n\n\n\n\n\n\n\n\n\ny <- c(\"WT//Weight (kg)\", \"BMI//BMI (kg/m$^2$)\", \"SCR//SCR (g/dL)\")\n\nwrap_cont_time(df, y = y, use_labels=TRUE)"
   },
   {
     "objectID": "custom.html#axes",
     "href": "custom.html#axes",
-    "title": "12  Customize plots",
-    "section": "12.2 Axes",
-    "text": "12.2 Axes\n\n12.2.1 Modify x-axis\n\na <- list(trans = \"log\", breaks = logbr3())\n\ndv_time(df, xs = a)\n\n\n\n\n\n\n\n\n\n\n\n12.2.2 Modify y-axis\n\ndv_time(df, ys = a, yname = \"Y-axis name\")\n\n\n\n\n\n\n\n\n\n\n\n12.2.3 Flip coordinates when labels get cramped\nIf this is too cramped\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% pm_grid()\n\n\n\n\n\n\n\n\n\nTry this\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% map(~.x+coord_flip()) %>% pm_grid()\n\n\n\n\n\n\n\n\n\n\n\n12.2.4 Rotate x and y axis labels\n\nSpecify the angle\n\ndv_pred(df) + rot_x(angle = 90) + rot_y()\n\n\n\n\n\n\n\n\n\n\n\nRotate to vertical\nWe are typically rotating the tick labels on the x-axis and frequently it is convenient to ask for a totally vertical rendering\n\ncwres_cat(df, x = \"STUDYc\") + \n  facet_wrap(~CPc) + rot_x(vertical = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n12.2.5 Standard axis titles\n\npm_axis_time()\n\n[1] \"TIME//Time {xunit}\"\n\npm_axis_tad()\n\n[1] \"TAD//Time after dose {xunit}\"\n\npm_axis_tafd()\n\n[1] \"TAFD//Time after first dose {xunit}\"\n\npm_axis_res()\n\n[1] \"RES//Residual\"\n\npm_axis_wres()\n\n[1] \"WRES//Weighted residual\"\n\npm_axis_cwres()\n\n[1] \"CWRES//Conditional weighted residual\"\n\npm_axis_cwresi()\n\n[1] \"CWRESI//CWRES with interaction\"\n\npm_axis_npde()\n\n[1] \"NPDE//NPDE\"\n\npm_axis_dv()\n\n[1] \"DV//Observed {yname}\"\n\npm_axis_pred()\n\n[1] \"PRED//Population predicted {xname}\"\n\npm_axis_ipred()\n\n[1] \"IPRED//Individual predicted {xname}\"\n\n\nYou can glue() in information with these functions\n\npm_axis_time(\"hr\")\n\n[1] \"TIME//Time (hr)\"\n\n\nSimilar with\n\npm_axis_tafd(\"hr\")\npm_axis_tad(\"hr\")\n\nAnd\n\npm_axis_dv(\"ASA concentration (ng/mL)\")\n\n[1] \"DV//Observed ASA concentration (ng/mL)\"\n\n\nSimilar with\n\npm_axis_pred(\"ASA concentration (ng/mL)\")\npm_axis_ipred(\"ASA concentration (ng/mL)\")\n\n\n\n12.2.6 Log breaks\n\nlogbr3()\n\n [1] 1e-10 3e-10 1e-09 3e-09 1e-08 3e-08 1e-07 3e-07 1e-06 3e-06 1e-05 3e-05\n[13] 1e-04 3e-04 1e-03 3e-03 1e-02 3e-02 1e-01 3e-01 1e+00 3e+00 1e+01 3e+01\n[25] 1e+02 3e+02 1e+03 3e+03 1e+04 3e+04 1e+05 3e+05 1e+06 3e+06 1e+07 3e+07\n[37] 1e+08 3e+08 1e+09 3e+09 1e+10 3e+10\n\n\n\nlogbr()\n\n [1] 1e-10 1e-09 1e-08 1e-07 1e-06 1e-05 1e-04 1e-03 1e-02 1e-01 1e+00 1e+01\n[13] 1e+02 1e+03 1e+04 1e+05 1e+06 1e+07 1e+08 1e+09 1e+10\n\n\n\n\n12.2.7 Custom breaks\nDefault breaks\n\ndv_time(df)\n\n\n\n\n\n\n\n\n\nBreak every 3 days\n\ndv_time(df, xby = 72)\n\n\n\n\n\n\n\n\n\nCustom breaks and limits\n\na <- list(breaks = seq(0,240,48), limits = c(0,240))\ndv_time(df, xs = a)"
+    "title": "13  Customize plots",
+    "section": "13.2 Axes",
+    "text": "13.2 Axes\n\n13.2.1 Modify x-axis\n\na <- list(trans = \"log\", breaks = logbr3())\n\ndv_time(df, xs = a)\n\n\n\n\n\n\n\n\n\n\n\n13.2.2 Modify y-axis\n\ndv_time(df, ys = a, yname = \"Y-axis name\")\n\n\n\n\n\n\n\n\n\n\n\n13.2.3 Flip coordinates when labels get cramped\nIf this is too cramped\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% pm_grid()\n\n\n\n\n\n\n\n\n\nTry this\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% map(~.x+coord_flip()) %>% pm_grid()\n\n\n\n\n\n\n\n\n\n\n\n13.2.4 Rotate x and y axis labels\n\nSpecify the angle\n\ndv_pred(df) + rot_x(angle = 90) + rot_y()\n\n\n\n\n\n\n\n\n\n\n\nRotate to vertical\nWe are typically rotating the tick labels on the x-axis and frequently it is convenient to ask for a totally vertical rendering\n\ncwres_cat(df, x = \"STUDYc\") + \n  facet_wrap(~CPc) + rot_x(vertical = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n13.2.5 Standard axis titles\n\npm_axis_time()\n\n[1] \"TIME//Time {xunit}\"\n\npm_axis_tad()\n\n[1] \"TAD//Time after dose {xunit}\"\n\npm_axis_tafd()\n\n[1] \"TAFD//Time after first dose {xunit}\"\n\npm_axis_res()\n\n[1] \"RES//Residual\"\n\npm_axis_wres()\n\n[1] \"WRES//Weighted residual\"\n\npm_axis_cwres()\n\n[1] \"CWRES//Conditional weighted residual\"\n\npm_axis_cwresi()\n\n[1] \"CWRESI//CWRES with interaction\"\n\npm_axis_npde()\n\n[1] \"NPDE//NPDE\"\n\npm_axis_dv()\n\n[1] \"DV//Observed {yname}\"\n\npm_axis_pred()\n\n[1] \"PRED//Population predicted {xname}\"\n\npm_axis_ipred()\n\n[1] \"IPRED//Individual predicted {xname}\"\n\n\nYou can glue() in information with these functions\n\npm_axis_time(\"hr\")\n\n[1] \"TIME//Time (hr)\"\n\n\nSimilar with\n\npm_axis_tafd(\"hr\")\npm_axis_tad(\"hr\")\n\nAnd\n\npm_axis_dv(\"ASA concentration (ng/mL)\")\n\n[1] \"DV//Observed ASA concentration (ng/mL)\"\n\n\nSimilar with\n\npm_axis_pred(\"ASA concentration (ng/mL)\")\npm_axis_ipred(\"ASA concentration (ng/mL)\")\n\n\n\n13.2.6 Log breaks\n\nlogbr3()\n\n [1] 1e-10 3e-10 1e-09 3e-09 1e-08 3e-08 1e-07 3e-07 1e-06 3e-06 1e-05 3e-05\n[13] 1e-04 3e-04 1e-03 3e-03 1e-02 3e-02 1e-01 3e-01 1e+00 3e+00 1e+01 3e+01\n[25] 1e+02 3e+02 1e+03 3e+03 1e+04 3e+04 1e+05 3e+05 1e+06 3e+06 1e+07 3e+07\n[37] 1e+08 3e+08 1e+09 3e+09 1e+10 3e+10\n\n\n\nlogbr()\n\n [1] 1e-10 1e-09 1e-08 1e-07 1e-06 1e-05 1e-04 1e-03 1e-02 1e-01 1e+00 1e+01\n[13] 1e+02 1e+03 1e+04 1e+05 1e+06 1e+07 1e+08 1e+09 1e+10\n\n\n\n\n13.2.7 Custom breaks\nDefault breaks\n\ndv_time(df)\n\n\n\n\n\n\n\n\n\nBreak every 3 days\n\ndv_time(df, xby = 72)\n\n\n\n\n\n\n\n\n\nCustom breaks and limits\n\na <- list(breaks = seq(0,240,48), limits = c(0,240))\ndv_time(df, xs = a)"
   },
   {
     "objectID": "custom.html#layers",
     "href": "custom.html#layers",
-    "title": "12  Customize plots",
-    "section": "12.3 Layers",
-    "text": "12.3 Layers\n\np <- ggplot(df, aes(PRED,DV))  + geom_point() + pm_theme()\n\n\n12.3.1 Layer smooth\n\nlayer_s(p)\n\n\n\n\n\n\n\n\n\n\n\n12.3.2 Layer abline\n\nlayer_a(p)\n\n\n\n\n\n\n\n\n\n\nlayer_h(cwres_time(df, add_layers = FALSE))\n\n\n\n\n\n\n\n\n\n\n\n12.3.3 Drop extra layers\n\ndv_pred(df, smooth = NULL)\n\n\n\n\n\n\n\n\n\n\ndv_pred(df, abline = NULL)\n\n\n\n\n\n\n\n\n\n\ncwres_time(df, hline = NULL)\n\n\n\n\n\n\n\n\n\n\ndv_pred(df, abline = NULL, smooth = NULL)\n\n\n\n\n\n\n\n\n\n\n\nDrop all extra layers\n\ndv_pred(df, add_layers = FALSE)\n\n\n\n\n\n\n\n\n\n\n\n12.3.4 Modify layer specs\nFor example, change the values of argument for geom_smooth\n\ncwres_time(\n  df, \n  smooth = list(method = \"loess\", span = 0.1, se = TRUE)\n)\n\n\n\n\n\n\n\n\n\n\n\n12.3.5 Extra reference lines to [C]WRES plots\n\nwres_time(df) + geom_3s()"
+    "title": "13  Customize plots",
+    "section": "13.3 Layers",
+    "text": "13.3 Layers\n\np <- ggplot(df, aes(PRED,DV))  + geom_point() + pm_theme()\n\n\n13.3.1 Layer smooth\n\nlayer_s(p)\n\n\n\n\n\n\n\n\n\n\n\n13.3.2 Layer abline\n\nlayer_a(p)\n\n\n\n\n\n\n\n\n\n\nlayer_h(cwres_time(df, add_layers = FALSE))\n\n\n\n\n\n\n\n\n\n\n\n13.3.3 Drop extra layers\n\ndv_pred(df, smooth = NULL)\n\n\n\n\n\n\n\n\n\n\ndv_pred(df, abline = NULL)\n\n\n\n\n\n\n\n\n\n\ncwres_time(df, hline = NULL)\n\n\n\n\n\n\n\n\n\n\ndv_pred(df, abline = NULL, smooth = NULL)\n\n\n\n\n\n\n\n\n\n\n\nDrop all extra layers\n\ndv_pred(df, add_layers = FALSE)\n\n\n\n\n\n\n\n\n\n\n\n13.3.4 Modify layer specs\nFor example, change the values of argument for geom_smooth\n\ncwres_time(\n  df, \n  smooth = list(method = \"loess\", span = 0.1, se = TRUE)\n)\n\n\n\n\n\n\n\n\n\n\n\n13.3.5 Extra reference lines to [C]WRES plots\n\nwres_time(df) + geom_3s()"
   },
   {
     "objectID": "custom.html#replicate-look-and-feel",
     "href": "custom.html#replicate-look-and-feel",
-    "title": "12  Customize plots",
-    "section": "12.4 Replicate look and feel",
-    "text": "12.4 Replicate look and feel\n\np <- ggplot(df, aes(IPRED,DV)) + geom_point()\n\np\n\n\n\n\n\n\n\n\n\n\n12.4.1 Theme\n\np + pm_theme()\n\n\n\n\n\n\n\n\n\n\n\n12.4.2 Plain\n\np + theme_plain()\n\n\n\n\n\n\n\n\n\n\n\n12.4.3 Smooth\n\np + pm_smooth()\n\n\n\n\n\n\n\n\n\n\n\n12.4.4 Abline\n\np + pm_abline()\n\n\n\n\n\n\n\n\n\n\n\n12.4.5 Horizontal reference line\n\nggplot(df, aes(TIME,CWRES)) + geom_point() + pm_hline()"
+    "title": "13  Customize plots",
+    "section": "13.4 Replicate look and feel",
+    "text": "13.4 Replicate look and feel\n\np <- ggplot(df, aes(IPRED,DV)) + geom_point()\n\np\n\n\n\n\n\n\n\n\n\n\n13.4.1 Theme\n\np + pm_theme()\n\n\n\n\n\n\n\n\n\n\n\n13.4.2 Plain\n\np + theme_plain()\n\n\n\n\n\n\n\n\n\n\n\n13.4.3 Smooth\n\np + pm_smooth()\n\n\n\n\n\n\n\n\n\n\n\n13.4.4 Abline\n\np + pm_abline()\n\n\n\n\n\n\n\n\n\n\n\n13.4.5 Horizontal reference line\n\nggplot(df, aes(TIME,CWRES)) + geom_point() + pm_hline()"
   }
 ]

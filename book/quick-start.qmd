@@ -1,0 +1,232 @@
+---
+fig-height: 4.5
+fig-width: 4.5
+fig-align: center
+---
+
+
+# Quick start
+
+`pmplots` is a package for R to make simple, standardized plots in a 
+pharmacometric data analysis environment. The goal with this package isn't to 
+create a new grammar of graphics, but rather to create a standard set of 
+commonly-used plots in pharmacometrics analyses. 
+
+This quick start chapter is meant to give you a brief orientation about 
+how `pmplots` works. A more complete treatment is given in subsequent chapters.
+
+## Basic idea
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+library(here)
+library(pmplots)
+library(dplyr)
+library(patchwork)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+The most basic functionality provided by `pmplots` is a set of functions which 
+accept data frame with standardized names and returns a single plot. 
+
+We will load some example data from the package to illustrate. This is a data
+set that is similar to what we usually have after a NONMEM estimation run
+
+```{r}
+data <- pmplots::pmplots_data_obs()
+head(as.data.frame(data), n = 3)
+```
+
+Another data set is based on `data` in the previous code chunk, but 
+subset to just one record per individual
+
+```{r}
+id <- pmplots::pmplots_data_id()
+```
+
+
+Some of the "standard" column names include
+
+- `ID`
+- `TIME`
+- `NPDE`
+- `PRED`
+- `ETA1`
+
+We frequently see these names in NONMEM output and `pmplots` is set up to 
+take advantage of this. 
+
+
+So to create a plot of `DV` (observed data points) versus `PRED` (population
+predictions) we call `dv_pred()`
+
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+dv_pred(data)
+```
+
+This default plot has the following features
+
+1. The x- and y-axes are forced to have the same limits
+1. There is reference line at `x = y`
+1. There is a loess smooth through the data points
+
+
+The idea is to create a simple, standardized plot with only minimal code. Of 
+course, there are ways to customize this plot
+
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+dv_pred(data, yname = "concentration (ng/mL)", smooth = NULL)
+```
+
+These functions return `gg` objects so you can also continue to customize the 
+plot as you normally would with `ggplot2`
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+dv_pred(data) + 
+  facet_wrap(~STUDYc) + 
+  ggtitle("DV versus PRED")
+```
+
+Other plots including `DV`, `PRED` and `IPRED` include
+
+- `dv_time()`  (`DV` vs `TIME`)
+- `dv_ipred()` (`DV` vs `IPRED`)
+- `dv_preds()` (`DV` vs both `PRED` and `IPRED`)
+
+
+# Diagnostic plots
+
+`pmplots` generates a host of residual diagnostics and similar plots (e.g. 
+`NPDE`)
+
+
+_Conditional weighted residuals versus time_
+ 
+```{r}
+p1 <- cwres_time(data) 
+```
+
+_Residuals versus population predicted value_
+
+```{r}
+p2 <- res_pred(data) 
+```
+
+_NPDE boxplots in each study_
+
+```{r}
+p3 <- npde_cat(data, x = "STUDYc//Study") 
+```
+
+_Histogram of weighted residuals_
+
+```{r}
+p4 <- wres_hist(data) 
+```
+
+With output
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6.5
+(p1+p2)/(p3+p4)
+```
+
+
+Diagnostic plots can be vectorized, getting returned in a list. Pass the list
+to `pm_grid()` to arrange them
+
+```{r}
+#| fig-height: 3.5
+#| fig-width: 8.5
+eta_cont(id, x = "WT", y = paste0("ETA", c(1,2,3))) %>% 
+  pm_grid(ncol = 3)
+```
+
+
+# Exploratory plots
+
+`pmplots` also makes plots for exploratory graphics. 
+
+We can look at continuous covariates by another categorical covariate
+
+```{r}
+#| fig-height: 3.5
+#| fig-width: 8.5
+
+covar <- c(
+  "WT//Weight (kg)", 
+  "AGE//Age (y)", 
+  "BMI//BMI (kg/m2)", 
+  "ALB//Albumin (g/dL)"
+) 
+
+cont_cat(
+  id, 
+  x = "STUDYc//Study ", 
+  y = covar[1:3],
+) %>% pm_grid(ncol = 3)
+```
+
+Or correlations between continuous covariates
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+pairs_plot(data, y = covar)
+```
+
+
+
+# col-label
+
+You might have noticed a special syntax that we've used in some of the previous 
+plots. For example
+
+```{r}
+#| eval: false
+npde_cat(data, x = "STUDYc//Study")
+```
+
+Here we are using `col-label` syntax. This is just a compact way to pass both 
+the name of the column to plot and a more formal axis title. `col-label` are 
+delimited (by default) by `//`
+
+```{r}
+col_label("STUDYc//Study")
+```
+
+After parsing, the left hand side is column name and the right hand side is the 
+axis title. 
+
+It's ok to just pass the left hand side too
+
+```{r}
+col_label("STUDYc")
+```
+
+Here the axis title is just the column name. 
+
+Axis titles can also contain a subset of `TeX` syntax that gets parsed by the 
+`latex2exp` package
+
+```{r}
+col_label("DV//$\\mu$mol/mL")
+```
+
+For example
+
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+#| fig-align: center
+dv_time(data, y = "DV//Concentration ($\\mu$mol/mL)")
+```
