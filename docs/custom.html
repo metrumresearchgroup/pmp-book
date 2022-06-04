@@ -209,7 +209,7 @@ background: #00b4f1;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dv-pred-ipred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></a>
+  <a href="./dv-pred-ipred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">dv-pred-ipred</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -263,7 +263,7 @@ background: #00b4f1;
   <ul>
   <li><a href="#latex" id="toc-latex" class="nav-link active" data-scroll-target="#latex"> <span class="header-section-number">11.1</span> Latex</a>
   <ul class="collapse">
-  <li><a href="#latex-including-greek-letters-in-axis-title" id="toc-latex-including-greek-letters-in-axis-title" class="nav-link" data-scroll-target="#latex-including-greek-letters-in-axis-title"> <span class="header-section-number">11.1.1</span> Latex (including Greek letters) in axis title</a></li>
+  <li><a href="#latex-in-axis-title" id="toc-latex-in-axis-title" class="nav-link" data-scroll-target="#latex-in-axis-title"> <span class="header-section-number">11.1.1</span> Latex in axis title</a></li>
   <li><a href="#latex-in-pairs-plot" id="toc-latex-in-pairs-plot" class="nav-link" data-scroll-target="#latex-in-pairs-plot"> <span class="header-section-number">11.1.2</span> Latex in pairs plot</a></li>
   <li><a href="#latex-in-wrapped-plots" id="toc-latex-in-wrapped-plots" class="nav-link" data-scroll-target="#latex-in-wrapped-plots"> <span class="header-section-number">11.1.3</span> Latex in wrapped plots</a></li>
   </ul></li>
@@ -304,8 +304,8 @@ background: #00b4f1;
 
 <section id="latex" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="latex"><span class="header-section-number">11.1</span> Latex</h2>
-<section id="latex-including-greek-letters-in-axis-title" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="latex-including-greek-letters-in-axis-title"><span class="header-section-number">11.1.1</span> Latex (including Greek letters) in axis title</h3>
+<section id="latex-in-axis-title" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="latex-in-axis-title"><span class="header-section-number">11.1.1</span> Latex in axis title</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">x =</span> <span class="st">"PRED//Concentration ($</span><span class="sc">\\</span><span class="st">mu$g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -362,9 +362,9 @@ background: #00b4f1;
 <section id="modify-x-axis" class="level3" data-number="11.2.1">
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="modify-x-axis"><span class="header-section-number">11.2.1</span> Modify x-axis</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">trans=</span><span class="st">"log"</span>, <span class="at">breaks =</span> <span class="fu">logbr3</span>())</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">trans =</span> <span class="st">"log"</span>, <span class="at">breaks =</span> <span class="fu">logbr3</span>())</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xs=</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xs =</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -378,7 +378,7 @@ background: #00b4f1;
 <section id="modify-y-axis" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="modify-y-axis"><span class="header-section-number">11.2.2</span> Modify y-axis</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">ys=</span>a, <span class="at">yname=</span><span class="st">"Y-axis name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">ys =</span> a, <span class="at">yname =</span> <span class="st">"Y-axis name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -449,7 +449,7 @@ background: #00b4f1;
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="custom_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="custom_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
 </figure>
 </div>

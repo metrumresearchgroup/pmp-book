@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The pmplots Gallery - 4&nbsp; DV-PRED-IPRED</title>
+<title>The pmplots Gallery - 4&nbsp; dv-pred-ipred</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,7 +159,7 @@ background: #00b4f1;
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">dv-pred-ipred</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -170,7 +170,7 @@ background: #00b4f1;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></h1>
+      <h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">dv-pred-ipred</span></h1>
                       </div>
   </div>
     
@@ -209,7 +209,7 @@ background: #00b4f1;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dv-pred-ipred.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">DV-PRED-IPRED</span></a>
+  <a href="./dv-pred-ipred.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">dv-pred-ipred</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -265,15 +265,41 @@ background: #00b4f1;
 
 
 
-<ul>
-<li>This returns a list of plots; we show only one here (the first 9 IDs) as an example</li>
-</ul>
+<p>This function will split your dataset up in “chunks” according to the columns named in <code>facets</code>. Pass the number of <code>id_per_plot</code>. The return is a list of plots covering all unique values in <code>facets</code>.</p>
+<p>In this example, we’ll just plot 9 subjects in a single plot</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dd1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, ID <span class="sc">&lt;=</span> <span class="dv">15</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dv_pred_ipred(dd1, nrow = 3, ncol = 3, ylab = "Concentration (ng/mL)", log_y=TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dd1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, ID <span class="sc">&lt;=</span> <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div style="page-break-after: always;"></div>
+<p>Please see the <code>?dv_pred_ipred</code> help file as there are many arguments which allow you to customize the output</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred_ipred</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dd1, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">facets =</span> <span class="st">"ID"</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id_per_plot =</span> <span class="dv">9</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`1`</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dv-pred-ipred_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="768"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Some arguments to note</p>
+<ul>
+<li><code>log_y</code> - log transformed y-axis</li>
+<li><code>angle</code> - for rotating <code>x-axis</code> tick labels</li>
+<li><code>xlab</code> - <code>x-axis</code> title</li>
+<li><code>ylab</code> - <code>y-axis</code> title</li>
+<li><code>nrow</code> - for arranging facets on a page</li>
+<li><code>ncol</code> - for arranging facets on a page</li>
+<li><code>fun</code> - a function which modifies every plot in the output list</li>
+</ul>
+<p>There are also a whole series of arguments for configuring the points and lines on the plot for <code>DV</code>, <code>PRED</code> and <code>IPRED</code>.</p>
 
 
 

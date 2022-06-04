@@ -2,16 +2,44 @@
 ```{r setup, include = FALSE}
 source("global.R")
 ```
-# DV-PRED-IPRED
 
-- This returns a list of plots; we show only one here (the first 9 IDs) 
-as an example
+# dv-pred-ipred
 
-```{r, fig.height = 6, fig.width=6}
-dd1 <- filter(df, ID <= 15)
 
-# dv_pred_ipred(dd1, nrow = 3, ncol = 3, ylab = "Concentration (ng/mL)", log_y=TRUE)
+This function will split your dataset up in "chunks" according 
+to the columns named in `facets`. Pass the number of `id_per_plot`. 
+The return is a list of plots covering all unique values in 
+`facets`. 
+
+In this example, we'll just plot 9 subjects in a single plot
+
+```{r}
+dd1 <- filter(df, ID <= 9)
 ```
 
+Please see the `?dv_pred_ipred` help file as there are many arguments
+which allow you to customize the output
 
-\newpage
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+
+dv_pred_ipred(
+  dd1, 
+  facets = "ID", 
+  id_per_plot = 9
+)
+```
+
+Some arguments to note
+
+- `log_y` - log transformed y-axis
+- `angle` - for rotating `x-axis` tick labels
+- `xlab` - `x-axis` title
+- `ylab` - `y-axis` title
+- `nrow` - for arranging facets on a page
+- `ncol` - for arranging facets on a page
+- `fun` - a function which modifies every plot in the output list
+
+There are also a whole series of arguments for configuring the points 
+and lines on the plot for `DV`, `PRED` and `IPRED`.

@@ -32,7 +32,6 @@ book:
     - custom.qmd
     - data-summary.qmd
 
-    #- stable.qmd
   navbar: 
     background: white
     foreground: darkgrey
@@ -47,7 +46,6 @@ format:
     toc: true
     number-sections: true
     fig-align: center
-    #code-line-numbers: true
     fontsize: "15pt"
     linkcolor: "#00b4f1"
     title-block-banner: "#00b4f1"

@@ -11,7 +11,7 @@ source("global.R")
 
 ## Latex
 
-### Latex (including Greek letters) in axis title
+### Latex in axis title
 
 ```{r}
 dv_pred(df, x = "PRED//Concentration ($\\mu$g)")
@@ -21,7 +21,7 @@ dv_pred(df, x = "PRED//Concentration ($\\mu$g)")
 
 ```{r}
 #| fig-width: 6
-#| fig-height: 4
+#| fig-height: 6
 data <- data.frame(
   m = rnorm(100), 
   s = rnorm(100), 
@@ -49,15 +49,15 @@ wrap_cont_time(df, y = y, use_labels=TRUE)
 ### Modify x-axis
 
 ```{r}
-a <- list(trans="log", breaks = logbr3())
+a <- list(trans = "log", breaks = logbr3())
 
-dv_time(df, xs=a)
+dv_time(df, xs = a)
 ```
 
 ### Modify y-axis
 
 ```{r}
-dv_time(df, ys=a, yname="Y-axis name")
+dv_time(df, ys = a, yname = "Y-axis name")
 ```
 
 ### Flip coordinates when labels get cramped
@@ -103,7 +103,7 @@ frequently it is convenient to ask for a totally vertical
 rendering
 
 ```{r}
-#| fig-width: 5
+#| fig-width: 7
 #| fig-height: 5
 cwres_cat(df, x = "STUDYc") + 
   facet_wrap(~CPc) + rot_x(vertical = TRUE)
