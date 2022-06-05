@@ -15,8 +15,13 @@ book:
   repo-subdir: book
   repo-branch: main
   repo-actions: [source, issue]
-  twitter-card: true
-  open-graph: true
+  twitter-card:
+    image: "https://metrumresearchgroup.github.io/pmp-book/pmp-hex.png"
+    creator: "@kylebtwin"
+    description: Easy standardized plots for pharmacometrics.
+  open-graph:
+    image: "https://metrumresearchgroup.github.io/pmp-book/pmp-hex.png"
+    description: Easy standardized plots for pharmacometrics.
   search: 
     location: navbar
     type: overlay
