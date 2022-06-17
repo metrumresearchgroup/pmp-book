@@ -1,0 +1,78 @@
+---
+fig-height: 4.5
+fig-width: 4.5
+---
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# NPDE plots
+
+## Versus TIME `[npde_time]`
+
+```{r}
+npde_time(df)
+```
+
+
+## Versus TAD `[npde_tad]`
+
+```{r}
+npde_tad(df)
+```
+
+
+## Versus TAFD `[npde_tafd]`
+
+```{r}
+npde_tafd(df)
+```
+
+## Versus PRED `[npde_pred]`
+
+```{r}
+npde_pred(df)
+```
+
+## Versus continuous  `[npde_cont]`
+
+```{r}
+npde_cont(df, "WT")
+```
+
+### Vectorized
+
+These plots can take in a vector of continuous column names
+and return a list of plots which can be arranged. 
+
+```{r}
+#| fig-width: 7
+#| fig-height: 6
+covariates <- c("WT", "AGE", "ALB")
+
+npde_cont(df, covariates) %>% 
+  pm_grid()
+```
+
+
+## Versus categorical  `[npde_cat]`
+
+```{r}
+npde_cat(df, "STUDYc")
+```
+
+## QQ-plot  `[npde_q]`
+
+```{r}
+npde_q(df)
+```
+
+
+## Histogram `[npde_hist]`
+
+```{r}
+npde_hist(df)
+```
+
+

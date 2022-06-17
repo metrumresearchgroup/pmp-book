@@ -1,0 +1,65 @@
+project:
+  type: book
+  output-dir: docs
+
+execute:
+  freeze: auto
+
+book:
+  title: "The pmplots Gallery"
+  subtitle: "Plots for Pharmacometrics"
+  author: "Kyle Baron, Pharm.D., Ph.D."
+  date: today
+  date-format: medium
+  repo-url: https://github.com/metrumresearchgroup/pmp-book
+  repo-subdir: book
+  repo-branch: main
+  repo-actions: [source, issue]
+  twitter-card:
+    image: "https://metrumresearchgroup.github.io/pmp-book/pmp-hex.png"
+    creator: "@kylebtwin"
+    description: Easy standardized plots for pharmacometrics.
+  open-graph:
+    image: "https://metrumresearchgroup.github.io/pmp-book/pmp-hex.png"
+    description: Easy standardized plots for pharmacometrics.
+  search: 
+    type: overlay
+  chapters:
+    - index.qmd
+    - quick-start.qmd
+    - col-label.qmd
+    - dv-pred.qmd
+    - dv-pred-ipred.qmd
+    - residuals.qmd
+    - npde.qmd
+    - eta.qmd
+    - wrap.qmd
+    - pairs.qmd
+    - vectorized.qmd
+    - data-summary.qmd
+    - custom.qmd
+  navbar: 
+    background: white
+    foreground: darkgrey
+    right:
+      - text: Related
+        menu:
+          - text: pmtables
+            href: https://metrumresearchgroup.github.io/pmt-book
+          - text: yspec
+            href: https://metrumresearchgroup.github.io/ysp-book
+      - icon: book
+        href: https://metrumresearchgroup.github.io/pmplots
+      - icon: globe2
+        href: https://metrumrg.com
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    fig-align: center
+    fontsize: "15pt"
+    linkcolor: "#00b4f1"
+    title-block-banner: "#00b4f1"
+    title-block-banner-color: "white"

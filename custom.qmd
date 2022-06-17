@@ -1,0 +1,292 @@
+---
+fig-width: 4.5
+fig-height: 4.5
+---
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# Customize plots
+
+## Latex
+
+### Latex in axis title
+
+```{r}
+dv_pred(df, x = "PRED//Concentration ($\\mu$g)")
+```
+
+### Latex in pairs plot
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+data <- data.frame(
+  m = rnorm(100), 
+  s = rnorm(100), 
+  n = rnorm(100)
+)
+
+x <- c("m//$\\mu$", "s//$\\sigma$", "n//$\\nu$")
+
+pairs_plot(data,x)
+```
+
+### Latex in wrapped plots
+
+```{r}
+#| fig-width: 7
+#| fig-height: 3
+y <- c("WT//Weight (kg)", "BMI//BMI (kg/m$^2$)", "SCR//SCR (g/dL)")
+
+wrap_cont_time(df, y = y, use_labels=TRUE)
+```
+
+
+## Axes
+
+### Modify x-axis
+
+```{r}
+a <- list(trans = "log", breaks = logbr3())
+
+dv_time(df, xs = a)
+```
+
+### Modify y-axis
+
+```{r}
+dv_time(df, ys = a, yname = "Y-axis name")
+```
+
+### Flip coordinates when labels get cramped
+
+If this is too cramped
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+cont_cat(
+  id, 
+  y = c("WT", "BMI", "ALB", "CRCL"), 
+  x = "STUDYc"
+) %>% pm_grid()
+
+```
+
+Try this
+
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+
+cont_cat(
+  id, 
+  y = c("WT", "BMI", "ALB", "CRCL"), 
+  x = "STUDYc"
+) %>% map(~.x+coord_flip()) %>% pm_grid()
+
+```
+
+### Rotate x and y axis labels
+
+#### Specify the angle {.unnumbered .unlisted}
+```{r}
+dv_pred(df) + rot_x(angle = 90) + rot_y()
+```
+
+#### Rotate to vertical {.unnumbered .unlisted}
+
+We are typically rotating the tick labels on the x-axis and 
+frequently it is convenient to ask for a totally vertical 
+rendering
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+cwres_cat(df, x = "STUDYc") + 
+  facet_wrap(~CPc) + rot_x(vertical = TRUE)
+```
+
+
+### Standard axis titles
+
+```{r}
+pm_axis_time()
+pm_axis_tad()
+pm_axis_tafd()
+pm_axis_res()
+pm_axis_wres()
+pm_axis_cwres()
+pm_axis_cwresi()
+pm_axis_npde()
+pm_axis_dv()
+pm_axis_pred()
+pm_axis_ipred()
+```
+
+You can `glue()` in information with these functions
+
+```{r}
+pm_axis_time("hr")
+```
+
+Similar with 
+
+```{r, eval = FALSE}
+pm_axis_tafd("hr")
+pm_axis_tad("hr")
+```
+
+And 
+
+```{r}
+pm_axis_dv("ASA concentration (ng/mL)")
+```
+
+Similar with 
+
+```{r, eval = FALSE}
+pm_axis_pred("ASA concentration (ng/mL)")
+pm_axis_ipred("ASA concentration (ng/mL)")
+```
+
+
+### Log breaks
+
+
+```{r}
+logbr3()
+```
+
+```{r}
+logbr()
+```
+
+
+### Custom breaks
+
+Default breaks
+
+```{r}
+dv_time(df)
+```
+
+Break every 3 days
+
+```{r}
+dv_time(df, xby = 72)
+```
+
+Custom breaks and limits
+
+```{r}
+a <- list(breaks = seq(0,240,48), limits = c(0,240))
+dv_time(df, xs = a)
+```
+
+
+## Layers
+
+```{r}
+p <- ggplot(df, aes(PRED,DV))  + geom_point() + pm_theme()
+```
+
+### Layer smooth
+
+```{r}
+layer_s(p)
+```
+
+### Layer abline
+
+```{r}
+layer_a(p)
+```
+
+```{r}
+layer_h(cwres_time(df, add_layers = FALSE))
+```
+
+### Drop extra layers
+
+```{r}
+dv_pred(df, smooth = NULL)
+```
+
+```{r}
+dv_pred(df, abline = NULL)
+```
+
+```{r}
+cwres_time(df, hline = NULL)
+```
+
+```{r}
+dv_pred(df, abline = NULL, smooth = NULL)
+```
+
+### Drop all extra layers {.unnumbered .unlisted}
+
+```{r}
+dv_pred(df, add_layers = FALSE)
+```
+
+### Modify layer specs
+
+For example, change the values of argument for `geom_smooth`
+
+```{r}
+cwres_time(
+  df, 
+  smooth = list(method = "loess", span = 0.1, se = TRUE)
+)
+```
+
+### Extra reference lines to [C]WRES plots
+
+```{r}
+wres_time(df) + geom_3s()
+```
+
+
+## Replicate look and feel
+
+```{r}
+p <- ggplot(df, aes(IPRED,DV)) + geom_point()
+
+p
+```
+
+### Theme
+
+```{r}
+p + pm_theme()
+```
+
+### Plain
+
+```{r}
+p + theme_plain()
+```
+
+
+### Smooth
+
+```{r}
+p + pm_smooth()
+```
+
+### Abline
+
+```{r}
+p + pm_abline()
+```
+
+### Horizontal reference line
+
+```{r}
+ggplot(df, aes(TIME,CWRES)) + geom_point() + pm_hline()
+```
+

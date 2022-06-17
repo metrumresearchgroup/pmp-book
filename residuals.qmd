@@ -1,0 +1,205 @@
+---
+fig-height: 4.5
+fig-width: 4.5
+---
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+
+# Residual plots
+
+## Residuals
+
+### Versus TIME `[res_time]`
+
+```{r}
+res_time(df)
+```
+
+### Versus TAFD `[res_tafd]`
+
+```{r}
+res_tafd(df)
+```
+
+### Versus TAD `[res_tad]`
+
+```{r}
+res_tad(df)
+```
+
+### Versus PRED `[res_pred]`
+
+```{r}
+res_pred(df)
+```
+
+
+### Versus continuous `[res_cont]`
+
+```{r}
+res_cont(df, x = "WT//Weight (kg)")
+```
+
+This function is also vectorized in x.
+
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+res_cont(df, c("WT", "CRCL", "AST")) %>% 
+  pm_grid()
+```
+
+
+### By categorical `[res_cat]`
+
+```{r}
+dplyr::count(df, STUDYc)
+
+res_cat(df, x = "STUDYc//Study type")
+```
+
+
+### Histogram `[res_hist]`
+
+```{r}
+res_hist(df)
+```
+
+
+## WRES
+
+### Versus TIME `[wres_time]`
+
+```{r}
+wres_time(df) 
+```
+
+
+### Versus TAFD `[wres_tafd]`
+```{r}
+wres_tafd(df)
+```
+
+### Versus TAD `[wres_tad]`
+
+```{r}
+wres_tad(df)
+```
+
+
+### Versus PRED `[wres_pred]`
+```{r}
+wres_pred(df)
+```
+
+### Versus continuous `[wres_cont]`
+
+This function is also vectorized in x.
+
+```{r}
+wres_cont(df, x = "WT//Weight (kg)")
+```
+
+
+###  By categorical `[wres_cat]`
+
+```{r}
+wres_cat(df, x = "STUDYc//Study type")
+```
+
+### Histogram `[wres_hist]`
+
+```{r}
+wres_hist(df)
+```
+
+
+### QQ plot `[wres_q]`
+
+```{r}
+wres_q(df)
+```
+
+
+## CWRES
+
+### Versus TINE `[cwres_time]`
+
+```{r}
+cwres_time(df)
+```
+
+### Versus TAFD `[cwres_tafd]`
+
+```{r}
+cwres_tafd(df)
+```
+
+### Versus TAD `[cwres_tad]`
+
+```{r}
+cwres_tad(df)
+```
+
+### Versus continuous `[cwres_cont]`
+
+```{r}
+cwres_cont(df, x = "WT//Weight (kg)")
+```
+
+Vectorized version
+
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+cwres_cont(df, covs) %>% 
+  pm_grid(ncol = 2)
+```
+
+
+### By categorical `[cwres_cat]`
+
+```{r}
+cwres_cat(df, x = "STUDYc//Study type") 
+```
+
+```{r}
+cwres_cat(
+  df, 
+  x = "STUDYc//Study type", 
+  shown = FALSE
+)
+```
+
+Vectorized version
+
+```{r}
+#| fig-height: 3.5
+#| fig-width: 7
+cwres_cat(
+  df, 
+  x = c("STUDYc//Study", "RF//Renal Function")
+) %>% pm_grid()
+```
+
+
+### Histogram `[cwres_hist]`
+
+```{r}
+cwres_hist(df)
+```
+
+### Versus PRED `[cwres_pred]`
+
+```{r}
+cwres_pred(df)
+```
+
+### QQ plot `[cwres_q]`
+
+```{r}
+cwres_q(df)
+```

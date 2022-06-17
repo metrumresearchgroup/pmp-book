@@ -1,0 +1,38 @@
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# Pairs plots
+
+## General pairs plot
+
+This is a simple wrapper around `GGally::ggpairs` with some customizations that 
+have been developed internally at Metrum over the years.
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+cols <- c("WT//Weight", "ALB//Albumin", "SCR//Serum creat")
+pairs_plot(id, cols)
+```
+
+## Customized lower triangle
+
+Pass a function that customizes the scatter plots on the lower triangle. This 
+function should accept a gg object and add a geom to it
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+my_lower <- function(p) {
+  p + geom_point(aes(color = STUDYc)) + 
+    geom_smooth(se = FALSE, color = "black")
+}
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+pairs_plot(id, c("WT", "ALB"), lower_plot = my_lower)
+```

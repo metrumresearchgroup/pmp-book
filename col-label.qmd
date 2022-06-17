@@ -1,0 +1,40 @@
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+
+# col - label specification
+
+This is a way to specify the column name for source
+data along with the axis label
+
+```{r}
+col_label("CL//Clearance (L)")
+```
+
+When only the column is given, then the column name will be 
+used for the column title:
+
+```{r}
+col_label("WT")
+```
+
+## Generate using the yspec package
+
+You can also pull `col//title` data from a `yspec` object. Load the `yspec`
+package and generate an example data specification object
+
+```{r}
+library(yspec)
+spec <- ys_help$spec()
+```
+
+Typically, you'll want to select a subset of columns and then call
+`axis_col_labs()`
+
+```{r}
+spec %>% 
+  ys_select(WT, AGE, BMI) %>% 
+  axis_col_labs()
+```

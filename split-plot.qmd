@@ -1,0 +1,18 @@
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# Split Plot
+
+## Split and plot `[split_plot]`
+
+```{r}
+p <- split_plot(df, sp="STUDYc", fun=dv_ipred)
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+pm_grid(p)
+```

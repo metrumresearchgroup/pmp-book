@@ -1,0 +1,54 @@
+---
+fig-height: 4.5
+fig-width: 4.5
+---
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# Data summary
+
+## General boxplot `[pm_box]`
+
+```{r}
+pm_box(id, x = "STUDYc", y = "WT")
+```
+
+This is also called `cont_cat()`.
+
+## Vectorized {.unnumbered .unlisted}
+
+```{r}
+#| fig-width: 7.5
+#| fig-height: 4
+covs <- c("WT", "AGE", "ALB")
+
+pm_box(id, x = "STUDYc", y = covs) %>%
+  pm_grid(ncol = 3)
+```
+
+## General scatter plot `[pm_scatter]`
+
+```{r}
+pm_scatter(id, x = "WT", y = "CRCL")
+```
+
+This is also called `cont_cont()`.
+
+## Vectorized {.unnumbered .unlisted}
+
+```{r}
+#| fig-width: 7.5
+#| fig-height: 4
+covs <- c("SCR", "AGE", "ALB")
+
+pm_scatter(id, x = "WT", y = covs) %>%
+  pm_grid(ncol = 3)
+```
+
+## General histogram `[cont_hist]`
+
+```{r}
+cont_hist(id, x = "WT", bins = 20)
+```

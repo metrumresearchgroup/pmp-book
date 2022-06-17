@@ -1,0 +1,36 @@
+---
+fig-height: 4.5
+fig-width: 4.5
+---
+
+```{r setup, include = FALSE}
+source("global.R")
+```
+
+# Vectorized plots
+
+When we say "vectorized", it means that you can pass in a vector
+of `x` or `y` and you'll get back  a list of plots
+
+```{r}
+pm_scatter(
+  df, 
+  x = "TIME", 
+  y = c("RES", "WRES", "CWRES")
+)
+```
+
+Note that we typically use `pm_grid()` to arrange the plots
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+pm_scatter(
+  df, 
+  x = "TIME", 
+  y = c("RES", "WRES", "CWRES")
+) %>% pm_grid(ncol = 2)
+```
+
+`pm_grid()` uses the excellent `patchwork` package to arrange 
+a list of plots into some sort of grid.
