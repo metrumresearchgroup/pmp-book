@@ -23,7 +23,6 @@ book:
     image: "https://metrumresearchgroup.github.io/pmp-book/pmp-hex.png"
     description: Easy standardized plots for pharmacometrics.
   search: 
-    location: navbar
     type: overlay
   chapters:
     - index.qmd
@@ -43,8 +42,12 @@ book:
     background: white
     foreground: darkgrey
     right:
-      - text: pmtables
-        href: https://metrumresearchgroup.github.io/pmt-book
+      - text: Related
+        menu:
+          - text: pmtables
+            href: https://metrumresearchgroup.github.io/pmt-book
+          - text: yspec
+            href: https://metrumresearchgroup.github.io/ysp-book
       - icon: book
         href: https://metrumresearchgroup.github.io/pmplots
       - icon: globe2

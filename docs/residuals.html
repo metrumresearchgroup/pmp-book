@@ -152,9 +152,19 @@ background: #00b4f1;
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://metrumresearchgroup.github.io/pmt-book">pmtables</a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">Related</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-related">    
+        <li>
+    <a class="dropdown-item" href="https://metrumresearchgroup.github.io/pmt-book">
+ <span class="dropdown-text">pmtables</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="https://metrumresearchgroup.github.io/ysp-book">
+ <span class="dropdown-text">yspec</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumresearchgroup.github.io/pmplots"><i class="bi bi-book" role="img">
 </i> 
@@ -625,7 +635,7 @@ background: #00b4f1;
 <p>Vectorized version</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_cont</span>(df, covs) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>(<span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -673,7 +683,7 @@ background: #00b4f1;
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="432"></p>
+<p><img src="residuals_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
 </figure>
 </div>
