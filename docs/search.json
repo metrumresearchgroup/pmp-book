@@ -263,7 +263,7 @@
     "href": "pairs.html",
     "title": "10  Pairs plots",
     "section": "",
-    "text": "This is a simple wrapper around GGally::ggpairs with some customizations that have been developed internally at MetrumRG over the years.\n\ncols <- c(\"WT//Weight\", \"ALB//Albumin\", \"SCR//Serum creat\")\npairs_plot(id, cols)\n\n\n\n\n\n\nFigure 10.1: General pairs plot.\n\n\n\n\nOne customization we’ve added is the annotation on the upper triangle, which is the complete.obs correlation between x and y along with the number of observations."
+    "text": "This is a simple wrapper around GGally::ggpairs with some customizations that have been developed internally at MetrumRG over the years.\n\ncols <- c(\"WT//Weight\", \"ALB//Albumin\", \"SCR//Serum creat\")\npairs_plot(id, cols)\n\n\n\n\n\n\n\n\n\nOne customization we’ve added is the annotation on the upper triangle, which is the complete.obs correlation between x and y along with the number of observations."
   },
   {
     "objectID": "pairs.html#eta-pairs-plots",
@@ -277,7 +277,7 @@
     "href": "pairs.html#customized-lower-triangle",
     "title": "10  Pairs plots",
     "section": "10.3 Customized lower triangle",
-    "text": "10.3 Customized lower triangle\nPass a function that customizes the scatter plots on the lower triangle. This function should accept a gg object and add a geom to it\n\nmy_lower <- function(p) {\n  p + geom_point(aes(color = STUDYc)) + \n    geom_smooth(se = FALSE, color = \"black\")\n}\n\n\npairs_plot(id, c(\"WT\", \"ALB\"), lower_plot = my_lower)\n\n\n\n\n\n\nFigure 10.2: Pairs plot with customized lower triangle."
+    "text": "10.3 Customized lower triangle\nPass a function that customizes the scatter plots on the lower triangle. This function should accept a gg object and add a geom to it\n\nmy_lower <- function(p) {\n  p + geom_point(aes(color = STUDYc)) + \n    geom_smooth(se = FALSE, color = \"black\")\n}\n\n\npairs_plot(id, c(\"WT\", \"ALB\"), lower_plot = my_lower)"
   },
   {
     "objectID": "vectorized.html",

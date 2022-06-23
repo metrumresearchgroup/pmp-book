@@ -11,8 +11,6 @@ This is a simple wrapper around `GGally::ggpairs` with some customizations that
 have been developed internally at MetrumRG over the years.
 
 ```{r}
-#| label: fig-pairs
-#| fig-cap: General pairs plot.
 #| fig-width: 5
 #| fig-height: 5
 cols <- c("WT//Weight", "ALB//Albumin", "SCR//Serum creat")
@@ -44,8 +42,6 @@ my_lower <- function(p) {
 ```
 
 ```{r}
-#| label: fig-pairs-custom-lower
-#| fig-cap: Pairs plot with customized lower triangle. 
 #| fig-width: 5
 #| fig-height: 5
 pairs_plot(id, c("WT", "ALB"), lower_plot = my_lower)
