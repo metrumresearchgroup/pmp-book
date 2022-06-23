@@ -295,10 +295,10 @@ background: #00b4f1;
   <ul>
   <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"> <span class="header-section-number">8.1</span> Setup</a></li>
   <li><a href="#data-used-on-this-page" id="toc-data-used-on-this-page" class="nav-link" data-scroll-target="#data-used-on-this-page"> <span class="header-section-number">8.2</span> Data used on this page</a></li>
-  <li><a href="#eta-versus-continuous-eta_cont" id="toc-eta-versus-continuous-eta_cont" class="nav-link" data-scroll-target="#eta-versus-continuous-eta_cont"> <span class="header-section-number">8.3</span> ETA versus continuous <code>[eta_cont]</code></a></li>
-  <li><a href="#eta-by-categorical-eta_cat" id="toc-eta-by-categorical-eta_cat" class="nav-link" data-scroll-target="#eta-by-categorical-eta_cat"> <span class="header-section-number">8.4</span> ETA by categorical <code>[eta_cat]</code></a></li>
-  <li><a href="#eta-histograms-eta_hist" id="toc-eta-histograms-eta_hist" class="nav-link" data-scroll-target="#eta-histograms-eta_hist"> <span class="header-section-number">8.5</span> ETA histograms <code>[eta_hist]</code></a></li>
-  <li><a href="#eta-pairs-eta_pairs" id="toc-eta-pairs-eta_pairs" class="nav-link" data-scroll-target="#eta-pairs-eta_pairs"> <span class="header-section-number">8.6</span> ETA pairs <code>[eta_pairs]</code></a></li>
+  <li><a href="#versus-continuous-eta_cont" id="toc-versus-continuous-eta_cont" class="nav-link" data-scroll-target="#versus-continuous-eta_cont"> <span class="header-section-number">8.3</span> Versus continuous <code>[eta_cont]</code></a></li>
+  <li><a href="#by-categorical-eta_cat" id="toc-by-categorical-eta_cat" class="nav-link" data-scroll-target="#by-categorical-eta_cat"> <span class="header-section-number">8.4</span> By categorical <code>[eta_cat]</code></a></li>
+  <li><a href="#histograms-eta_hist" id="toc-histograms-eta_hist" class="nav-link" data-scroll-target="#histograms-eta_hist"> <span class="header-section-number">8.5</span> Histograms <code>[eta_hist]</code></a></li>
+  <li><a href="#pairs-eta_pairs" id="toc-pairs-eta_pairs" class="nav-link" data-scroll-target="#pairs-eta_pairs"> <span class="header-section-number">8.6</span> Pairs <code>[eta_pairs]</code></a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/book/eta.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -367,8 +367,8 @@ Preview the data used on this page
 </div>
 </div>
 </section>
-<section id="eta-versus-continuous-eta_cont" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="eta-versus-continuous-eta_cont"><span class="header-section-number">8.3</span> ETA versus continuous <code>[eta_cont]</code></h2>
+<section id="versus-continuous-eta_cont" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="versus-continuous-eta_cont"><span class="header-section-number">8.3</span> Versus continuous <code>[eta_cont]</code></h2>
 <p>Grouped by eta</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cont</span>(id, <span class="at">x =</span> covs, <span class="at">y =</span> etas[<span class="dv">2</span>]) <span class="sc">%&gt;%</span> </span>
@@ -396,8 +396,8 @@ Preview the data used on this page
 </div>
 </div>
 </section>
-<section id="eta-by-categorical-eta_cat" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="eta-by-categorical-eta_cat"><span class="header-section-number">8.4</span> ETA by categorical <code>[eta_cat]</code></h2>
+<section id="by-categorical-eta_cat" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="by-categorical-eta_cat"><span class="header-section-number">8.4</span> By categorical <code>[eta_cat]</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cat</span>(id, <span class="at">x =</span> <span class="st">"STUDYc//Study type"</span>, <span class="at">y =</span> etas) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -411,8 +411,8 @@ Preview the data used on this page
 </div>
 </div>
 </section>
-<section id="eta-histograms-eta_hist" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="eta-histograms-eta_hist"><span class="header-section-number">8.5</span> ETA histograms <code>[eta_hist]</code></h2>
+<section id="histograms-eta_hist" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="histograms-eta_hist"><span class="header-section-number">8.5</span> Histograms <code>[eta_hist]</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_hist</span>(id, etas, <span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -426,8 +426,9 @@ Preview the data used on this page
 </div>
 </div>
 </section>
-<section id="eta-pairs-eta_pairs" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="eta-pairs-eta_pairs"><span class="header-section-number">8.6</span> ETA pairs <code>[eta_pairs]</code></h2>
+<section id="pairs-eta_pairs" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="pairs-eta_pairs"><span class="header-section-number">8.6</span> Pairs <code>[eta_pairs]</code></h2>
+<p>See also <a href="pairs.html">Chapter&nbsp;<span>10</span></a> on making pairs plots.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_pairs</span>(id, etas) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">

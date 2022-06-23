@@ -175,32 +175,32 @@
     "text": "8.2 Data used on this page\nWe are exclusively using a data set that is one row per individual\n\n\n\n\n\n\nPreview the data used on this page\n\n\n\n\n\n\nhead(as.data.frame(id), n=3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT DV   AGE    WT   CRCL  ALB   BMI    AAG\n1 NA   1  1    1    0   0   1    1   5  0 28.03 55.16 114.45 4.40 21.67 106.36\n2 NA  17  2    2    0   0   1    1   5  0 34.67 51.74 100.54 3.88 23.85  61.79\n3 NA  33  3    3    0   0   1    1   5  0 26.24 54.84  99.05 3.84 19.43  50.10\n   SCR   AST   ALT     HT CP TAFD TAD LDOS MDV BLQ PHASE STUDY   RF 102 IPRED\n1 1.14 11.88 12.66 159.55  0    0   0    5   1   0     1     1 norm   1     0\n2 0.98 15.09 27.44 147.27  0    0   0    5   1   0     1     1 norm   1     0\n3 1.05 35.85 31.26 168.02  0    0   0    5   1   0     1     1 norm   1     0\n  CWRESI NPDE PRED RES WRES     CL     V2     KA      ETA1      ETA2      ETA3\n1      0    0    0   0    0 2.5927 40.287 1.4520 -0.075300 -0.184030 -0.095308\n2      0    0    0   0    0 1.9339 32.925 1.6044  0.024467 -0.321810 -0.340470\n3      0    0    0   0    0 3.2407 50.967 1.4195 -0.097942  0.056922  0.132150\n  DOSE STUDYc    CPc\n1    5    SAD normal\n2    5    SAD normal\n3    5    SAD normal"
   },
   {
-    "objectID": "eta.html#eta-versus-continuous-eta_cont",
-    "href": "eta.html#eta-versus-continuous-eta_cont",
+    "objectID": "eta.html#versus-continuous-eta_cont",
+    "href": "eta.html#versus-continuous-eta_cont",
     "title": "8  ETA plots",
-    "section": "8.3 ETA versus continuous [eta_cont]",
-    "text": "8.3 ETA versus continuous [eta_cont]\nGrouped by eta\n\neta_cont(id, x = covs, y = etas[2]) %>% \n  pm_grid()\n\n\n\n\n\n\n\n\n\nGrouped by covariate\n\neta_cont(id, x = covs[1], y = etas) %>% \n  pm_grid(ncol = 2)"
+    "section": "8.3 Versus continuous [eta_cont]",
+    "text": "8.3 Versus continuous [eta_cont]\nGrouped by eta\n\neta_cont(id, x = covs, y = etas[2]) %>% \n  pm_grid()\n\n\n\n\n\n\n\n\n\nGrouped by covariate\n\neta_cont(id, x = covs[1], y = etas) %>% \n  pm_grid(ncol = 2)"
   },
   {
-    "objectID": "eta.html#eta-by-categorical-eta_cat",
-    "href": "eta.html#eta-by-categorical-eta_cat",
+    "objectID": "eta.html#by-categorical-eta_cat",
+    "href": "eta.html#by-categorical-eta_cat",
     "title": "8  ETA plots",
-    "section": "8.4 ETA by categorical [eta_cat]",
-    "text": "8.4 ETA by categorical [eta_cat]\n\neta_cat(id, x = \"STUDYc//Study type\", y = etas) %>% \n  pm_grid()"
+    "section": "8.4 By categorical [eta_cat]",
+    "text": "8.4 By categorical [eta_cat]\n\neta_cat(id, x = \"STUDYc//Study type\", y = etas) %>% \n  pm_grid()"
   },
   {
-    "objectID": "eta.html#eta-histograms-eta_hist",
-    "href": "eta.html#eta-histograms-eta_hist",
+    "objectID": "eta.html#histograms-eta_hist",
+    "href": "eta.html#histograms-eta_hist",
     "title": "8  ETA plots",
-    "section": "8.5 ETA histograms [eta_hist]",
-    "text": "8.5 ETA histograms [eta_hist]\n\neta_hist(id, etas, bins = 10) %>% \n  pm_grid()"
+    "section": "8.5 Histograms [eta_hist]",
+    "text": "8.5 Histograms [eta_hist]\n\neta_hist(id, etas, bins = 10) %>% \n  pm_grid()"
   },
   {
-    "objectID": "eta.html#eta-pairs-eta_pairs",
-    "href": "eta.html#eta-pairs-eta_pairs",
+    "objectID": "eta.html#pairs-eta_pairs",
+    "href": "eta.html#pairs-eta_pairs",
     "title": "8  ETA plots",
-    "section": "8.6 ETA pairs [eta_pairs]",
-    "text": "8.6 ETA pairs [eta_pairs]\n\neta_pairs(id, etas)"
+    "section": "8.6 Pairs [eta_pairs]",
+    "text": "8.6 Pairs [eta_pairs]\nSee also Chapter 10 on making pairs plots.\n\neta_pairs(id, etas)"
   },
   {
     "objectID": "wrap.html",
@@ -263,14 +263,21 @@
     "href": "pairs.html",
     "title": "10  Pairs plots",
     "section": "",
-    "text": "This is a simple wrapper around GGally::ggpairs with some customizations that have been developed internally at Metrum over the years.\n\ncols <- c(\"WT//Weight\", \"ALB//Albumin\", \"SCR//Serum creat\")\npairs_plot(id, cols)"
+    "text": "This is a simple wrapper around GGally::ggpairs with some customizations that have been developed internally at MetrumRG over the years.\n\ncols <- c(\"WT//Weight\", \"ALB//Albumin\", \"SCR//Serum creat\")\npairs_plot(id, cols)\n\n\n\n\n\n\nFigure 10.1: General pairs plot.\n\n\n\n\nOne customization we’ve added is the annotation on the upper triangle, which is the complete.obs correlation between x and y along with the number of observations."
+  },
+  {
+    "objectID": "pairs.html#eta-pairs-plots",
+    "href": "pairs.html#eta-pairs-plots",
+    "title": "10  Pairs plots",
+    "section": "10.2 ETA pairs plots",
+    "text": "10.2 ETA pairs plots\nThere is also a function called eta_pairs() that is identical to the pairs_plot() function. This might be helpful to remember the function name but there is no difference in functionality between eta_pairs() and pairs_plot()."
   },
   {
     "objectID": "pairs.html#customized-lower-triangle",
     "href": "pairs.html#customized-lower-triangle",
     "title": "10  Pairs plots",
-    "section": "10.2 Customized lower triangle",
-    "text": "10.2 Customized lower triangle\nPass a function that customizes the scatter plots on the lower triangle. This function should accept a gg object and add a geom to it\n\nmy_lower <- function(p) {\n  p + geom_point(aes(color = STUDYc)) + \n    geom_smooth(se = FALSE, color = \"black\")\n}\n\n\npairs_plot(id, c(\"WT\", \"ALB\"), lower_plot = my_lower)"
+    "section": "10.3 Customized lower triangle",
+    "text": "10.3 Customized lower triangle\nPass a function that customizes the scatter plots on the lower triangle. This function should accept a gg object and add a geom to it\n\nmy_lower <- function(p) {\n  p + geom_point(aes(color = STUDYc)) + \n    geom_smooth(se = FALSE, color = \"black\")\n}\n\n\npairs_plot(id, c(\"WT\", \"ALB\"), lower_plot = my_lower)\n\n\n\n\n\n\nFigure 10.2: Pairs plot with customized lower triangle."
   },
   {
     "objectID": "vectorized.html",

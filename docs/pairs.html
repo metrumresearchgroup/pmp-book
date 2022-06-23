@@ -197,7 +197,7 @@ background: #00b4f1;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pairs plots</span></h1>
+      <h1 class="title"><span id="sec-pairs" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pairs plots</span></span></h1>
                       </div>
   </div>
     
@@ -294,7 +294,8 @@ background: #00b4f1;
    
   <ul>
   <li><a href="#general-pairs-plot" id="toc-general-pairs-plot" class="nav-link active" data-scroll-target="#general-pairs-plot"> <span class="header-section-number">10.1</span> General pairs plot</a></li>
-  <li><a href="#customized-lower-triangle" id="toc-customized-lower-triangle" class="nav-link" data-scroll-target="#customized-lower-triangle"> <span class="header-section-number">10.2</span> Customized lower triangle</a></li>
+  <li><a href="#eta-pairs-plots" id="toc-eta-pairs-plots" class="nav-link" data-scroll-target="#eta-pairs-plots"> <span class="header-section-number">10.2</span> ETA pairs plots</a></li>
+  <li><a href="#customized-lower-triangle" id="toc-customized-lower-triangle" class="nav-link" data-scroll-target="#customized-lower-triangle"> <span class="header-section-number">10.3</span> Customized lower triangle</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/book/pairs.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -306,22 +307,29 @@ background: #00b4f1;
 
 <section id="general-pairs-plot" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="general-pairs-plot"><span class="header-section-number">10.1</span> General pairs plot</h2>
-<p>This is a simple wrapper around <code>GGally::ggpairs</code> with some customizations that have been developed internally at Metrum over the years.</p>
+<p>This is a simple wrapper around <code>GGally::ggpairs</code> with some customizations that have been developed internally at MetrumRG over the years.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"WT//Weight"</span>, <span class="st">"ALB//Albumin"</span>, <span class="st">"SCR//Serum creat"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs_plot</span>(id, cols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-pairs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pairs_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+<figure class="figure">
+<img src="pairs_files/figure-html/fig-pairs-1.png" class="img-fluid figure-img" width="480">
+</figure>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 10.1: General pairs plot.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
+<p>One customization we’ve added is the annotation on the upper triangle, which is the <code>complete.obs</code> correlation between <code>x</code> and <code>y</code> along with the number of observations.</p>
 </section>
-<section id="customized-lower-triangle" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="customized-lower-triangle"><span class="header-section-number">10.2</span> Customized lower triangle</h2>
+<section id="eta-pairs-plots" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="eta-pairs-plots"><span class="header-section-number">10.2</span> ETA pairs plots</h2>
+<p>There is also a function called <code>eta_pairs()</code> that is identical to the <code>pairs_plot()</code> function. This might be helpful to remember the function name but there is no difference in functionality between <code>eta_pairs()</code> and <code>pairs_plot()</code>.</p>
+</section>
+<section id="customized-lower-triangle" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="customized-lower-triangle"><span class="header-section-number">10.3</span> Customized lower triangle</h2>
 <p>Pass a function that customizes the scatter plots on the lower triangle. This function should accept a gg object and add a geom to it</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_lower <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
@@ -332,10 +340,12 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs_plot</span>(id, <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"ALB"</span>), <span class="at">lower_plot =</span> my_lower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-pairs-custom-lower" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pairs_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+<figure class="figure">
+<img src="pairs_files/figure-html/fig-pairs-custom-lower-1.png" class="img-fluid figure-img" width="480">
+</figure>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 10.2: Pairs plot with customized lower triangle.</figcaption><p></p>
 </figure>
 </div>
 </div>

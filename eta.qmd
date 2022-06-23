@@ -45,7 +45,7 @@ head(as.data.frame(id), n=3)
 :::
 
 
-## ETA versus continuous `[eta_cont]`
+## Versus continuous `[eta_cont]`
 
 Grouped by eta
 
@@ -65,7 +65,7 @@ eta_cont(id, x = covs[1], y = etas) %>%
   pm_grid(ncol = 2)
 ```
 
-## ETA by categorical `[eta_cat]`
+## By categorical `[eta_cat]`
 
 ```{r}
 #| fig-width: 6
@@ -74,7 +74,7 @@ eta_cat(id, x = "STUDYc//Study type", y = etas) %>%
   pm_grid()
 ```
 
-## ETA histograms `[eta_hist]`
+## Histograms `[eta_hist]`
 
 ```{r}
 #| fig-width: 6
@@ -83,7 +83,9 @@ eta_hist(id, etas, bins = 10) %>%
   pm_grid()
 ```
 
-## ETA pairs  `[eta_pairs]`
+## Pairs  `[eta_pairs]`
+
+See also [Chapter -@sec-pairs] on making pairs plots. 
 
 ```{r}
 #| fig-width: 6
