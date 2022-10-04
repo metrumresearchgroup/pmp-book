@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.508">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -98,7 +103,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -144,9 +149,11 @@ background: #00b4f1;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">The pmplots Gallery</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -289,16 +296,16 @@ background: #00b4f1;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"> <span class="header-section-number">8.1</span> Setup</a></li>
-  <li><a href="#data-used-on-this-page" id="toc-data-used-on-this-page" class="nav-link" data-scroll-target="#data-used-on-this-page"> <span class="header-section-number">8.2</span> Data used on this page</a></li>
-  <li><a href="#versus-continuous-eta_cont" id="toc-versus-continuous-eta_cont" class="nav-link" data-scroll-target="#versus-continuous-eta_cont"> <span class="header-section-number">8.3</span> Versus continuous <code>[eta_cont]</code></a></li>
-  <li><a href="#by-categorical-eta_cat" id="toc-by-categorical-eta_cat" class="nav-link" data-scroll-target="#by-categorical-eta_cat"> <span class="header-section-number">8.4</span> By categorical <code>[eta_cat]</code></a></li>
-  <li><a href="#histograms-eta_hist" id="toc-histograms-eta_hist" class="nav-link" data-scroll-target="#histograms-eta_hist"> <span class="header-section-number">8.5</span> Histograms <code>[eta_hist]</code></a></li>
-  <li><a href="#pairs-eta_pairs" id="toc-pairs-eta_pairs" class="nav-link" data-scroll-target="#pairs-eta_pairs"> <span class="header-section-number">8.6</span> Pairs <code>[eta_pairs]</code></a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="toc-section-number">8.1</span>  Setup</a></li>
+  <li><a href="#data-used-on-this-page" id="toc-data-used-on-this-page" class="nav-link" data-scroll-target="#data-used-on-this-page"><span class="toc-section-number">8.2</span>  Data used on this page</a></li>
+  <li><a href="#versus-continuous-eta_cont" id="toc-versus-continuous-eta_cont" class="nav-link" data-scroll-target="#versus-continuous-eta_cont"><span class="toc-section-number">8.3</span>  Versus continuous <code>[eta_cont]</code></a></li>
+  <li><a href="#by-categorical-eta_cat" id="toc-by-categorical-eta_cat" class="nav-link" data-scroll-target="#by-categorical-eta_cat"><span class="toc-section-number">8.4</span>  By categorical <code>[eta_cat]</code></a></li>
+  <li><a href="#histograms-eta_hist" id="toc-histograms-eta_hist" class="nav-link" data-scroll-target="#histograms-eta_hist"><span class="toc-section-number">8.5</span>  Histograms <code>[eta_hist]</code></a></li>
+  <li><a href="#pairs-eta_pairs" id="toc-pairs-eta_pairs" class="nav-link" data-scroll-target="#pairs-eta_pairs"><span class="toc-section-number">8.6</span>  Pairs <code>[eta_pairs]</code></a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/eta.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -374,12 +381,7 @@ Preview the data used on this page
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cont</span>(id, <span class="at">x =</span> covs, <span class="at">y =</span> etas[<span class="dv">2</span>]) <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eta_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="eta_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>Grouped by covariate</p>
@@ -387,12 +389,7 @@ Preview the data used on this page
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cont</span>(id, <span class="at">x =</span> covs[<span class="dv">1</span>], <span class="at">y =</span> etas) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eta_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="eta_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section>
@@ -402,12 +399,7 @@ Preview the data used on this page
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_cat</span>(id, <span class="at">x =</span> <span class="st">"STUDYc//Study type"</span>, <span class="at">y =</span> etas) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eta_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="eta_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section>
@@ -417,12 +409,7 @@ Preview the data used on this page
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_hist</span>(id, etas, <span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eta_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="eta_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section>
@@ -432,12 +419,7 @@ Preview the data used on this page
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_pairs</span>(id, etas) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eta_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="eta_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 
@@ -447,6 +429,24 @@ Preview the data used on this page
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -496,7 +496,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);

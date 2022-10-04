@@ -4,7 +4,7 @@ toc: false
 ---
 
 <img src=pmp-hex.png align=right width=150px></img>This is a simple 
-introduction to the pmmplots package for R. I hope this will be useful for 
+introduction to the pmplots package for R. I hope this will be useful for 
 those who are new to the package and those who just need a  reminder on the 
 syntax. The goal with this package isn't to create a new grammar of graphics, 
 but rather to create a standard set of commonly-used plots in pharmacometrics 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.508">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -98,7 +103,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -144,9 +149,11 @@ background: #00b4f1;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">The pmplots Gallery</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -289,41 +296,41 @@ background: #00b4f1;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#residuals" id="toc-residuals" class="nav-link active" data-scroll-target="#residuals"> <span class="header-section-number">6.1</span> Residuals</a>
+  <li><a href="#residuals" id="toc-residuals" class="nav-link active" data-scroll-target="#residuals"><span class="toc-section-number">6.1</span>  Residuals</a>
   <ul class="collapse">
-  <li><a href="#versus-time-res_time" id="toc-versus-time-res_time" class="nav-link" data-scroll-target="#versus-time-res_time"> <span class="header-section-number">6.1.1</span> Versus TIME <code>[res_time]</code></a></li>
-  <li><a href="#versus-tafd-res_tafd" id="toc-versus-tafd-res_tafd" class="nav-link" data-scroll-target="#versus-tafd-res_tafd"> <span class="header-section-number">6.1.2</span> Versus TAFD <code>[res_tafd]</code></a></li>
-  <li><a href="#versus-tad-res_tad" id="toc-versus-tad-res_tad" class="nav-link" data-scroll-target="#versus-tad-res_tad"> <span class="header-section-number">6.1.3</span> Versus TAD <code>[res_tad]</code></a></li>
-  <li><a href="#versus-pred-res_pred" id="toc-versus-pred-res_pred" class="nav-link" data-scroll-target="#versus-pred-res_pred"> <span class="header-section-number">6.1.4</span> Versus PRED <code>[res_pred]</code></a></li>
-  <li><a href="#versus-continuous-res_cont" id="toc-versus-continuous-res_cont" class="nav-link" data-scroll-target="#versus-continuous-res_cont"> <span class="header-section-number">6.1.5</span> Versus continuous <code>[res_cont]</code></a></li>
-  <li><a href="#by-categorical-res_cat" id="toc-by-categorical-res_cat" class="nav-link" data-scroll-target="#by-categorical-res_cat"> <span class="header-section-number">6.1.6</span> By categorical <code>[res_cat]</code></a></li>
-  <li><a href="#histogram-res_hist" id="toc-histogram-res_hist" class="nav-link" data-scroll-target="#histogram-res_hist"> <span class="header-section-number">6.1.7</span> Histogram <code>[res_hist]</code></a></li>
+  <li><a href="#versus-time-res_time" id="toc-versus-time-res_time" class="nav-link" data-scroll-target="#versus-time-res_time"><span class="toc-section-number">6.1.1</span>  Versus TIME <code>[res_time]</code></a></li>
+  <li><a href="#versus-tafd-res_tafd" id="toc-versus-tafd-res_tafd" class="nav-link" data-scroll-target="#versus-tafd-res_tafd"><span class="toc-section-number">6.1.2</span>  Versus TAFD <code>[res_tafd]</code></a></li>
+  <li><a href="#versus-tad-res_tad" id="toc-versus-tad-res_tad" class="nav-link" data-scroll-target="#versus-tad-res_tad"><span class="toc-section-number">6.1.3</span>  Versus TAD <code>[res_tad]</code></a></li>
+  <li><a href="#versus-pred-res_pred" id="toc-versus-pred-res_pred" class="nav-link" data-scroll-target="#versus-pred-res_pred"><span class="toc-section-number">6.1.4</span>  Versus PRED <code>[res_pred]</code></a></li>
+  <li><a href="#versus-continuous-res_cont" id="toc-versus-continuous-res_cont" class="nav-link" data-scroll-target="#versus-continuous-res_cont"><span class="toc-section-number">6.1.5</span>  Versus continuous <code>[res_cont]</code></a></li>
+  <li><a href="#by-categorical-res_cat" id="toc-by-categorical-res_cat" class="nav-link" data-scroll-target="#by-categorical-res_cat"><span class="toc-section-number">6.1.6</span>  By categorical <code>[res_cat]</code></a></li>
+  <li><a href="#histogram-res_hist" id="toc-histogram-res_hist" class="nav-link" data-scroll-target="#histogram-res_hist"><span class="toc-section-number">6.1.7</span>  Histogram <code>[res_hist]</code></a></li>
   </ul></li>
-  <li><a href="#wres" id="toc-wres" class="nav-link" data-scroll-target="#wres"> <span class="header-section-number">6.2</span> WRES</a>
+  <li><a href="#wres" id="toc-wres" class="nav-link" data-scroll-target="#wres"><span class="toc-section-number">6.2</span>  WRES</a>
   <ul class="collapse">
-  <li><a href="#versus-time-wres_time" id="toc-versus-time-wres_time" class="nav-link" data-scroll-target="#versus-time-wres_time"> <span class="header-section-number">6.2.1</span> Versus TIME <code>[wres_time]</code></a></li>
-  <li><a href="#versus-tafd-wres_tafd" id="toc-versus-tafd-wres_tafd" class="nav-link" data-scroll-target="#versus-tafd-wres_tafd"> <span class="header-section-number">6.2.2</span> Versus TAFD <code>[wres_tafd]</code></a></li>
-  <li><a href="#versus-tad-wres_tad" id="toc-versus-tad-wres_tad" class="nav-link" data-scroll-target="#versus-tad-wres_tad"> <span class="header-section-number">6.2.3</span> Versus TAD <code>[wres_tad]</code></a></li>
-  <li><a href="#versus-pred-wres_pred" id="toc-versus-pred-wres_pred" class="nav-link" data-scroll-target="#versus-pred-wres_pred"> <span class="header-section-number">6.2.4</span> Versus PRED <code>[wres_pred]</code></a></li>
-  <li><a href="#versus-continuous-wres_cont" id="toc-versus-continuous-wres_cont" class="nav-link" data-scroll-target="#versus-continuous-wres_cont"> <span class="header-section-number">6.2.5</span> Versus continuous <code>[wres_cont]</code></a></li>
-  <li><a href="#by-categorical-wres_cat" id="toc-by-categorical-wres_cat" class="nav-link" data-scroll-target="#by-categorical-wres_cat"> <span class="header-section-number">6.2.6</span> By categorical <code>[wres_cat]</code></a></li>
-  <li><a href="#histogram-wres_hist" id="toc-histogram-wres_hist" class="nav-link" data-scroll-target="#histogram-wres_hist"> <span class="header-section-number">6.2.7</span> Histogram <code>[wres_hist]</code></a></li>
-  <li><a href="#qq-plot-wres_q" id="toc-qq-plot-wres_q" class="nav-link" data-scroll-target="#qq-plot-wres_q"> <span class="header-section-number">6.2.8</span> QQ plot <code>[wres_q]</code></a></li>
+  <li><a href="#versus-time-wres_time" id="toc-versus-time-wres_time" class="nav-link" data-scroll-target="#versus-time-wres_time"><span class="toc-section-number">6.2.1</span>  Versus TIME <code>[wres_time]</code></a></li>
+  <li><a href="#versus-tafd-wres_tafd" id="toc-versus-tafd-wres_tafd" class="nav-link" data-scroll-target="#versus-tafd-wres_tafd"><span class="toc-section-number">6.2.2</span>  Versus TAFD <code>[wres_tafd]</code></a></li>
+  <li><a href="#versus-tad-wres_tad" id="toc-versus-tad-wres_tad" class="nav-link" data-scroll-target="#versus-tad-wres_tad"><span class="toc-section-number">6.2.3</span>  Versus TAD <code>[wres_tad]</code></a></li>
+  <li><a href="#versus-pred-wres_pred" id="toc-versus-pred-wres_pred" class="nav-link" data-scroll-target="#versus-pred-wres_pred"><span class="toc-section-number">6.2.4</span>  Versus PRED <code>[wres_pred]</code></a></li>
+  <li><a href="#versus-continuous-wres_cont" id="toc-versus-continuous-wres_cont" class="nav-link" data-scroll-target="#versus-continuous-wres_cont"><span class="toc-section-number">6.2.5</span>  Versus continuous <code>[wres_cont]</code></a></li>
+  <li><a href="#by-categorical-wres_cat" id="toc-by-categorical-wres_cat" class="nav-link" data-scroll-target="#by-categorical-wres_cat"><span class="toc-section-number">6.2.6</span>  By categorical <code>[wres_cat]</code></a></li>
+  <li><a href="#histogram-wres_hist" id="toc-histogram-wres_hist" class="nav-link" data-scroll-target="#histogram-wres_hist"><span class="toc-section-number">6.2.7</span>  Histogram <code>[wres_hist]</code></a></li>
+  <li><a href="#qq-plot-wres_q" id="toc-qq-plot-wres_q" class="nav-link" data-scroll-target="#qq-plot-wres_q"><span class="toc-section-number">6.2.8</span>  QQ plot <code>[wres_q]</code></a></li>
   </ul></li>
-  <li><a href="#cwres" id="toc-cwres" class="nav-link" data-scroll-target="#cwres"> <span class="header-section-number">6.3</span> CWRES</a>
+  <li><a href="#cwres" id="toc-cwres" class="nav-link" data-scroll-target="#cwres"><span class="toc-section-number">6.3</span>  CWRES</a>
   <ul class="collapse">
-  <li><a href="#versus-tine-cwres_time" id="toc-versus-tine-cwres_time" class="nav-link" data-scroll-target="#versus-tine-cwres_time"> <span class="header-section-number">6.3.1</span> Versus TINE <code>[cwres_time]</code></a></li>
-  <li><a href="#versus-tafd-cwres_tafd" id="toc-versus-tafd-cwres_tafd" class="nav-link" data-scroll-target="#versus-tafd-cwres_tafd"> <span class="header-section-number">6.3.2</span> Versus TAFD <code>[cwres_tafd]</code></a></li>
-  <li><a href="#versus-tad-cwres_tad" id="toc-versus-tad-cwres_tad" class="nav-link" data-scroll-target="#versus-tad-cwres_tad"> <span class="header-section-number">6.3.3</span> Versus TAD <code>[cwres_tad]</code></a></li>
-  <li><a href="#versus-continuous-cwres_cont" id="toc-versus-continuous-cwres_cont" class="nav-link" data-scroll-target="#versus-continuous-cwres_cont"> <span class="header-section-number">6.3.4</span> Versus continuous <code>[cwres_cont]</code></a></li>
-  <li><a href="#by-categorical-cwres_cat" id="toc-by-categorical-cwres_cat" class="nav-link" data-scroll-target="#by-categorical-cwres_cat"> <span class="header-section-number">6.3.5</span> By categorical <code>[cwres_cat]</code></a></li>
-  <li><a href="#histogram-cwres_hist" id="toc-histogram-cwres_hist" class="nav-link" data-scroll-target="#histogram-cwres_hist"> <span class="header-section-number">6.3.6</span> Histogram <code>[cwres_hist]</code></a></li>
-  <li><a href="#versus-pred-cwres_pred" id="toc-versus-pred-cwres_pred" class="nav-link" data-scroll-target="#versus-pred-cwres_pred"> <span class="header-section-number">6.3.7</span> Versus PRED <code>[cwres_pred]</code></a></li>
-  <li><a href="#qq-plot-cwres_q" id="toc-qq-plot-cwres_q" class="nav-link" data-scroll-target="#qq-plot-cwres_q"> <span class="header-section-number">6.3.8</span> QQ plot <code>[cwres_q]</code></a></li>
+  <li><a href="#versus-tine-cwres_time" id="toc-versus-tine-cwres_time" class="nav-link" data-scroll-target="#versus-tine-cwres_time"><span class="toc-section-number">6.3.1</span>  Versus TINE <code>[cwres_time]</code></a></li>
+  <li><a href="#versus-tafd-cwres_tafd" id="toc-versus-tafd-cwres_tafd" class="nav-link" data-scroll-target="#versus-tafd-cwres_tafd"><span class="toc-section-number">6.3.2</span>  Versus TAFD <code>[cwres_tafd]</code></a></li>
+  <li><a href="#versus-tad-cwres_tad" id="toc-versus-tad-cwres_tad" class="nav-link" data-scroll-target="#versus-tad-cwres_tad"><span class="toc-section-number">6.3.3</span>  Versus TAD <code>[cwres_tad]</code></a></li>
+  <li><a href="#versus-continuous-cwres_cont" id="toc-versus-continuous-cwres_cont" class="nav-link" data-scroll-target="#versus-continuous-cwres_cont"><span class="toc-section-number">6.3.4</span>  Versus continuous <code>[cwres_cont]</code></a></li>
+  <li><a href="#by-categorical-cwres_cat" id="toc-by-categorical-cwres_cat" class="nav-link" data-scroll-target="#by-categorical-cwres_cat"><span class="toc-section-number">6.3.5</span>  By categorical <code>[cwres_cat]</code></a></li>
+  <li><a href="#histogram-cwres_hist" id="toc-histogram-cwres_hist" class="nav-link" data-scroll-target="#histogram-cwres_hist"><span class="toc-section-number">6.3.6</span>  Histogram <code>[cwres_hist]</code></a></li>
+  <li><a href="#versus-pred-cwres_pred" id="toc-versus-pred-cwres_pred" class="nav-link" data-scroll-target="#versus-pred-cwres_pred"><span class="toc-section-number">6.3.7</span>  Versus PRED <code>[cwres_pred]</code></a></li>
+  <li><a href="#qq-plot-cwres_q" id="toc-qq-plot-cwres_q" class="nav-link" data-scroll-target="#qq-plot-cwres_q"><span class="toc-section-number">6.3.8</span>  QQ plot <code>[cwres_q]</code></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/residuals.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -341,12 +348,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_time</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -355,12 +357,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_tafd</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -369,12 +366,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_tad</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -383,12 +375,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_pred</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -397,12 +384,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_cont</span>(df, <span class="at">x =</span> <span class="st">"WT//Weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 <p>This function is also vectorized in x.</p>
@@ -410,12 +392,7 @@ background: #00b4f1;
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_cont</span>(df, <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"CRCL"</span>, <span class="st">"AST"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section>
@@ -434,12 +411,7 @@ background: #00b4f1;
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_cat</span>(df, <span class="at">x =</span> <span class="st">"STUDYc//Study type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -448,12 +420,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res_hist</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -465,12 +432,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_time</span>(df) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -479,12 +441,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_tafd</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -493,12 +450,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_tad</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -507,12 +459,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_pred</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -522,12 +469,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_cont</span>(df, <span class="at">x =</span> <span class="st">"WT//Weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -536,12 +478,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_cat</span>(df, <span class="at">x =</span> <span class="st">"STUDYc//Study type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -550,12 +487,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_hist</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -564,12 +496,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_q</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -581,12 +508,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_time</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -595,12 +517,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_tafd</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -609,12 +526,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_tad</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -623,12 +535,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_cont</span>(df, <span class="at">x =</span> <span class="st">"WT//Weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 <p>Vectorized version</p>
@@ -636,12 +543,7 @@ background: #00b4f1;
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_cont</span>(df, covs) <span class="sc">%&gt;%</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section>
@@ -650,12 +552,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_cat</span>(df, <span class="at">x =</span> <span class="st">"STUDYc//Study type"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 <div class="cell">
@@ -665,12 +562,7 @@ background: #00b4f1;
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">shown =</span> <span class="cn">FALSE</span></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 <p>Vectorized version</p>
@@ -680,12 +572,7 @@ background: #00b4f1;
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"STUDYc//Study"</span>, <span class="st">"RF//Renal Function"</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -694,12 +581,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_hist</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -708,12 +590,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_pred</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -722,12 +599,7 @@ background: #00b4f1;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_q</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="residuals_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="432"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="residuals_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 
@@ -738,6 +610,24 @@ background: #00b4f1;
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -787,7 +677,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
