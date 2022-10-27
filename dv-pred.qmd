@@ -21,6 +21,25 @@ We define a variable that can be passed as `yname`, or the name of `DV`
 dv_pred(df, yname = .yname)
 ```
 
+
+### Un-fix x- and y-axis limits
+
+By default, pmplots forces the x- and y- scales to have the same limits so you 
+get a square plot. You can prevent this behavior with 
+
+```{r}
+dv_pred(df, scales = "free")
+```
+
+If you are faceting, you'll have to pass `scales="free"` to both `dv_pred()` and 
+`facet_wrap()`
+
+```{r}
+dv_pred(df, scales = "free") + facet_wrap(~RF, scales = "free")
+```
+
+
+
 ## DV versus PRED - log/log {.unnumbered .unlisted}
 
 ```{r}
@@ -45,3 +64,4 @@ dv_ipred(df, loglog = TRUE, yname = .yname)
 #| fig-width: 8
 dv_preds(df, yname = .yname) %>% pm_grid(ncol = 2)
 ```
+

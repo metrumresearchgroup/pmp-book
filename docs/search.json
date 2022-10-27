@@ -46,7 +46,7 @@
     "href": "dv-pred.html#dv-versus-pred-dv_pred",
     "title": "4  Observed vs predicted",
     "section": "4.1 DV versus PRED [dv_pred]",
-    "text": "4.1 DV versus PRED [dv_pred]\n\ndv_pred(df, yname = .yname)"
+    "text": "4.1 DV versus PRED [dv_pred]\n\ndv_pred(df, yname = .yname)\n\n\n\n\n\n4.1.1 Un-fix x- and y-axis limits\nBy default, pmplots forces the x- and y- axes to have the same limits so you get a square plot. You can prevent this behavior with\n\ndv_pred(df, scales = \"free\")\n\n\n\n\nIf you are faceting, you’ll have to pass scales=\"free\" to both dv_pred() and facet_wrap()\n\ndv_pred(df, scales = \"free\") + facet_wrap(~RF, scales = \"free\")"
   },
   {
     "objectID": "dv-pred.html#dv-versus-pred---loglog",

@@ -300,7 +300,10 @@ background: #00b4f1;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dv-versus-pred-dv_pred" id="toc-dv-versus-pred-dv_pred" class="nav-link active" data-scroll-target="#dv-versus-pred-dv_pred"><span class="toc-section-number">4.1</span>  DV versus PRED <code>[dv_pred]</code></a></li>
+  <li><a href="#dv-versus-pred-dv_pred" id="toc-dv-versus-pred-dv_pred" class="nav-link active" data-scroll-target="#dv-versus-pred-dv_pred"><span class="toc-section-number">4.1</span>  DV versus PRED <code>[dv_pred]</code></a>
+  <ul class="collapse">
+  <li><a href="#un-fix-x--and-y-axis-limits" id="toc-un-fix-x--and-y-axis-limits" class="nav-link" data-scroll-target="#un-fix-x--and-y-axis-limits"><span class="toc-section-number">4.1.1</span>  Un-fix x- and y-axis limits</a></li>
+  </ul></li>
   <li><a href="#dv-versus-ipred-dv_ipred" id="toc-dv-versus-ipred-dv_ipred" class="nav-link" data-scroll-target="#dv-versus-ipred-dv_ipred"><span class="toc-section-number">4.2</span>  DV versus IPRED <code>[dv_ipred]</code></a></li>
   <li><a href="#dv-versus-both-pred-and-ipred-dv_preds" id="toc-dv-versus-both-pred-and-ipred-dv_preds" class="nav-link" data-scroll-target="#dv-versus-both-pred-and-ipred-dv_preds"><span class="toc-section-number">4.3</span>  DV versus both PRED and IPRED <code>[dv_preds]</code></a></li>
   </ul>
@@ -327,40 +330,57 @@ background: #00b4f1;
 <p><img src="dv-pred_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
+<section id="un-fix-x--and-y-axis-limits" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="un-fix-x--and-y-axis-limits"><span class="header-section-number">4.1.1</span> Un-fix x- and y-axis limits</h3>
+<p>By default, pmplots forces the x- and y- axes to have the same limits so you get a square plot. You can prevent this behavior with</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<p>If you are faceting, you’ll have to pass <code>scales="free"</code> to both <code>dv_pred()</code> and <code>facet_wrap()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>RF, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+</section>
 </section>
 <section id="dv-versus-pred---loglog" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="dv-versus-pred---loglog">DV versus PRED - log/log</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">loglog=</span><span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">loglog=</span><span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="432"></p>
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
 <section id="dv-versus-ipred-dv_ipred" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="dv-versus-ipred-dv_ipred"><span class="header-section-number">4.2</span> DV versus IPRED <code>[dv_ipred]</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="432"></p>
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
 <section id="dv-versus-ipred---loglog" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="dv-versus-ipred---loglog">DV versus IPRED - log/log</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">loglog =</span> <span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_ipred</span>(df, <span class="at">loglog =</span> <span class="cn">TRUE</span>, <span class="at">yname =</span> .yname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="432"></p>
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
 <section id="dv-versus-both-pred-and-ipred-dv_preds" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="dv-versus-both-pred-and-ipred-dv_preds"><span class="header-section-number">4.3</span> DV versus both PRED and IPRED <code>[dv_preds]</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_preds</span>(df, <span class="at">yname =</span> .yname) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_preds</span>(df, <span class="at">yname =</span> .yname) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="dv-pred_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
+<p><img src="dv-pred_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 
