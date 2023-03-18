@@ -317,54 +317,74 @@ background: #00b4f1;
 
 <section id="general-boxplot-pm_box" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="general-boxplot-pm_box"><span class="header-section-number">12.1</span> General boxplot <code>[pm_box]</code></h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_box</span>(id, <span class="at">x =</span> <span class="st">"STUDYc"</span>, <span class="at">y =</span> <span class="st">"WT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="data-summary_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="432"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data-summary_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is also called <code>cont_cat()</code>.</p>
 </section>
 <section id="vectorized" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="vectorized">Vectorized</h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"AGE"</span>, <span class="st">"ALB"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_box</span>(id, <span class="at">x =</span> <span class="st">"STUDYc"</span>, <span class="at">y =</span> covs) <span class="sc">%&gt;%</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="data-summary_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="720"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data-summary_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="720"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="general-scatter-plot-pm_scatter" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="general-scatter-plot-pm_scatter"><span class="header-section-number">12.2</span> General scatter plot <code>[pm_scatter]</code></h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_scatter</span>(id, <span class="at">x =</span> <span class="st">"WT"</span>, <span class="at">y =</span> <span class="st">"CRCL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="data-summary_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="432"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data-summary_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is also called <code>cont_cont()</code>.</p>
 </section>
 <section id="vectorized-1" class="level2 unnumbered unlisted">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="vectorized-1">Vectorized</h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SCR"</span>, <span class="st">"AGE"</span>, <span class="st">"ALB"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_scatter</span>(id, <span class="at">x =</span> <span class="st">"WT"</span>, <span class="at">y =</span> covs) <span class="sc">%&gt;%</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="data-summary_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="720"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data-summary_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="720"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="general-histogram-cont_hist" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="general-histogram-cont_hist"><span class="header-section-number">12.3</span> General histogram <code>[cont_hist]</code></h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cont_hist</span>(id, <span class="at">x =</span> <span class="st">"WT"</span>, <span class="at">bins =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="data-summary_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="432"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data-summary_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
 </div>
 </div>
 

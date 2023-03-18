@@ -308,7 +308,7 @@ background: #00b4f1;
 
 
 <p>When we say “vectorized”, it means that you can pass in a vector of <code>x</code> or <code>y</code> and you’ll get back a list of plots</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_scatter</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  df, </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"TIME"</span>, </span>
@@ -318,32 +318,48 @@ background: #00b4f1;
 <pre><code>[[1]]</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="vectorized_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="432"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="vectorized_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 [[2]]</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="vectorized_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="432"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="vectorized_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 [[3]]</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="vectorized_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid" width="432"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="vectorized_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Note that we typically use <code>pm_grid()</code> to arrange the plots</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_scatter</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  df, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"TIME"</span>, </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"RES"</span>, <span class="st">"WRES"</span>, <span class="st">"CWRES"</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="vectorized_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="vectorized_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>pm_grid()</code> uses the excellent <code>patchwork</code> package to arrange a list of plots into some sort of grid.</p>

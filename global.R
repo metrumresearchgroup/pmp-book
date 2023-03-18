@@ -4,7 +4,7 @@ library(purrr)
 library(knitr)
 library(patchwork)
 
-opts_chunk$set(warning = FALSE, message = FALSE)
+opts_chunk$set(warning = FALSE, message = FALSE, fig.align = "center")
 
 df <- pmplots_data_obs() %>% mutate(CWRES = CWRESI)
 

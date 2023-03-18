@@ -309,11 +309,11 @@ background: #00b4f1;
 
 <p>This function will split your dataset up in “chunks” according to the columns named in <code>facets</code>. Pass the number of <code>id_per_plot</code>. The return is a list of plots covering all unique values in <code>facets</code>.</p>
 <p>In this example, we’ll just plot 9 subjects in a single plot</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dd1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, ID <span class="sc">&lt;=</span> <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Please see the <code>?dv_pred_ipred</code> help file as there are many arguments which allow you to customize the output</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred_ipred</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dd1, </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">facets =</span> <span class="st">"ID"</span>, </span>
@@ -323,7 +323,11 @@ background: #00b4f1;
 <pre><code>$`1`</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="dv-pred-ipred_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dv-pred-ipred_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Some arguments to note</p>

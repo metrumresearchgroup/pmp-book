@@ -1,6 +1,7 @@
 ---
 fig-width: 4.5
-fig-height: 4.5
+fig-height: 4
+fig-align: center
 ---
 
 ```{r setup, include = FALSE}
@@ -43,18 +44,40 @@ p
 ### Layer smooth
 
 ```{r}
+p + pm_smooth()
+```
+
+or 
+
+```{r, eval = FALSE}
 layer_s(p)
 ```
+
 
 ### Layer abline
 
 ```{r}
+p + pm_abline()
+```
+
+or 
+
+```{r, eval = FALSE}
 layer_a(p)
 ```
 
+### Layer hline
+
 ```{r}
-layer_h(cwres_time(df, add_layers = FALSE))
+p + pm_hline(2000)
 ```
+
+or
+
+```{r, eval = FALSE}
+layer_h(p, hline = 2000)
+```
+
 
 ### Drop specific layers
 
@@ -87,7 +110,7 @@ For example, change the values of argument for `geom_smooth()`
 ```{r}
 cwres_time(
   df, 
-  smooth = list(method = "loess", span = 0.1, se = TRUE)
+  smooth = list(method = "gam", se = TRUE)
 )
 ```
 
@@ -275,7 +298,6 @@ Custom breaks and limits
 a <- list(breaks = seq(0,240,48), limits = c(0,240))
 dv_time(df, xs = a)
 ```
-
 
 
 
