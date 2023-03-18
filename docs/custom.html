@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -159,7 +159,9 @@ background: #00b4f1;
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">Related</a>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Related</span>
+    </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-related">    
         <li>
     <a class="dropdown-item" href="https://metrumresearchgroup.github.io/pmt-book">
@@ -174,17 +176,17 @@ background: #00b4f1;
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumresearchgroup.github.io/pmplots"><i class="bi bi-book" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumrg.com"><i class="bi bi-globe2" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/metrumresearchgroup/pmp-book"><i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -203,7 +205,7 @@ background: #00b4f1;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Customize plots</span></h1>
+      <h1 class="title"><span id="sec-customize" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Customize plots</span></span></h1>
                       </div>
   </div>
     
@@ -211,6 +213,7 @@ background: #00b4f1;
   <div class="quarto-title-meta">
 
       
+    
       
     </div>
     
@@ -299,37 +302,38 @@ background: #00b4f1;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#latex" id="toc-latex" class="nav-link active" data-scroll-target="#latex"><span class="toc-section-number">13.1</span>  Latex</a>
+  <li><a href="#layers" id="toc-layers" class="nav-link active" data-scroll-target="#layers"><span class="toc-section-number">13.1</span>  Layers</a>
   <ul class="collapse">
-  <li><a href="#latex-in-axis-title" id="toc-latex-in-axis-title" class="nav-link" data-scroll-target="#latex-in-axis-title"><span class="toc-section-number">13.1.1</span>  Latex in axis title</a></li>
-  <li><a href="#latex-in-pairs-plot" id="toc-latex-in-pairs-plot" class="nav-link" data-scroll-target="#latex-in-pairs-plot"><span class="toc-section-number">13.1.2</span>  Latex in pairs plot</a></li>
-  <li><a href="#latex-in-wrapped-plots" id="toc-latex-in-wrapped-plots" class="nav-link" data-scroll-target="#latex-in-wrapped-plots"><span class="toc-section-number">13.1.3</span>  Latex in wrapped plots</a></li>
+  <li><a href="#layer-smooth" id="toc-layer-smooth" class="nav-link" data-scroll-target="#layer-smooth"><span class="toc-section-number">13.1.1</span>  Layer smooth</a></li>
+  <li><a href="#layer-abline" id="toc-layer-abline" class="nav-link" data-scroll-target="#layer-abline"><span class="toc-section-number">13.1.2</span>  Layer abline</a></li>
+  <li><a href="#drop-specific-layers" id="toc-drop-specific-layers" class="nav-link" data-scroll-target="#drop-specific-layers"><span class="toc-section-number">13.1.3</span>  Drop specific layers</a></li>
+  <li><a href="#drop-all-layers" id="toc-drop-all-layers" class="nav-link" data-scroll-target="#drop-all-layers"><span class="toc-section-number">13.1.4</span>  Drop all layers</a></li>
+  <li><a href="#modify-layer-specs" id="toc-modify-layer-specs" class="nav-link" data-scroll-target="#modify-layer-specs"><span class="toc-section-number">13.1.5</span>  Modify layer specs</a></li>
+  <li><a href="#extra-reference-lines-to-cwres-plots" id="toc-extra-reference-lines-to-cwres-plots" class="nav-link" data-scroll-target="#extra-reference-lines-to-cwres-plots"><span class="toc-section-number">13.1.6</span>  Extra reference lines to [C]WRES plots</a></li>
   </ul></li>
   <li><a href="#axes" id="toc-axes" class="nav-link" data-scroll-target="#axes"><span class="toc-section-number">13.2</span>  Axes</a>
   <ul class="collapse">
   <li><a href="#modify-x-axis" id="toc-modify-x-axis" class="nav-link" data-scroll-target="#modify-x-axis"><span class="toc-section-number">13.2.1</span>  Modify x-axis</a></li>
   <li><a href="#modify-y-axis" id="toc-modify-y-axis" class="nav-link" data-scroll-target="#modify-y-axis"><span class="toc-section-number">13.2.2</span>  Modify y-axis</a></li>
-  <li><a href="#flip-coordinates-when-labels-get-cramped" id="toc-flip-coordinates-when-labels-get-cramped" class="nav-link" data-scroll-target="#flip-coordinates-when-labels-get-cramped"><span class="toc-section-number">13.2.3</span>  Flip coordinates when labels get cramped</a></li>
-  <li><a href="#rotate-x-and-y-axis-labels" id="toc-rotate-x-and-y-axis-labels" class="nav-link" data-scroll-target="#rotate-x-and-y-axis-labels"><span class="toc-section-number">13.2.4</span>  Rotate x and y axis labels</a></li>
+  <li><a href="#rotate-x-and-y-axis-labels" id="toc-rotate-x-and-y-axis-labels" class="nav-link" data-scroll-target="#rotate-x-and-y-axis-labels"><span class="toc-section-number">13.2.3</span>  Rotate x and y axis labels</a></li>
+  <li><a href="#flip-coordinates-when-labels-get-cramped" id="toc-flip-coordinates-when-labels-get-cramped" class="nav-link" data-scroll-target="#flip-coordinates-when-labels-get-cramped"><span class="toc-section-number">13.2.4</span>  Flip coordinates when labels get cramped</a></li>
   <li><a href="#standard-axis-titles" id="toc-standard-axis-titles" class="nav-link" data-scroll-target="#standard-axis-titles"><span class="toc-section-number">13.2.5</span>  Standard axis titles</a></li>
   <li><a href="#log-breaks" id="toc-log-breaks" class="nav-link" data-scroll-target="#log-breaks"><span class="toc-section-number">13.2.6</span>  Log breaks</a></li>
   <li><a href="#custom-breaks" id="toc-custom-breaks" class="nav-link" data-scroll-target="#custom-breaks"><span class="toc-section-number">13.2.7</span>  Custom breaks</a></li>
   </ul></li>
-  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers"><span class="toc-section-number">13.3</span>  Layers</a>
+  <li><a href="#replicate-look-and-feel" id="toc-replicate-look-and-feel" class="nav-link" data-scroll-target="#replicate-look-and-feel"><span class="toc-section-number">13.3</span>  Replicate look and feel</a>
   <ul class="collapse">
-  <li><a href="#layer-smooth" id="toc-layer-smooth" class="nav-link" data-scroll-target="#layer-smooth"><span class="toc-section-number">13.3.1</span>  Layer smooth</a></li>
-  <li><a href="#layer-abline" id="toc-layer-abline" class="nav-link" data-scroll-target="#layer-abline"><span class="toc-section-number">13.3.2</span>  Layer abline</a></li>
-  <li><a href="#drop-extra-layers" id="toc-drop-extra-layers" class="nav-link" data-scroll-target="#drop-extra-layers"><span class="toc-section-number">13.3.3</span>  Drop extra layers</a></li>
-  <li><a href="#modify-layer-specs" id="toc-modify-layer-specs" class="nav-link" data-scroll-target="#modify-layer-specs"><span class="toc-section-number">13.3.4</span>  Modify layer specs</a></li>
-  <li><a href="#extra-reference-lines-to-cwres-plots" id="toc-extra-reference-lines-to-cwres-plots" class="nav-link" data-scroll-target="#extra-reference-lines-to-cwres-plots"><span class="toc-section-number">13.3.5</span>  Extra reference lines to [C]WRES plots</a></li>
+  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme"><span class="toc-section-number">13.3.1</span>  Theme</a></li>
+  <li><a href="#plain" id="toc-plain" class="nav-link" data-scroll-target="#plain"><span class="toc-section-number">13.3.2</span>  Plain</a></li>
+  <li><a href="#smooth" id="toc-smooth" class="nav-link" data-scroll-target="#smooth"><span class="toc-section-number">13.3.3</span>  Smooth</a></li>
+  <li><a href="#abline" id="toc-abline" class="nav-link" data-scroll-target="#abline"><span class="toc-section-number">13.3.4</span>  Abline</a></li>
+  <li><a href="#horizontal-reference-line" id="toc-horizontal-reference-line" class="nav-link" data-scroll-target="#horizontal-reference-line"><span class="toc-section-number">13.3.5</span>  Horizontal reference line</a></li>
   </ul></li>
-  <li><a href="#replicate-look-and-feel" id="toc-replicate-look-and-feel" class="nav-link" data-scroll-target="#replicate-look-and-feel"><span class="toc-section-number">13.4</span>  Replicate look and feel</a>
+  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex"><span class="toc-section-number">13.4</span>  Latex</a>
   <ul class="collapse">
-  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme"><span class="toc-section-number">13.4.1</span>  Theme</a></li>
-  <li><a href="#plain" id="toc-plain" class="nav-link" data-scroll-target="#plain"><span class="toc-section-number">13.4.2</span>  Plain</a></li>
-  <li><a href="#smooth" id="toc-smooth" class="nav-link" data-scroll-target="#smooth"><span class="toc-section-number">13.4.3</span>  Smooth</a></li>
-  <li><a href="#abline" id="toc-abline" class="nav-link" data-scroll-target="#abline"><span class="toc-section-number">13.4.4</span>  Abline</a></li>
-  <li><a href="#horizontal-reference-line" id="toc-horizontal-reference-line" class="nav-link" data-scroll-target="#horizontal-reference-line"><span class="toc-section-number">13.4.5</span>  Horizontal reference line</a></li>
+  <li><a href="#latex-in-axis-title" id="toc-latex-in-axis-title" class="nav-link" data-scroll-target="#latex-in-axis-title"><span class="toc-section-number">13.4.1</span>  Latex in axis title</a></li>
+  <li><a href="#latex-in-pairs-plot" id="toc-latex-in-pairs-plot" class="nav-link" data-scroll-target="#latex-in-pairs-plot"><span class="toc-section-number">13.4.2</span>  Latex in pairs plot</a></li>
+  <li><a href="#latex-in-wrapped-plots" id="toc-latex-in-wrapped-plots" class="nav-link" data-scroll-target="#latex-in-wrapped-plots"><span class="toc-section-number">13.4.3</span>  Latex in wrapped plots</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/custom.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -340,101 +344,163 @@ background: #00b4f1;
 
 
 
-<section id="latex" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="latex"><span class="header-section-number">13.1</span> Latex</h2>
-<section id="latex-in-axis-title" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="latex-in-axis-title"><span class="header-section-number">13.1.1</span> Latex in axis title</h3>
+<section id="layers" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="layers"><span class="header-section-number">13.1</span> Layers</h2>
+<p>“Layers” refer to different reference lines or smoothers that are added to plots by default.</p>
+<p>Layers include</p>
+<ul>
+<li>smoothing line through the data: <code>smooth</code></li>
+<li>horizontal reference lines: <code>hline</code></li>
+<li>identity lines: <code>abline</code></li>
+</ul>
+<p>For example, <code>dv_pred()</code> adds an identity line (<code>y = x</code>) for reference as well as a smoother through the data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">x =</span> <span class="st">"PRED//Concentration ($</span><span class="sc">\\</span><span class="st">mu$g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="custom_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
-</section>
-<section id="latex-in-pairs-plot" class="level3" data-number="13.1.2">
-<h3 data-number="13.1.2" class="anchored" data-anchor-id="latex-in-pairs-plot"><span class="header-section-number">13.1.2</span> Latex in pairs plot</h3>
+<p>These layers can all be customized or dropped from the plot altogether. This section shows you how to do that. We’ll work on this basic plot as well as plots that come right out of <code>pmplots</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">m =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">s =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"m//$</span><span class="sc">\\</span><span class="st">mu$"</span>, <span class="st">"s//$</span><span class="sc">\\</span><span class="st">sigma$"</span>, <span class="st">"n//$</span><span class="sc">\\</span><span class="st">nu$"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs_plot</span>(data,x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(PRED, DV))  <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">pm_theme</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="576"></p>
+<p><img src="custom_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<section id="layer-smooth" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="layer-smooth"><span class="header-section-number">13.1.1</span> Layer smooth</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layer_s</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
-<section id="latex-in-wrapped-plots" class="level3" data-number="13.1.3">
-<h3 data-number="13.1.3" class="anchored" data-anchor-id="latex-in-wrapped-plots"><span class="header-section-number">13.1.3</span> Latex in wrapped plots</h3>
+<section id="layer-abline" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="layer-abline"><span class="header-section-number">13.1.2</span> Layer abline</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"WT//Weight (kg)"</span>, <span class="st">"BMI//BMI (kg/m$^2$)"</span>, <span class="st">"SCR//SCR (g/dL)"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wrap_cont_time</span>(df, <span class="at">y =</span> y, <span class="at">use_labels=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layer_a</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="custom_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layer_h</span>(<span class="fu">cwres_time</span>(df, <span class="at">add_layers =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+</section>
+<section id="drop-specific-layers" class="level3" data-number="13.1.3">
+<h3 data-number="13.1.3" class="anchored" data-anchor-id="drop-specific-layers"><span class="header-section-number">13.1.3</span> Drop specific layers</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">smooth =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">abline =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_time</span>(df, <span class="at">hline =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">abline =</span> <span class="cn">NULL</span>, <span class="at">smooth =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+</section>
+<section id="drop-all-layers" class="level3" data-number="13.1.4">
+<h3 data-number="13.1.4" class="anchored" data-anchor-id="drop-all-layers"><span class="header-section-number">13.1.4</span> Drop all layers</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">add_layers =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+</section>
+<section id="modify-layer-specs" class="level3" data-number="13.1.5">
+<h3 data-number="13.1.5" class="anchored" data-anchor-id="modify-layer-specs"><span class="header-section-number">13.1.5</span> Modify layer specs</h3>
+<p>For example, change the values of argument for <code>geom_smooth()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_time</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  df, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="fu">list</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">span =</span> <span class="fl">0.1</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+</section>
+<section id="extra-reference-lines-to-cwres-plots" class="level3" data-number="13.1.6">
+<h3 data-number="13.1.6" class="anchored" data-anchor-id="extra-reference-lines-to-cwres-plots"><span class="header-section-number">13.1.6</span> Extra reference lines to [C]WRES plots</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_time</span>(df) <span class="sc">+</span> <span class="fu">geom_3s</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
 </section>
 <section id="axes" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="axes"><span class="header-section-number">13.2</span> Axes</h2>
+<p>You can pass lists of arguments as <code>xs</code> or <code>ys</code> to modify the x- or y-axis, respectively. These arguments get passed to <code>ggplot2::scale_x_continuous()</code> or <code>ggplot2::scale_y_continuous()</code>.</p>
 <section id="modify-x-axis" class="level3" data-number="13.2.1">
 <h3 data-number="13.2.1" class="anchored" data-anchor-id="modify-x-axis"><span class="header-section-number">13.2.1</span> Modify x-axis</h3>
+<p>To modify the x-axis of a plot, pass a list of items as the <code>xs</code> argument; these items will get passed to <code>ggplot2::scale_x_continuous()</code>.</p>
+<p>For example, to make the x-axis log transformed and modify the breaks, write</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">trans =</span> <span class="st">"log"</span>, <span class="at">breaks =</span> <span class="fu">logbr3</span>())</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xs =</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">trans =</span> <span class="st">"log"</span>, <span class="at">breaks =</span> <span class="fu">logbr3</span>())</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xs =</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="432"></p>
+<p><img src="custom_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<p>Note: that you can modify the x-axis label of a plot without modifying the scale using <code>ggplot2::xlab()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Time (years)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
 <section id="modify-y-axis" class="level3" data-number="13.2.2">
 <h3 data-number="13.2.2" class="anchored" data-anchor-id="modify-y-axis"><span class="header-section-number">13.2.2</span> Modify y-axis</h3>
+<p>To modify the y-axis of a plot, pass a list of items as the <code>ys</code> argument; these items will get passed to <code>ggplot2::scale_y_continuous()</code>.</p>
+<p>For example, to make the y-axis log transformed and modify the breaks, write</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">ys =</span> a, <span class="at">yname =</span> <span class="st">"Y-axis name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">ys =</span> a, <span class="at">yname =</span> <span class="st">"Y-axis name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="432"></p>
+<p><img src="custom_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+<p>There may also be a <code>yname</code> argument for a given plot that will let you directly change the y-axis label as in the example above.</p>
+<p>Note: that you can modify the y-axis label of a plot without modifying the scale using <code>ggplot2::ylab()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Concentration (centrigrams/gallon)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
-<section id="flip-coordinates-when-labels-get-cramped" class="level3" data-number="13.2.3">
-<h3 data-number="13.2.3" class="anchored" data-anchor-id="flip-coordinates-when-labels-get-cramped"><span class="header-section-number">13.2.3</span> Flip coordinates when labels get cramped</h3>
-<p>If this is too cramped</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cont_cat</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  id, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"BMI"</span>, <span class="st">"ALB"</span>, <span class="st">"CRCL"</span>), </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"STUDYc"</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Try this</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cont_cat</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  id, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"BMI"</span>, <span class="st">"ALB"</span>, <span class="st">"CRCL"</span>), </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"STUDYc"</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span>.x<span class="sc">+</span><span class="fu">coord_flip</span>()) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="rotate-x-and-y-axis-labels" class="level3" data-number="13.2.4">
-<h3 data-number="13.2.4" class="anchored" data-anchor-id="rotate-x-and-y-axis-labels"><span class="header-section-number">13.2.4</span> Rotate x and y axis labels</h3>
+<section id="rotate-x-and-y-axis-labels" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="rotate-x-and-y-axis-labels"><span class="header-section-number">13.2.3</span> Rotate x and y axis labels</h3>
 <section id="specify-the-angle" class="level4 unnumbered unlisted">
 <h4 class="unnumbered unlisted anchored" data-anchor-id="specify-the-angle">Specify the angle</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df) <span class="sc">+</span> <span class="fu">rot_x</span>(<span class="at">angle =</span> <span class="dv">90</span>) <span class="sc">+</span> <span class="fu">rot_y</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df) <span class="sc">+</span> <span class="fu">rot_x</span>(<span class="at">angle =</span> <span class="dv">90</span>) <span class="sc">+</span> <span class="fu">rot_y</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="432"></p>
+<p><img src="custom_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
@@ -442,91 +508,116 @@ background: #00b4f1;
 <h4 class="unnumbered unlisted anchored" data-anchor-id="rotate-to-vertical">Rotate to vertical</h4>
 <p>We are typically rotating the tick labels on the x-axis and frequently it is convenient to ask for a totally vertical rendering</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_cat</span>(df, <span class="at">x =</span> <span class="st">"STUDYc"</span>) <span class="sc">+</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CPc) <span class="sc">+</span> <span class="fu">rot_x</span>(<span class="at">vertical =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_cat</span>(df, <span class="at">x =</span> <span class="st">"STUDYc"</span>) <span class="sc">+</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CPc) <span class="sc">+</span> <span class="fu">rot_x</span>(<span class="at">vertical =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="custom_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
+</section>
+<section id="flip-coordinates-when-labels-get-cramped" class="level3" data-number="13.2.4">
+<h3 data-number="13.2.4" class="anchored" data-anchor-id="flip-coordinates-when-labels-get-cramped"><span class="header-section-number">13.2.4</span> Flip coordinates when labels get cramped</h3>
+<p>If this is too cramped</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cont_cat</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  id, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"BMI"</span>, <span class="st">"ALB"</span>, <span class="st">"CRCL"</span>), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"STUDYc"</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Try this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cont_cat</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  id, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"BMI"</span>, <span class="st">"ALB"</span>, <span class="st">"CRCL"</span>), </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"STUDYc"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span>.x<span class="sc">+</span><span class="fu">coord_flip</span>()) <span class="sc">%&gt;%</span> <span class="fu">pm_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="standard-axis-titles" class="level3" data-number="13.2.5">
 <h3 data-number="13.2.5" class="anchored" data-anchor-id="standard-axis-titles"><span class="header-section-number">13.2.5</span> Standard axis titles</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "TIME//Time {xunit}"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tad</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tad</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "TAD//Time after dose {xunit}"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tafd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tafd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "TAFD//Time after first dose {xunit}"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_res</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_res</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "RES//Residual"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_wres</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_wres</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "WRES//Weighted residual"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_cwres</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_cwres</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "CWRES//Conditional weighted residual"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_cwresi</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_cwresi</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "CWRESI//CWRES with interaction"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_npde</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_npde</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "NPDE//NPDE"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_dv</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_dv</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "DV//Observed {yname}"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_pred</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_pred</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "PRED//Population predicted {xname}"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_ipred</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_ipred</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "IPRED//Individual predicted {xname}"</code></pre>
 </div>
 </div>
 <p>You can <code>glue()</code> in information with these functions</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_time</span>(<span class="st">"hr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_time</span>(<span class="st">"hr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "TIME//Time (hr)"</code></pre>
 </div>
 </div>
 <p>Similar with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tafd</span>(<span class="st">"hr"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tad</span>(<span class="st">"hr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tafd</span>(<span class="st">"hr"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_tad</span>(<span class="st">"hr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_dv</span>(<span class="st">"ASA concentration (ng/mL)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_dv</span>(<span class="st">"ASA concentration (ng/mL)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "DV//Observed ASA concentration (ng/mL)"</code></pre>
 </div>
 </div>
 <p>Similar with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_pred</span>(<span class="st">"ASA concentration (ng/mL)"</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_ipred</span>(<span class="st">"ASA concentration (ng/mL)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_pred</span>(<span class="st">"ASA concentration (ng/mL)"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pm_axis_ipred</span>(<span class="st">"ASA concentration (ng/mL)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="log-breaks" class="level3" data-number="13.2.6">
 <h3 data-number="13.2.6" class="anchored" data-anchor-id="log-breaks"><span class="header-section-number">13.2.6</span> Log breaks</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logbr3</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logbr3</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1e-10 3e-10 1e-09 3e-09 1e-08 3e-08 1e-07 3e-07 1e-06 3e-06 1e-05 3e-05
 [13] 1e-04 3e-04 1e-03 3e-03 1e-02 3e-02 1e-01 3e-01 1e+00 3e+00 1e+01 3e+01
@@ -535,7 +626,7 @@ background: #00b4f1;
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logbr</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logbr</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1e-10 1e-09 1e-08 1e-07 1e-06 1e-05 1e-04 1e-03 1e-02 1e-01 1e+00 1e+01
 [13] 1e+02 1e+03 1e+04 1e+05 1e+06 1e+07 1e+08 1e+09 1e+10</code></pre>
@@ -546,118 +637,30 @@ background: #00b4f1;
 <h3 data-number="13.2.7" class="anchored" data-anchor-id="custom-breaks"><span class="header-section-number">13.2.7</span> Custom breaks</h3>
 <p>Default breaks</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-<p>Break every 3 days</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xby =</span> <span class="dv">72</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-<p>Custom breaks and limits</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">240</span>,<span class="dv">48</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">240</span>))</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xs =</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-</section>
-</section>
-<section id="layers" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="layers"><span class="header-section-number">13.3</span> Layers</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(PRED,DV))  <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">pm_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="layer-smooth" class="level3" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="layer-smooth"><span class="header-section-number">13.3.1</span> Layer smooth</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layer_s</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-</section>
-<section id="layer-abline" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="layer-abline"><span class="header-section-number">13.3.2</span> Layer abline</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layer_a</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layer_h</span>(<span class="fu">cwres_time</span>(df, <span class="at">add_layers =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-</section>
-<section id="drop-extra-layers" class="level3" data-number="13.3.3">
-<h3 data-number="13.3.3" class="anchored" data-anchor-id="drop-extra-layers"><span class="header-section-number">13.3.3</span> Drop extra layers</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">smooth =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">abline =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_time</span>(df, <span class="at">hline =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">abline =</span> <span class="cn">NULL</span>, <span class="at">smooth =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="custom_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="432"></p>
-</div>
-</div>
-</section>
-<section id="drop-all-extra-layers" class="level3 unnumbered unlisted">
-<h3 class="unnumbered unlisted anchored" data-anchor-id="drop-all-extra-layers">Drop all extra layers</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">add_layers =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="custom_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
-</section>
-<section id="modify-layer-specs" class="level3" data-number="13.3.4">
-<h3 data-number="13.3.4" class="anchored" data-anchor-id="modify-layer-specs"><span class="header-section-number">13.3.4</span> Modify layer specs</h3>
-<p>For example, change the values of argument for <code>geom_smooth</code></p>
+<p>Break every 3 days</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_time</span>(</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  df, </span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="fu">list</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">span =</span> <span class="fl">0.1</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xby =</span> <span class="dv">72</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="custom_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
-</section>
-<section id="extra-reference-lines-to-cwres-plots" class="level3" data-number="13.3.5">
-<h3 data-number="13.3.5" class="anchored" data-anchor-id="extra-reference-lines-to-cwres-plots"><span class="header-section-number">13.3.5</span> Extra reference lines to [C]WRES plots</h3>
+<p>Custom breaks and limits</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wres_time</span>(df) <span class="sc">+</span> <span class="fu">geom_3s</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">240</span>,<span class="dv">48</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">240</span>))</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_time</span>(df, <span class="at">xs =</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="custom_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
 </section>
 </section>
-<section id="replicate-look-and-feel" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="replicate-look-and-feel"><span class="header-section-number">13.4</span> Replicate look and feel</h2>
+<section id="replicate-look-and-feel" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="replicate-look-and-feel"><span class="header-section-number">13.3</span> Replicate look and feel</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(IPRED,DV)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -666,8 +669,8 @@ background: #00b4f1;
 <p><img src="custom_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="432"></p>
 </div>
 </div>
-<section id="theme" class="level3" data-number="13.4.1">
-<h3 data-number="13.4.1" class="anchored" data-anchor-id="theme"><span class="header-section-number">13.4.1</span> Theme</h3>
+<section id="theme" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="theme"><span class="header-section-number">13.3.1</span> Theme</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">pm_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -675,8 +678,8 @@ background: #00b4f1;
 </div>
 </div>
 </section>
-<section id="plain" class="level3" data-number="13.4.2">
-<h3 data-number="13.4.2" class="anchored" data-anchor-id="plain"><span class="header-section-number">13.4.2</span> Plain</h3>
+<section id="plain" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="plain"><span class="header-section-number">13.3.2</span> Plain</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">theme_plain</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -684,8 +687,8 @@ background: #00b4f1;
 </div>
 </div>
 </section>
-<section id="smooth" class="level3" data-number="13.4.3">
-<h3 data-number="13.4.3" class="anchored" data-anchor-id="smooth"><span class="header-section-number">13.4.3</span> Smooth</h3>
+<section id="smooth" class="level3" data-number="13.3.3">
+<h3 data-number="13.3.3" class="anchored" data-anchor-id="smooth"><span class="header-section-number">13.3.3</span> Smooth</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">pm_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -693,8 +696,8 @@ background: #00b4f1;
 </div>
 </div>
 </section>
-<section id="abline" class="level3" data-number="13.4.4">
-<h3 data-number="13.4.4" class="anchored" data-anchor-id="abline"><span class="header-section-number">13.4.4</span> Abline</h3>
+<section id="abline" class="level3" data-number="13.3.4">
+<h3 data-number="13.3.4" class="anchored" data-anchor-id="abline"><span class="header-section-number">13.3.4</span> Abline</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">pm_abline</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -702,12 +705,52 @@ background: #00b4f1;
 </div>
 </div>
 </section>
-<section id="horizontal-reference-line" class="level3" data-number="13.4.5">
-<h3 data-number="13.4.5" class="anchored" data-anchor-id="horizontal-reference-line"><span class="header-section-number">13.4.5</span> Horizontal reference line</h3>
+<section id="horizontal-reference-line" class="level3" data-number="13.3.5">
+<h3 data-number="13.3.5" class="anchored" data-anchor-id="horizontal-reference-line"><span class="header-section-number">13.3.5</span> Horizontal reference line</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(TIME,CWRES)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">pm_hline</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="custom_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="latex" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="latex"><span class="header-section-number">13.4</span> Latex</h2>
+<section id="latex-in-axis-title" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="latex-in-axis-title"><span class="header-section-number">13.4.1</span> Latex in axis title</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">x =</span> <span class="st">"PRED//Concentration ($</span><span class="sc">\\</span><span class="st">mu$g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="432"></p>
+</div>
+</div>
+</section>
+<section id="latex-in-pairs-plot" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="latex-in-pairs-plot"><span class="header-section-number">13.4.2</span> Latex in pairs plot</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">m =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">s =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"m//$</span><span class="sc">\\</span><span class="st">mu$"</span>, <span class="st">"s//$</span><span class="sc">\\</span><span class="st">sigma$"</span>, <span class="st">"n//$</span><span class="sc">\\</span><span class="st">nu$"</span>)</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs_plot</span>(data,x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+</section>
+<section id="latex-in-wrapped-plots" class="level3" data-number="13.4.3">
+<h3 data-number="13.4.3" class="anchored" data-anchor-id="latex-in-wrapped-plots"><span class="header-section-number">13.4.3</span> Latex in wrapped plots</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"WT//Weight (kg)"</span>, <span class="st">"BMI//BMI (kg/m$^2$)"</span>, <span class="st">"SCR//SCR (g/dL)"</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wrap_cont_time</span>(df, <span class="at">y =</span> y, <span class="at">use_labels=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="custom_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -757,7 +800,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -793,24 +853,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

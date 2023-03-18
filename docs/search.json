@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "The pmplots Gallery",
     "section": "",
-    "text": "This is truly intended to be a Gallery. In some chapters, you will see a great deal of repetion in plots (like CWRES versus TIME, WRES versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions available in the package. One exception to this is the page on customization. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.\nYou can find documentation for pmplots here.\n\nSource\nThe pmtables package is maintained here. The code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmplots\")\n\n[1] '0.3.5.9000'\n\ndate()\n\n[1] \"Tue Oct  4 08:13:21 2022\""
+    "text": "This is a simple introduction to the pmplots package for R. I hope this will be useful for those who are new to the package and those who just need a reminder on the syntax. The goal with this package isn’t to create a new grammar of graphics, but rather to create a standard set of commonly-used plots in pharmacometrics analyses.\nThis is truly intended to be a Gallery. In some chapters, you will see a great deal of repetion in plots (like CWRES versus TIME, WRES versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions available in the package. One exception to this is the page on customization. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.\nYou can find documentation for pmplots here.\n\nSource\nThe pmtables package is maintained here. The code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmplots\")\n\n[1] '0.3.6'\n\ndate()\n\n[1] \"Sat Mar 18 08:18:33 2023\""
   },
   {
     "objectID": "quick-start.html",
     "href": "quick-start.html",
     "title": "2  Quick start",
     "section": "",
-    "text": "pmplots is a package for R to make simple, standardized plots in a pharmacometric data analysis environment. The goal with this package isn’t to create a new grammar of graphics, but rather to create a standard set of commonly-used plots in pharmacometrics analyses.\nThis quick start chapter is meant to give you a brief orientation about how pmplots works. A more complete treatment is given in subsequent chapters."
+    "text": "3 Diagnostic plots\npmplots generates a host of residual diagnostics and similar plots (e.g.  NPDE)\nConditional weighted residuals versus time\nResiduals versus population predicted value\nNPDE boxplots in each study\nHistogram of weighted residuals\nWith output\nDiagnostic plots can be vectorized, getting returned in a list. Pass the list to pm_grid() to arrange them\npmplots also makes plots for exploratory graphics.\nWe can look at continuous covariates by another categorical covariate\nOr correlations between continuous covariates\nYou might have noticed a special syntax that we’ve used in some of the previous plots. For example\nHere we are using col-label syntax. This is just a compact way to pass both the name of the column to plot and a more formal axis title. col-label are delimited (by default) by //\nAfter parsing, the left hand side is column name and the right hand side is the axis title.\nIt’s ok to just pass the left hand side too\nHere the axis title is just the column name.\nAxis titles can also contain a subset of TeX syntax that gets parsed by the latex2exp package\nFor example"
   },
   {
     "objectID": "quick-start.html#basic-idea",
@@ -21,25 +21,11 @@
     "text": "2.1 Basic idea\nThe most basic functionality provided by pmplots is a set of functions which accept data frame with standardized names and returns a single plot.\nWe will load some example data from the package to illustrate. This is a data set that is similar to what we usually have after a NONMEM estimation run\n\ndata <- pmplots::pmplots_data_obs()\nhead(as.data.frame(data), n = 3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT      DV   AGE    WT   CRCL ALB   BMI\n1 NA   2  1    1 0.61   1   2    0  NA  61.005 28.03 55.16 114.45 4.4 21.67\n2 NA   3  1    1 1.15   1   2    0  NA  90.976 28.03 55.16 114.45 4.4 21.67\n3 NA   4  1    1 1.73   1   2    0  NA 122.210 28.03 55.16 114.45 4.4 21.67\n     AAG  SCR   AST   ALT     HT CP TAFD  TAD LDOS MDV BLQ PHASE STUDY   RF 102\n1 106.36 1.14 11.88 12.66 159.55  0 0.61 0.61    5   0   0     1     1 norm   1\n2 106.36 1.14 11.88 12.66 159.55  0 1.15 1.15    5   0   0     1     1 norm   1\n3 106.36 1.14 11.88 12.66 159.55  0 1.73 1.73    5   0   0     1     1 norm   1\n   IPRED    CWRESI     NPDE   PRED      RES     WRES     CL     V2    KA\n1 69.502 -0.621370 -0.62293 60.886  0.11865 -0.56749 2.5927 40.287 1.452\n2 91.230  0.089509  0.27064 78.945 12.03100  0.13248 2.5927 40.287 1.452\n3 97.076  1.598600  1.55480 83.523 38.68700  1.62720 2.5927 40.287 1.452\n     ETA1     ETA2      ETA3 DOSE STUDYc    CPc     CWRES\n1 -0.0753 -0.18403 -0.095308    5    SAD normal -0.621370\n2 -0.0753 -0.18403 -0.095308    5    SAD normal  0.089509\n3 -0.0753 -0.18403 -0.095308    5    SAD normal  1.598600\n\n\nAnother data set is based on data in the previous code chunk, but subset to just one record per individual\n\nid <- pmplots::pmplots_data_id()\n\nSome of the “standard” column names include\n\nID\nTIME\nNPDE\nPRED\nETA1\n\nWe frequently see these names in NONMEM output and pmplots is set up to take advantage of this.\nSo to create a plot of DV (observed data points) versus PRED (population predictions) we call dv_pred()\n\ndv_pred(data)\n\n\n\n\nThis default plot has the following features\n\nThe x- and y-axes are forced to have the same limits\nThere is reference line at x = y\nThere is a loess smooth through the data points\n\nThe idea is to create a simple, standardized plot with only minimal code. Of course, there are ways to customize this plot\n\ndv_pred(data, yname = \"concentration (ng/mL)\", smooth = NULL)\n\n\n\n\nThese functions return gg objects so you can also continue to customize the plot as you normally would with ggplot2\n\ndv_pred(data) + \n  facet_wrap(~STUDYc) + \n  ggtitle(\"DV versus PRED\")\n\n\n\n\nOther plots including DV, PRED and IPRED include\n\ndv_time() (DV vs TIME)\ndv_ipred() (DV vs IPRED)\ndv_preds() (DV vs both PRED and IPRED)"
   },
   {
-    "objectID": "col-label.html",
-    "href": "col-label.html",
-    "title": "3  col - label specification",
-    "section": "",
-    "text": "This is a way to specify the column name for source data along with the axis label\nWhen only the column is given, then the column name will be used for the column title:"
-  },
-  {
     "objectID": "col-label.html#generate-using-the-yspec-package",
     "href": "col-label.html#generate-using-the-yspec-package",
     "title": "3  col - label specification",
     "section": "3.1 Generate using the yspec package",
     "text": "3.1 Generate using the yspec package\nYou can also pull col//title data from a yspec object. Load the yspec package and generate an example data specification object\n\nlibrary(yspec)\nspec <- ys_help$spec()\n\nTypically, you’ll want to select a subset of columns and then call axis_col_labs()\n\nspec %>% \n  ys_select(WT, AGE, BMI) %>% \n  axis_col_labs()\n\n                WT                AGE                BMI \n \"WT//weight (kg)\" \"AGE//age (years)\" \"BMI//BMI (m2/kg)\""
-  },
-  {
-    "objectID": "dv-pred.html",
-    "href": "dv-pred.html",
-    "title": "4  Observed vs predicted",
-    "section": "",
-    "text": "We define a variable that can be passed as yname, or the name of DV"
   },
   {
     "objectID": "dv-pred.html#dv-versus-pred-dv_pred",
@@ -81,14 +67,14 @@
     "href": "dv-pred-ipred.html",
     "title": "5  dv-pred-ipred",
     "section": "",
-    "text": "In this example, we’ll just plot 9 subjects in a single plot\n\ndd1 <- filter(df, ID <= 9)\n\nPlease see the ?dv_pred_ipred help file as there are many arguments which allow you to customize the output\n\ndv_pred_ipred(\n  dd1, \n  facets = \"ID\", \n  id_per_plot = 9\n)\n\n$`1`\n\n\n\n\n\nSome arguments to note\n\nlog_y - log transformed y-axis\nangle - for rotating x-axis tick labels\nxlab - x-axis title\nylab - y-axis title\nnrow - for arranging facets on a page\nncol - for arranging facets on a page\nfun - a function which modifies every plot in the output list\n\nThere are also a whole series of arguments for configuring the points and lines on the plot for DV, PRED and IPRED."
+    "text": "This function will split your dataset up in “chunks” according to the columns named in facets. Pass the number of id_per_plot. The return is a list of plots covering all unique values in facets.\nIn this example, we’ll just plot 9 subjects in a single plot\n\ndd1 <- filter(df, ID <= 9)\n\nPlease see the ?dv_pred_ipred help file as there are many arguments which allow you to customize the output\n\ndv_pred_ipred(\n  dd1, \n  facets = \"ID\", \n  id_per_plot = 9\n)\n\n$`1`\n\n\n\n\n\nSome arguments to note\n\nlog_y - log transformed y-axis\nangle - for rotating x-axis tick labels\nxlab - x-axis title\nylab - y-axis title\nnrow - for arranging facets on a page\nncol - for arranging facets on a page\nfun - a function which modifies every plot in the output list\n\nThere are also a whole series of arguments for configuring the points and lines on the plot for DV, PRED and IPRED."
   },
   {
-    "objectID": "residuals.html",
-    "href": "residuals.html",
+    "objectID": "residuals.html#residuals",
+    "href": "residuals.html#residuals",
     "title": "6  Residual plots",
-    "section": "",
-    "text": "res_time(df)\n\n\n\n\n\n\n\n\nres_tafd(df)\n\n\n\n\n\n\n\n\nres_tad(df)\n\n\n\n\n\n\n\n\nres_pred(df)\n\n\n\n\n\n\n\n\nres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\nThis function is also vectorized in x.\n\nres_cont(df, c(\"WT\", \"CRCL\", \"AST\")) %>% \n  pm_grid()\n\n\n\n\n\n\n\n\ndplyr::count(df, STUDYc)\n\n# A tibble: 4 × 2\n  STUDYc      n\n  <fct>   <int>\n1 SAD       424\n2 MAD      1199\n3 Renal     960\n4 Hepatic   559\n\nres_cat(df, x = \"STUDYc//Study type\")\n\n\n\n\n\n\n\n\nres_hist(df)"
+    "section": "6.1 Residuals",
+    "text": "6.1 Residuals\n\n6.1.1 Versus TIME [res_time]\n\nres_time(df)\n\n\n\n\n\n\n6.1.2 Versus TAFD [res_tafd]\n\nres_tafd(df)\n\n\n\n\n\n\n6.1.3 Versus TAD [res_tad]\n\nres_tad(df)\n\n\n\n\n\n\n6.1.4 Versus PRED [res_pred]\n\nres_pred(df)\n\n\n\n\n\n\n6.1.5 Versus continuous [res_cont]\n\nres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\nThis function is also vectorized in x.\n\nres_cont(df, c(\"WT\", \"CRCL\", \"AST\")) %>% \n  pm_grid()\n\n\n\n\n\n\n6.1.6 By categorical [res_cat]\n\ndplyr::count(df, STUDYc)\n\n# A tibble: 4 × 2\n  STUDYc      n\n  <fct>   <int>\n1 SAD       424\n2 MAD      1199\n3 Renal     960\n4 Hepatic   559\n\nres_cat(df, x = \"STUDYc//Study type\")\n\n\n\n\n\n\n6.1.7 Histogram [res_hist]\n\nres_hist(df)"
   },
   {
     "objectID": "residuals.html#wres",
@@ -105,11 +91,11 @@
     "text": "6.3 CWRES\n\n6.3.1 Versus TINE [cwres_time]\n\ncwres_time(df)\n\n\n\n\n\n\n6.3.2 Versus TAFD [cwres_tafd]\n\ncwres_tafd(df)\n\n\n\n\n\n\n6.3.3 Versus TAD [cwres_tad]\n\ncwres_tad(df)\n\n\n\n\n\n\n6.3.4 Versus continuous [cwres_cont]\n\ncwres_cont(df, x = \"WT//Weight (kg)\")\n\n\n\n\nVectorized version\n\ncwres_cont(df, covs) %>% \n  pm_grid(ncol = 2)\n\n\n\n\n\n\n6.3.5 By categorical [cwres_cat]\n\ncwres_cat(df, x = \"STUDYc//Study type\") \n\n\n\n\n\ncwres_cat(\n  df, \n  x = \"STUDYc//Study type\", \n  shown = FALSE\n)\n\n\n\n\nVectorized version\n\ncwres_cat(\n  df, \n  x = c(\"STUDYc//Study\", \"RF//Renal Function\")\n) %>% pm_grid()\n\n\n\n\n\n\n6.3.6 Histogram [cwres_hist]\n\ncwres_hist(df)\n\n\n\n\n\n\n6.3.7 Versus PRED [cwres_pred]\n\ncwres_pred(df)\n\n\n\n\n\n\n6.3.8 QQ plot [cwres_q]\n\ncwres_q(df)"
   },
   {
-    "objectID": "npde.html",
-    "href": "npde.html",
+    "objectID": "npde.html#versus-time-npde_time",
+    "href": "npde.html#versus-time-npde_time",
     "title": "7  NPDE plots",
-    "section": "",
-    "text": "npde_time(df)"
+    "section": "7.1 Versus TIME [npde_time]",
+    "text": "7.1 Versus TIME [npde_time]\n\nnpde_time(df)"
   },
   {
     "objectID": "npde.html#versus-tad-npde_tad",
@@ -161,11 +147,11 @@
     "text": "7.8 Histogram [npde_hist]\n\nnpde_hist(df)"
   },
   {
-    "objectID": "eta.html",
-    "href": "eta.html",
+    "objectID": "eta.html#setup",
+    "href": "eta.html#setup",
     "title": "8  ETA plots",
-    "section": "",
-    "text": "We start by defining a set of ETAs to use in the plots.\n\netas <- c(\n  \"ETA1//ETA-CL\", \n  \"ETA2//ETA-V2\", \n  \"ETA3//ETA-KA\"\n)\n\nThis is in the col-label format described earlier. We also set out a set of covariates that we can use for ETA diagnostics.\n\ncovs <- c(\n  \"WT//Weight (kg)\", \n  \"ALB//Albumin (g/dL)\", \n  \"SCR//Creatinine (mg/dL)\"\n)"
+    "section": "8.1 Setup",
+    "text": "8.1 Setup\nWe start by defining a set of ETAs to use in the plots.\n\netas <- c(\n  \"ETA1//ETA-CL\", \n  \"ETA2//ETA-V2\", \n  \"ETA3//ETA-KA\"\n)\n\nThis is in the col-label format described earlier. We also set out a set of covariates that we can use for ETA diagnostics.\n\ncovs <- c(\n  \"WT//Weight (kg)\", \n  \"ALB//Albumin (g/dL)\", \n  \"SCR//Creatinine (mg/dL)\"\n)"
   },
   {
     "objectID": "eta.html#data-used-on-this-page",
@@ -203,11 +189,11 @@
     "text": "8.6 Pairs [eta_pairs]\nSee also Chapter 10 on making pairs plots.\n\neta_pairs(id, etas)"
   },
   {
-    "objectID": "wrap.html",
-    "href": "wrap.html",
+    "objectID": "wrap.html#setup",
+    "href": "wrap.html#setup",
     "title": "9  Wrapped plots",
-    "section": "",
-    "text": "Wrapped plots are like the other standardized plots we have seen in the gallery so far, but they allow for a simple faceting using ggplot2::facet_wrap().\n\n\n\n\n\n\nPreview the data used on this page\n\n\n\n\n\nThe data are identical to the data used for the other series of plots and do not require any special configuration.\n\nhead(as.data.frame(df), n=3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT      DV   AGE    WT   CRCL ALB   BMI\n1 NA   2  1    1 0.61   1   2    0  NA  61.005 28.03 55.16 114.45 4.4 21.67\n2 NA   3  1    1 1.15   1   2    0  NA  90.976 28.03 55.16 114.45 4.4 21.67\n3 NA   4  1    1 1.73   1   2    0  NA 122.210 28.03 55.16 114.45 4.4 21.67\n     AAG  SCR   AST   ALT     HT CP TAFD  TAD LDOS MDV BLQ PHASE STUDY   RF 102\n1 106.36 1.14 11.88 12.66 159.55  0 0.61 0.61    5   0   0     1     1 norm   1\n2 106.36 1.14 11.88 12.66 159.55  0 1.15 1.15    5   0   0     1     1 norm   1\n3 106.36 1.14 11.88 12.66 159.55  0 1.73 1.73    5   0   0     1     1 norm   1\n   IPRED    CWRESI     NPDE   PRED      RES     WRES     CL     V2    KA\n1 69.502 -0.621370 -0.62293 60.886  0.11865 -0.56749 2.5927 40.287 1.452\n2 91.230  0.089509  0.27064 78.945 12.03100  0.13248 2.5927 40.287 1.452\n3 97.076  1.598600  1.55480 83.523 38.68700  1.62720 2.5927 40.287 1.452\n     ETA1     ETA2      ETA3 DOSE STUDYc    CPc     CWRES\n1 -0.0753 -0.18403 -0.095308    5    SAD normal -0.621370\n2 -0.0753 -0.18403 -0.095308    5    SAD normal  0.089509\n3 -0.0753 -0.18403 -0.095308    5    SAD normal  1.598600"
+    "section": "9.1 Setup",
+    "text": "9.1 Setup\nWrapped plots are like the other standardized plots we have seen in the gallery so far, but they allow for a simple faceting using ggplot2::facet_wrap().\n\n\n\n\n\n\nPreview the data used on this page\n\n\n\n\n\nThe data are identical to the data used for the other series of plots and do not require any special configuration.\n\nhead(as.data.frame(df), n=3)\n\n   C NUM ID SUBJ TIME SEQ CMT EVID AMT      DV   AGE    WT   CRCL ALB   BMI\n1 NA   2  1    1 0.61   1   2    0  NA  61.005 28.03 55.16 114.45 4.4 21.67\n2 NA   3  1    1 1.15   1   2    0  NA  90.976 28.03 55.16 114.45 4.4 21.67\n3 NA   4  1    1 1.73   1   2    0  NA 122.210 28.03 55.16 114.45 4.4 21.67\n     AAG  SCR   AST   ALT     HT CP TAFD  TAD LDOS MDV BLQ PHASE STUDY   RF 102\n1 106.36 1.14 11.88 12.66 159.55  0 0.61 0.61    5   0   0     1     1 norm   1\n2 106.36 1.14 11.88 12.66 159.55  0 1.15 1.15    5   0   0     1     1 norm   1\n3 106.36 1.14 11.88 12.66 159.55  0 1.73 1.73    5   0   0     1     1 norm   1\n   IPRED    CWRESI     NPDE   PRED      RES     WRES     CL     V2    KA\n1 69.502 -0.621370 -0.62293 60.886  0.11865 -0.56749 2.5927 40.287 1.452\n2 91.230  0.089509  0.27064 78.945 12.03100  0.13248 2.5927 40.287 1.452\n3 97.076  1.598600  1.55480 83.523 38.68700  1.62720 2.5927 40.287 1.452\n     ETA1     ETA2      ETA3 DOSE STUDYc    CPc     CWRES\n1 -0.0753 -0.18403 -0.095308    5    SAD normal -0.621370\n2 -0.0753 -0.18403 -0.095308    5    SAD normal  0.089509\n3 -0.0753 -0.18403 -0.095308    5    SAD normal  1.598600"
   },
   {
     "objectID": "wrap.html#histogram",
@@ -259,11 +245,11 @@
     "text": "9.8 Use labels in the strip\n\nwrap_eta_cont(\n  df, \n  y = \"ETA1\", \n  x = c(\"WT//Weight (kg)\", \"ALB//Albumin (g/dL)\"),\n  scales = \"free_x\", \n  use_labels = TRUE\n)"
   },
   {
-    "objectID": "pairs.html",
-    "href": "pairs.html",
+    "objectID": "pairs.html#general-pairs-plot",
+    "href": "pairs.html#general-pairs-plot",
     "title": "10  Pairs plots",
-    "section": "",
-    "text": "This is a simple wrapper around GGally::ggpairs with some customizations that have been developed internally at MetrumRG over the years.\n\ncols <- c(\"WT//Weight\", \"ALB//Albumin\", \"SCR//Serum creat\")\npairs_plot(id, cols)\n\n\n\n\n\n\n\n\nOne customization we’ve added is the annotation on the upper triangle, which is the complete.obs correlation between x and y along with the number of observations."
+    "section": "10.1 General pairs plot",
+    "text": "10.1 General pairs plot\nThis is a simple wrapper around GGally::ggpairs with some customizations that have been developed internally at MetrumRG over the years.\n\ncols <- c(\"WT//Weight\", \"ALB//Albumin\", \"SCR//Serum creat\")\npairs_plot(id, cols)\n\n\n\n\nOne customization we’ve added is the annotation on the upper triangle, which is the complete.obs correlation between x and y along with the number of observations."
   },
   {
     "objectID": "pairs.html#eta-pairs-plots",
@@ -284,14 +270,14 @@
     "href": "vectorized.html",
     "title": "11  Vectorized plots",
     "section": "",
-    "text": "pm_scatter(\n  df, \n  x = \"TIME\", \n  y = c(\"RES\", \"WRES\", \"CWRES\")\n)\n\n[[1]]\n\n\n\n\n\n\n[[2]]\n\n\n\n\n\n\n[[3]]\n\n\n\n\n\nNote that we typically use pm_grid() to arrange the plots\n\npm_scatter(\n  df, \n  x = \"TIME\", \n  y = c(\"RES\", \"WRES\", \"CWRES\")\n) %>% pm_grid(ncol = 2)\n\n\n\n\npm_grid() uses the excellent patchwork package to arrange a list of plots into some sort of grid."
+    "text": "When we say “vectorized”, it means that you can pass in a vector of x or y and you’ll get back a list of plots\n\npm_scatter(\n  df, \n  x = \"TIME\", \n  y = c(\"RES\", \"WRES\", \"CWRES\")\n)\n\n[[1]]\n\n\n\n\n\n\n[[2]]\n\n\n\n\n\n\n[[3]]\n\n\n\n\n\nNote that we typically use pm_grid() to arrange the plots\n\npm_scatter(\n  df, \n  x = \"TIME\", \n  y = c(\"RES\", \"WRES\", \"CWRES\")\n) %>% pm_grid(ncol = 2)\n\n\n\n\npm_grid() uses the excellent patchwork package to arrange a list of plots into some sort of grid."
   },
   {
-    "objectID": "data-summary.html",
-    "href": "data-summary.html",
+    "objectID": "data-summary.html#general-boxplot-pm_box",
+    "href": "data-summary.html#general-boxplot-pm_box",
     "title": "12  Data summary",
-    "section": "",
-    "text": "pm_box(id, x = \"STUDYc\", y = \"WT\")\n\n\n\n\nThis is also called cont_cat()."
+    "section": "12.1 General boxplot [pm_box]",
+    "text": "12.1 General boxplot [pm_box]\n\npm_box(id, x = \"STUDYc\", y = \"WT\")\n\n\n\n\nThis is also called cont_cat()."
   },
   {
     "objectID": "data-summary.html#vectorized",
@@ -322,31 +308,31 @@
     "text": "12.3 General histogram [cont_hist]\n\ncont_hist(id, x = \"WT\", bins = 20)"
   },
   {
-    "objectID": "custom.html",
-    "href": "custom.html",
+    "objectID": "custom.html#layers",
+    "href": "custom.html#layers",
     "title": "13  Customize plots",
-    "section": "",
-    "text": "dv_pred(df, x = \"PRED//Concentration ($\\\\mu$g)\")\n\n\n\n\n\n\n\n\ndata <- data.frame(\n  m = rnorm(100), \n  s = rnorm(100), \n  n = rnorm(100)\n)\n\nx <- c(\"m//$\\\\mu$\", \"s//$\\\\sigma$\", \"n//$\\\\nu$\")\n\npairs_plot(data,x)\n\n\n\n\n\n\n\n\ny <- c(\"WT//Weight (kg)\", \"BMI//BMI (kg/m$^2$)\", \"SCR//SCR (g/dL)\")\n\nwrap_cont_time(df, y = y, use_labels=TRUE)"
+    "section": "13.1 Layers",
+    "text": "13.1 Layers\n“Layers” refer to different reference lines or smoothers that are added to plots by default.\nLayers include\n\nsmoothing line through the data: smooth\nhorizontal reference lines: hline\nidentity lines: abline\n\nFor example, dv_pred() adds an identity line (y = x) for reference as well as a smoother through the data\n\ndv_pred(df)\n\n\n\n\nThese layers can all be customized or dropped from the plot altogether. This section shows you how to do that. We’ll work on this basic plot as well as plots that come right out of pmplots.\n\np <- ggplot(df, aes(PRED, DV))  + geom_point() + pm_theme()\np\n\n\n\n\n\n13.1.1 Layer smooth\n\nlayer_s(p)\n\n\n\n\n\n\n13.1.2 Layer abline\n\nlayer_a(p)\n\n\n\n\n\nlayer_h(cwres_time(df, add_layers = FALSE))\n\n\n\n\n\n\n13.1.3 Drop specific layers\n\ndv_pred(df, smooth = NULL)\n\n\n\n\n\ndv_pred(df, abline = NULL)\n\n\n\n\n\ncwres_time(df, hline = NULL)\n\n\n\n\n\ndv_pred(df, abline = NULL, smooth = NULL)\n\n\n\n\n\n\n13.1.4 Drop all layers\n\ndv_pred(df, add_layers = FALSE)\n\n\n\n\n\n\n13.1.5 Modify layer specs\nFor example, change the values of argument for geom_smooth()\n\ncwres_time(\n  df, \n  smooth = list(method = \"loess\", span = 0.1, se = TRUE)\n)\n\n\n\n\n\n\n13.1.6 Extra reference lines to [C]WRES plots\n\nwres_time(df) + geom_3s()"
   },
   {
     "objectID": "custom.html#axes",
     "href": "custom.html#axes",
     "title": "13  Customize plots",
     "section": "13.2 Axes",
-    "text": "13.2 Axes\n\n13.2.1 Modify x-axis\n\na <- list(trans = \"log\", breaks = logbr3())\n\ndv_time(df, xs = a)\n\n\n\n\n\n\n13.2.2 Modify y-axis\n\ndv_time(df, ys = a, yname = \"Y-axis name\")\n\n\n\n\n\n\n13.2.3 Flip coordinates when labels get cramped\nIf this is too cramped\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% pm_grid()\n\n\n\n\nTry this\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% map(~.x+coord_flip()) %>% pm_grid()\n\n\n\n\n\n\n13.2.4 Rotate x and y axis labels\n\nSpecify the angle\n\ndv_pred(df) + rot_x(angle = 90) + rot_y()\n\n\n\n\n\n\nRotate to vertical\nWe are typically rotating the tick labels on the x-axis and frequently it is convenient to ask for a totally vertical rendering\n\ncwres_cat(df, x = \"STUDYc\") + \n  facet_wrap(~CPc) + rot_x(vertical = TRUE)\n\n\n\n\n\n\n\n13.2.5 Standard axis titles\n\npm_axis_time()\n\n[1] \"TIME//Time {xunit}\"\n\npm_axis_tad()\n\n[1] \"TAD//Time after dose {xunit}\"\n\npm_axis_tafd()\n\n[1] \"TAFD//Time after first dose {xunit}\"\n\npm_axis_res()\n\n[1] \"RES//Residual\"\n\npm_axis_wres()\n\n[1] \"WRES//Weighted residual\"\n\npm_axis_cwres()\n\n[1] \"CWRES//Conditional weighted residual\"\n\npm_axis_cwresi()\n\n[1] \"CWRESI//CWRES with interaction\"\n\npm_axis_npde()\n\n[1] \"NPDE//NPDE\"\n\npm_axis_dv()\n\n[1] \"DV//Observed {yname}\"\n\npm_axis_pred()\n\n[1] \"PRED//Population predicted {xname}\"\n\npm_axis_ipred()\n\n[1] \"IPRED//Individual predicted {xname}\"\n\n\nYou can glue() in information with these functions\n\npm_axis_time(\"hr\")\n\n[1] \"TIME//Time (hr)\"\n\n\nSimilar with\n\npm_axis_tafd(\"hr\")\npm_axis_tad(\"hr\")\n\nAnd\n\npm_axis_dv(\"ASA concentration (ng/mL)\")\n\n[1] \"DV//Observed ASA concentration (ng/mL)\"\n\n\nSimilar with\n\npm_axis_pred(\"ASA concentration (ng/mL)\")\npm_axis_ipred(\"ASA concentration (ng/mL)\")\n\n\n\n13.2.6 Log breaks\n\nlogbr3()\n\n [1] 1e-10 3e-10 1e-09 3e-09 1e-08 3e-08 1e-07 3e-07 1e-06 3e-06 1e-05 3e-05\n[13] 1e-04 3e-04 1e-03 3e-03 1e-02 3e-02 1e-01 3e-01 1e+00 3e+00 1e+01 3e+01\n[25] 1e+02 3e+02 1e+03 3e+03 1e+04 3e+04 1e+05 3e+05 1e+06 3e+06 1e+07 3e+07\n[37] 1e+08 3e+08 1e+09 3e+09 1e+10 3e+10\n\n\n\nlogbr()\n\n [1] 1e-10 1e-09 1e-08 1e-07 1e-06 1e-05 1e-04 1e-03 1e-02 1e-01 1e+00 1e+01\n[13] 1e+02 1e+03 1e+04 1e+05 1e+06 1e+07 1e+08 1e+09 1e+10\n\n\n\n\n13.2.7 Custom breaks\nDefault breaks\n\ndv_time(df)\n\n\n\n\nBreak every 3 days\n\ndv_time(df, xby = 72)\n\n\n\n\nCustom breaks and limits\n\na <- list(breaks = seq(0,240,48), limits = c(0,240))\ndv_time(df, xs = a)"
-  },
-  {
-    "objectID": "custom.html#layers",
-    "href": "custom.html#layers",
-    "title": "13  Customize plots",
-    "section": "13.3 Layers",
-    "text": "13.3 Layers\n\np <- ggplot(df, aes(PRED,DV))  + geom_point() + pm_theme()\n\n\n13.3.1 Layer smooth\n\nlayer_s(p)\n\n\n\n\n\n\n13.3.2 Layer abline\n\nlayer_a(p)\n\n\n\n\n\nlayer_h(cwres_time(df, add_layers = FALSE))\n\n\n\n\n\n\n13.3.3 Drop extra layers\n\ndv_pred(df, smooth = NULL)\n\n\n\n\n\ndv_pred(df, abline = NULL)\n\n\n\n\n\ncwres_time(df, hline = NULL)\n\n\n\n\n\ndv_pred(df, abline = NULL, smooth = NULL)\n\n\n\n\n\n\nDrop all extra layers\n\ndv_pred(df, add_layers = FALSE)\n\n\n\n\n\n\n13.3.4 Modify layer specs\nFor example, change the values of argument for geom_smooth\n\ncwres_time(\n  df, \n  smooth = list(method = \"loess\", span = 0.1, se = TRUE)\n)\n\n\n\n\n\n\n13.3.5 Extra reference lines to [C]WRES plots\n\nwres_time(df) + geom_3s()"
+    "text": "13.2 Axes\nYou can pass lists of arguments as xs or ys to modify the x- or y-axis, respectively. These arguments get passed to ggplot2::scale_x_continuous() or ggplot2::scale_y_continuous().\n\n13.2.1 Modify x-axis\nTo modify the x-axis of a plot, pass a list of items as the xs argument; these items will get passed to ggplot2::scale_x_continuous().\nFor example, to make the x-axis log transformed and modify the breaks, write\n\na <- list(trans = \"log\", breaks = logbr3())\n\ndv_time(df, xs = a)\n\n\n\n\nNote: that you can modify the x-axis label of a plot without modifying the scale using ggplot2::xlab()\n\ndv_time(df) + xlab(\"Time (years)\")\n\n\n\n\n\n\n13.2.2 Modify y-axis\nTo modify the y-axis of a plot, pass a list of items as the ys argument; these items will get passed to ggplot2::scale_y_continuous().\nFor example, to make the y-axis log transformed and modify the breaks, write\n\ndv_time(df, ys = a, yname = \"Y-axis name\")\n\n\n\n\nThere may also be a yname argument for a given plot that will let you directly change the y-axis label as in the example above.\nNote: that you can modify the y-axis label of a plot without modifying the scale using ggplot2::ylab()\n\ndv_time(df) + ylab(\"Concentration (centrigrams/gallon)\")\n\n\n\n\n\n\n13.2.3 Rotate x and y axis labels\n\nSpecify the angle\n\ndv_pred(df) + rot_x(angle = 90) + rot_y()\n\n\n\n\n\n\nRotate to vertical\nWe are typically rotating the tick labels on the x-axis and frequently it is convenient to ask for a totally vertical rendering\n\ncwres_cat(df, x = \"STUDYc\") + \n  facet_wrap(~CPc) + rot_x(vertical = TRUE)\n\n\n\n\n\n\n\n13.2.4 Flip coordinates when labels get cramped\nIf this is too cramped\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% pm_grid()\n\n\n\n\nTry this\n\ncont_cat(\n  id, \n  y = c(\"WT\", \"BMI\", \"ALB\", \"CRCL\"), \n  x = \"STUDYc\"\n) %>% map(~.x+coord_flip()) %>% pm_grid()\n\n\n\n\n\n\n13.2.5 Standard axis titles\n\npm_axis_time()\n\n[1] \"TIME//Time {xunit}\"\n\npm_axis_tad()\n\n[1] \"TAD//Time after dose {xunit}\"\n\npm_axis_tafd()\n\n[1] \"TAFD//Time after first dose {xunit}\"\n\npm_axis_res()\n\n[1] \"RES//Residual\"\n\npm_axis_wres()\n\n[1] \"WRES//Weighted residual\"\n\npm_axis_cwres()\n\n[1] \"CWRES//Conditional weighted residual\"\n\npm_axis_cwresi()\n\n[1] \"CWRESI//CWRES with interaction\"\n\npm_axis_npde()\n\n[1] \"NPDE//NPDE\"\n\npm_axis_dv()\n\n[1] \"DV//Observed {yname}\"\n\npm_axis_pred()\n\n[1] \"PRED//Population predicted {xname}\"\n\npm_axis_ipred()\n\n[1] \"IPRED//Individual predicted {xname}\"\n\n\nYou can glue() in information with these functions\n\npm_axis_time(\"hr\")\n\n[1] \"TIME//Time (hr)\"\n\n\nSimilar with\n\npm_axis_tafd(\"hr\")\npm_axis_tad(\"hr\")\n\nAnd\n\npm_axis_dv(\"ASA concentration (ng/mL)\")\n\n[1] \"DV//Observed ASA concentration (ng/mL)\"\n\n\nSimilar with\n\npm_axis_pred(\"ASA concentration (ng/mL)\")\npm_axis_ipred(\"ASA concentration (ng/mL)\")\n\n\n\n13.2.6 Log breaks\n\nlogbr3()\n\n [1] 1e-10 3e-10 1e-09 3e-09 1e-08 3e-08 1e-07 3e-07 1e-06 3e-06 1e-05 3e-05\n[13] 1e-04 3e-04 1e-03 3e-03 1e-02 3e-02 1e-01 3e-01 1e+00 3e+00 1e+01 3e+01\n[25] 1e+02 3e+02 1e+03 3e+03 1e+04 3e+04 1e+05 3e+05 1e+06 3e+06 1e+07 3e+07\n[37] 1e+08 3e+08 1e+09 3e+09 1e+10 3e+10\n\n\n\nlogbr()\n\n [1] 1e-10 1e-09 1e-08 1e-07 1e-06 1e-05 1e-04 1e-03 1e-02 1e-01 1e+00 1e+01\n[13] 1e+02 1e+03 1e+04 1e+05 1e+06 1e+07 1e+08 1e+09 1e+10\n\n\n\n\n13.2.7 Custom breaks\nDefault breaks\n\ndv_time(df)\n\n\n\n\nBreak every 3 days\n\ndv_time(df, xby = 72)\n\n\n\n\nCustom breaks and limits\n\na <- list(breaks = seq(0,240,48), limits = c(0,240))\ndv_time(df, xs = a)"
   },
   {
     "objectID": "custom.html#replicate-look-and-feel",
     "href": "custom.html#replicate-look-and-feel",
     "title": "13  Customize plots",
-    "section": "13.4 Replicate look and feel",
-    "text": "13.4 Replicate look and feel\n\np <- ggplot(df, aes(IPRED,DV)) + geom_point()\n\np\n\n\n\n\n\n13.4.1 Theme\n\np + pm_theme()\n\n\n\n\n\n\n13.4.2 Plain\n\np + theme_plain()\n\n\n\n\n\n\n13.4.3 Smooth\n\np + pm_smooth()\n\n\n\n\n\n\n13.4.4 Abline\n\np + pm_abline()\n\n\n\n\n\n\n13.4.5 Horizontal reference line\n\nggplot(df, aes(TIME,CWRES)) + geom_point() + pm_hline()"
+    "section": "13.3 Replicate look and feel",
+    "text": "13.3 Replicate look and feel\n\np <- ggplot(df, aes(IPRED,DV)) + geom_point()\n\np\n\n\n\n\n\n13.3.1 Theme\n\np + pm_theme()\n\n\n\n\n\n\n13.3.2 Plain\n\np + theme_plain()\n\n\n\n\n\n\n13.3.3 Smooth\n\np + pm_smooth()\n\n\n\n\n\n\n13.3.4 Abline\n\np + pm_abline()\n\n\n\n\n\n\n13.3.5 Horizontal reference line\n\nggplot(df, aes(TIME,CWRES)) + geom_point() + pm_hline()"
+  },
+  {
+    "objectID": "custom.html#latex",
+    "href": "custom.html#latex",
+    "title": "13  Customize plots",
+    "section": "13.4 Latex",
+    "text": "13.4 Latex\n\n13.4.1 Latex in axis title\n\ndv_pred(df, x = \"PRED//Concentration ($\\\\mu$g)\")\n\n\n\n\n\n\n13.4.2 Latex in pairs plot\n\ndata <- data.frame(\n  m = rnorm(100), \n  s = rnorm(100), \n  n = rnorm(100)\n)\n\nx <- c(\"m//$\\\\mu$\", \"s//$\\\\sigma$\", \"n//$\\\\nu$\")\n\npairs_plot(data,x)\n\n\n\n\n\n\n13.4.3 Latex in wrapped plots\n\ny <- c(\"WT//Weight (kg)\", \"BMI//BMI (kg/m$^2$)\", \"SCR//SCR (g/dL)\")\n\nwrap_cont_time(df, y = y, use_labels=TRUE)"
   }
 ]

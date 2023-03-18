@@ -7,46 +7,110 @@ fig-height: 4.5
 source("global.R")
 ```
 
-# Customize plots
+# Customize plots {#sec-customize}
 
-## Latex
 
-### Latex in axis title
+## Layers
+
+"Layers" refer to different reference lines or smoothers that are added to plots 
+by default.  
+
+Layers include 
+
+- smoothing line through the data: `smooth`
+- horizontal reference lines: `hline`
+- identity lines: `abline`
+
+For example, `dv_pred()` adds an identity line (`y = x`) for reference as 
+well as a smoother through the data
 
 ```{r}
-dv_pred(df, x = "PRED//Concentration ($\\mu$g)")
+dv_pred(df)
 ```
 
-### Latex in pairs plot
+
+These layers can all be customized or dropped from the plot altogether.  This 
+section shows you how to do that. We'll work on this basic plot as well 
+as plots that come right out of `pmplots`.
 
 ```{r}
-#| fig-width: 6
-#| fig-height: 6
-data <- data.frame(
-  m = rnorm(100), 
-  s = rnorm(100), 
-  n = rnorm(100)
+p <- ggplot(df, aes(PRED, DV))  + geom_point() + pm_theme()
+p
+```
+
+
+
+### Layer smooth
+
+```{r}
+layer_s(p)
+```
+
+### Layer abline
+
+```{r}
+layer_a(p)
+```
+
+```{r}
+layer_h(cwres_time(df, add_layers = FALSE))
+```
+
+### Drop specific layers
+
+```{r}
+dv_pred(df, smooth = NULL)
+```
+
+```{r}
+dv_pred(df, abline = NULL)
+```
+
+```{r}
+cwres_time(df, hline = NULL)
+```
+
+```{r}
+dv_pred(df, abline = NULL, smooth = NULL)
+```
+
+### Drop all layers 
+
+```{r}
+dv_pred(df, add_layers = FALSE)
+```
+
+### Modify layer specs
+
+For example, change the values of argument for `geom_smooth()`
+
+```{r}
+cwres_time(
+  df, 
+  smooth = list(method = "loess", span = 0.1, se = TRUE)
 )
-
-x <- c("m//$\\mu$", "s//$\\sigma$", "n//$\\nu$")
-
-pairs_plot(data,x)
 ```
 
-### Latex in wrapped plots
+### Extra reference lines to [C]WRES plots
 
 ```{r}
-#| fig-width: 7
-#| fig-height: 3
-y <- c("WT//Weight (kg)", "BMI//BMI (kg/m$^2$)", "SCR//SCR (g/dL)")
-
-wrap_cont_time(df, y = y, use_labels=TRUE)
+wres_time(df) + geom_3s()
 ```
 
 
 ## Axes
 
+You can pass lists of arguments as `xs` or `ys` to modify the x- or y-axis, 
+respectively. These arguments get passed to `ggplot2::scale_x_continuous()` or 
+`ggplot2::scale_y_continuous()`. 
+
+
 ### Modify x-axis
+
+To modify the x-axis of a plot, pass a list of items as the `xs` argument; 
+these items will get passed to `ggplot2::scale_x_continuous()`. 
+
+For example, to make the x-axis log transformed and modify the breaks, write
 
 ```{r}
 a <- list(trans = "log", breaks = logbr3())
@@ -54,11 +118,58 @@ a <- list(trans = "log", breaks = logbr3())
 dv_time(df, xs = a)
 ```
 
+Note: that you can modify the x-axis label of a plot without modifying the scale
+using `ggplot2::xlab()`
+
+```{r}
+dv_time(df) + xlab("Time (years)")
+```
+
+
 ### Modify y-axis
+
+To modify the y-axis of a plot, pass a list of items as the `ys` argument; 
+these items will get passed to `ggplot2::scale_y_continuous()`. 
+
+For example, to make the y-axis log transformed and modify the breaks, write
 
 ```{r}
 dv_time(df, ys = a, yname = "Y-axis name")
 ```
+
+There may also be a `yname` argument for a given plot that will let you 
+directly change the y-axis label as in the example above. 
+
+Note: that you can modify the y-axis label of a plot without modifying the scale
+using `ggplot2::ylab()`
+
+```{r}
+dv_time(df) + ylab("Concentration (centrigrams/gallon)")
+```
+
+
+
+### Rotate x and y axis labels
+
+#### Specify the angle {.unnumbered .unlisted}
+
+```{r}
+dv_pred(df) + rot_x(angle = 90) + rot_y()
+```
+
+#### Rotate to vertical {.unnumbered .unlisted}
+
+We are typically rotating the tick labels on the x-axis and 
+frequently it is convenient to ask for a totally vertical 
+rendering
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+cwres_cat(df, x = "STUDYc") + 
+  facet_wrap(~CPc) + rot_x(vertical = TRUE)
+```
+
 
 ### Flip coordinates when labels get cramped
 
@@ -88,27 +199,6 @@ cont_cat(
 ) %>% map(~.x+coord_flip()) %>% pm_grid()
 
 ```
-
-### Rotate x and y axis labels
-
-#### Specify the angle {.unnumbered .unlisted}
-```{r}
-dv_pred(df) + rot_x(angle = 90) + rot_y()
-```
-
-#### Rotate to vertical {.unnumbered .unlisted}
-
-We are typically rotating the tick labels on the x-axis and 
-frequently it is convenient to ask for a totally vertical 
-rendering
-
-```{r}
-#| fig-width: 7
-#| fig-height: 5
-cwres_cat(df, x = "STUDYc") + 
-  facet_wrap(~CPc) + rot_x(vertical = TRUE)
-```
-
 
 ### Standard axis titles
 
@@ -187,68 +277,6 @@ dv_time(df, xs = a)
 ```
 
 
-## Layers
-
-```{r}
-p <- ggplot(df, aes(PRED,DV))  + geom_point() + pm_theme()
-```
-
-### Layer smooth
-
-```{r}
-layer_s(p)
-```
-
-### Layer abline
-
-```{r}
-layer_a(p)
-```
-
-```{r}
-layer_h(cwres_time(df, add_layers = FALSE))
-```
-
-### Drop extra layers
-
-```{r}
-dv_pred(df, smooth = NULL)
-```
-
-```{r}
-dv_pred(df, abline = NULL)
-```
-
-```{r}
-cwres_time(df, hline = NULL)
-```
-
-```{r}
-dv_pred(df, abline = NULL, smooth = NULL)
-```
-
-### Drop all extra layers {.unnumbered .unlisted}
-
-```{r}
-dv_pred(df, add_layers = FALSE)
-```
-
-### Modify layer specs
-
-For example, change the values of argument for `geom_smooth`
-
-```{r}
-cwres_time(
-  df, 
-  smooth = list(method = "loess", span = 0.1, se = TRUE)
-)
-```
-
-### Extra reference lines to [C]WRES plots
-
-```{r}
-wres_time(df) + geom_3s()
-```
 
 
 ## Replicate look and feel
@@ -271,7 +299,6 @@ p + pm_theme()
 p + theme_plain()
 ```
 
-
 ### Smooth
 
 ```{r}
@@ -290,3 +317,36 @@ p + pm_abline()
 ggplot(df, aes(TIME,CWRES)) + geom_point() + pm_hline()
 ```
 
+## Latex
+
+### Latex in axis title
+
+```{r}
+dv_pred(df, x = "PRED//Concentration ($\\mu$g)")
+```
+
+### Latex in pairs plot
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+data <- data.frame(
+  m = rnorm(100), 
+  s = rnorm(100), 
+  n = rnorm(100)
+)
+
+x <- c("m//$\\mu$", "s//$\\sigma$", "n//$\\nu$")
+
+pairs_plot(data,x)
+```
+
+### Latex in wrapped plots
+
+```{r}
+#| fig-width: 7
+#| fig-height: 3
+y <- c("WT//Weight (kg)", "BMI//BMI (kg/m$^2$)", "SCR//SCR (g/dL)")
+
+wrap_cont_time(df, y = y, use_labels=TRUE)
+```
