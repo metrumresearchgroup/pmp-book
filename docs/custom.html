@@ -430,6 +430,7 @@ background: #00b4f1;
 </section>
 <section id="drop-specific-layers" class="level3" data-number="13.1.4">
 <h3 data-number="13.1.4" class="anchored" data-anchor-id="drop-specific-layers"><span class="header-section-number">13.1.4</span> Drop specific layers</h3>
+<p>Set the layer to <code>NULL</code> to drop one or more of these layers from the plot.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">smooth =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -473,6 +474,7 @@ background: #00b4f1;
 </section>
 <section id="drop-all-layers" class="level3" data-number="13.1.5">
 <h3 data-number="13.1.5" class="anchored" data-anchor-id="drop-all-layers"><span class="header-section-number">13.1.5</span> Drop all layers</h3>
+<p>You can also decline to add any layers through <code>add_layers</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dv_pred</span>(df, <span class="at">add_layers =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -486,7 +488,8 @@ background: #00b4f1;
 </section>
 <section id="modify-layer-specs" class="level3" data-number="13.1.6">
 <h3 data-number="13.1.6" class="anchored" data-anchor-id="modify-layer-specs"><span class="header-section-number">13.1.6</span> Modify layer specs</h3>
-<p>For example, change the values of argument for <code>geom_smooth()</code></p>
+<p>For any layer type, you can pass a list of arguments that will get passed on to the appropriate <code>geom</code>.</p>
+<p>For example, change the values of argument for <code>ggplot2::geom_smooth()</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_time</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  df, </span>
@@ -500,6 +503,8 @@ background: #00b4f1;
 </div>
 </div>
 </div>
+<p>The items in the list getting passed as <code>smooth</code> should be arguments in <code>ggplot2::geom_smooth()</code>.</p>
+<p>Similarly, you can set <code>abline</code> with a list of arguments to get passed to <code>geom_abline()</code> or <code>hline</code> with a list of arguments to get passed to <code>geom_hline()</code>.</p>
 </section>
 <section id="extra-reference-lines-to-cwres-plots" class="level3" data-number="13.1.7">
 <h3 data-number="13.1.7" class="anchored" data-anchor-id="extra-reference-lines-to-cwres-plots"><span class="header-section-number">13.1.7</span> Extra reference lines to [C]WRES plots</h3>

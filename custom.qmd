@@ -81,6 +81,8 @@ layer_h(p, hline = 2000)
 
 ### Drop specific layers
 
+Set the layer to `NULL` to drop one or more of these layers from the plot.
+
 ```{r}
 dv_pred(df, smooth = NULL)
 ```
@@ -99,13 +101,18 @@ dv_pred(df, abline = NULL, smooth = NULL)
 
 ### Drop all layers 
 
+You can also decline to add any layers through `add_layers`
+
 ```{r}
 dv_pred(df, add_layers = FALSE)
 ```
 
 ### Modify layer specs
 
-For example, change the values of argument for `geom_smooth()`
+For any layer type, you can pass a list of arguments that will get passed on
+to the appropriate `geom`. 
+
+For example, change the values of argument for `ggplot2::geom_smooth()`
 
 ```{r}
 cwres_time(
@@ -113,6 +120,13 @@ cwres_time(
   smooth = list(method = "gam", se = TRUE)
 )
 ```
+
+The items in the list getting passed as `smooth` should be arguments in 
+`ggplot2::geom_smooth()`. 
+
+Similarly, you can set `abline` with a list of arguments to get passed to 
+`geom_abline()` or `hline` with a list of arguments to get passed to 
+`geom_hline()`.
 
 ### Extra reference lines to [C]WRES plots
 
