@@ -35,6 +35,7 @@ book:
     - wrap.qmd
     - pairs.qmd
     - vectorized.qmd
+    - displays.qmd
     - data-summary.qmd
     - custom.qmd
   navbar: 

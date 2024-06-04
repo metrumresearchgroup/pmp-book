@@ -1,0 +1,120 @@
+---
+fig-height: 7
+fig-width: 6
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+source("global.R")
+library(patchwork)
+```
+
+# Exploratory and diagnostic displays
+
+Displays of exploratory or diagnostic plots have several plots
+in the same theme arranged on a single page. Displays can include
+ETA, NPDE or CWRES based plots. 
+
+
+## NPDE 
+
+This section lists
+
+This is a standardized panel of common NPDE-based diagnostics
+
+```{r}
+data <- pmplots_data_obs()
+
+npde_panel(data)
+```
+
+### Tag levels 
+
+You can label the panels with patchwork
+
+```{r}
+npde_panel(data) + plot_annotation(tag_levels = "A")
+```
+
+### NPDE scatter
+
+This just includes the diagnostics which are scatter plots
+
+```{r}
+npde_scatter(data)
+```
+
+### NPDE histogram and qq plot
+
+```{r}
+npde_hist_q(data)
+```
+
+## NPDE versus covariate
+
+You can enter a mix of categorical and continuous covariates
+
+```{r}
+npde_covariate(data, c("WT", "SCR", "RF", "CPc"))
+```
+
+
+
+## CWRES
+
+
+## ETA versus covariate
+
+These displays are created with `eta_covariate()`. Since there are typically several ETAs to look at, this function returns a list of 
+arranged plots
+
+```{r}
+id <- pmplots_data_id()
+```
+
+```{r}
+etas <- eta_col_labs(CL, V2, KA)
+etas
+```
+
+For ETA diagnostics, we can plot versus a mix of categorical and 
+continuous covariates
+
+```{r}
+covs <- c(
+  "WT // Weight (kg)", 
+  "AAG (mg/dL)", 
+  "AGE // Age (years)", 
+  "STUDYc // Study", 
+  "RF // Renal function", 
+  "CPc // Child-Pugh"
+)
+
+cov <- eta_covariate(id, x = covs , y = etas, byrow = FALSE) 
+```
+
+By default, the plots are collected by the ETA
+
+```{r}
+names(cov)
+
+cov$ETA1
+```
+
+Use the `transpose` argument to collect by the covariate
+
+```{r}
+cov <- eta_covariate(id, covs, etas, transpose = TRUE, ncol = 1)
+
+names(cov)
+```
+
+```{r}
+cov$WT
+```
+
+
+
+
+
