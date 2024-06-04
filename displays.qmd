@@ -12,18 +12,19 @@ library(patchwork)
 
 # Exploratory and diagnostic displays
 
-Displays of exploratory or diagnostic plots have several plots
-in the same theme arranged on a single page. Displays can include
-ETA, NPDE or CWRES based plots. 
+Displays of exploratory or diagnostic plots have several figures
+sharing a common theme arranged on a single page. Displays can
+include ETA, NPDE or CWRES based plots. 
 
 
-## NPDE 
+## NPDE-based diagnositcs
 
-This section lists
-
-This is a standardized panel of common NPDE-based diagnostics
+Use `npde_panel()` to create a standardized panel of common
+NPDE-based diagnostics
 
 ```{r}
+#| fig-height: 7
+#| fig-width: 5 
 data <- pmplots_data_obs()
 
 npde_panel(data)
@@ -31,15 +32,17 @@ npde_panel(data)
 
 ### Tag levels 
 
-You can label the panels with patchwork
+You can label the panels with the `plot_annotation()` 
+function from the patchwork package
 
 ```{r}
-npde_panel(data) + plot_annotation(tag_levels = "A")
+npde_panel(data) + 
+  plot_annotation(tag_levels = "A")
 ```
 
 ### NPDE scatter
 
-This just includes the diagnostics which are scatter plots
+This display includes just a subset of the diagnostics which are scatter plots
 
 ```{r}
 npde_scatter(data)
@@ -47,21 +50,63 @@ npde_scatter(data)
 
 ### NPDE histogram and qq plot
 
+This display is the complement of the scatter plots
+
 ```{r}
+#| fig-width: 5
 npde_hist_q(data)
 ```
 
 ## NPDE versus covariate
 
-You can enter a mix of categorical and continuous covariates
+You can enter a mix of categorical and continuous covariates: here, 
+`WT` and `SCR` are continuous covariates and `RF` and `CPc` are 
+categorical
 
 ```{r}
-npde_covariate(data, c("WT", "SCR", "RF", "CPc"))
+covs <- c(
+  "WT  // Weight (kg)", 
+  "SCR // Serum creatinine (mg/dL)", 
+  "RF  // Renal group", 
+  "CPc // Child-Pugh"
+)
+npde_covariate(data, covs)
 ```
 
 
+## CWRES-based diagnostics
 
-## CWRES
+There are a equivalent set of displays which show `CWRES` rather than 
+`NPDE`
+
+```{r}
+cwres_panel(data) 
+```
+
+### CWRES scatter
+
+```{r}
+cwres_scatter(data)
+```
+
+### CWRES histogram and qq plot
+
+```{r}
+#| fig-width: 5
+cwres_hist_q(data)
+```
+
+## CWRES versus covariate
+
+```{r}
+covs <- c(
+  "WT  // Weight (kg)", 
+  "SCR // Serum creatinine (mg/dL)", 
+  "RF  // Renal group", 
+  "CPc // Child-Pugh"
+)
+cwres_covariate(data, covs)
+```
 
 
 ## ETA versus covariate
@@ -84,7 +129,7 @@ continuous covariates
 ```{r}
 covs <- c(
   "WT // Weight (kg)", 
-  "AAG (mg/dL)", 
+  "AAG // AAG (mg/dL)", 
   "AGE // Age (years)", 
   "STUDYc // Study", 
   "RF // Renal function", 
@@ -94,7 +139,7 @@ covs <- c(
 cov <- eta_covariate(id, x = covs , y = etas, byrow = FALSE) 
 ```
 
-By default, the plots are collected by the ETA
+By default, the plots are collected by the `ETA`
 
 ```{r}
 names(cov)

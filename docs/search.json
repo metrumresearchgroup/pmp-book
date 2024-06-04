@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The pmplots Gallery",
     "section": "",
-    "text": "This is a simple introduction to the pmplots package for R. I hope this will be useful for those who are new to the package and those who just need a reminder on the syntax. The goal with this package isn’t to create a new grammar of graphics, but rather to create a standard set of commonly-used plots in pharmacometrics analyses.\nThis is truly intended to be a Gallery. In some chapters, you will see a great deal of repetion in plots (like CWRES versus TIME, WRES versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions available in the package. One exception to this is the page on customization. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.\nYou can find documentation for pmplots here.\n\nSource\nThe pmtables package is maintained here. The code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmplots\")\n\n[1] '0.3.6'\n\ndate()\n\n[1] \"Sat Mar 18 08:36:47 2023\"",
+    "text": "This is a simple introduction to the pmplots package for R. I hope this will be useful for those who are new to the package and those who just need a reminder on the syntax. The goal with this package isn’t to create a new grammar of graphics, but rather to create a standard set of commonly-used plots in pharmacometrics analyses.\nThis is truly intended to be a Gallery. In some chapters, you will see a great deal of repetition in plots (like CWRES versus TIME, WRES versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions available in the package. One exception to this is the page on customization. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.\nYou can find documentation for pmplots here.\n\nSource\nThe pmtables package is maintained here. The code for this book is maintained here.\n\n\nBuild\n\npackageVersion(\"pmplots\")\n\n[1] '0.4.1'\n\ndate()\n\n[1] \"Tue Jun  4 15:28:00 2024\"",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
@@ -424,7 +424,57 @@
     "href": "displays.html",
     "title": "12  Exploratory and diagnostic displays",
     "section": "",
-    "text": "12.1 ETA versus covariate\nThese displays are created with eta_covariate(). Since there are typically several ETAs to look at, this function returns a list of arranged plots\nid &lt;- pmplots_data_id()\netas &lt;- eta_col_labs(CL, V2, KA)\netas\n\n        ETA-CL         ETA-V2         ETA-KA \n\"ETA1//ETA-CL\" \"ETA2//ETA-V2\" \"ETA3//ETA-KA\"\nFor ETA diagnostics, we can plot versus a mix of categorical and continuous covariates\ncovs &lt;- c(\n  \"WT // Weight\", \n  \"AAG\", \n  \"AGE // Age\", \n  \"STUDYc // Study\", \n  \"RF // Renal function\", \n  \"CPc // Child-Pugh\"\n)\n\ncov &lt;- eta_covariate(id, x = covs , y = etas, byrow = FALSE)\nBy default, the plots are collected by the ETA\nnames(cov)\n\n[1] \"ETA1\" \"ETA2\" \"ETA3\"\n\ncov$ETA1\nUse the transpose argument to collect by the covariate\ncov &lt;- eta_covariate(id, covs, etas, transpose = TRUE, ncol = 1)\n\nnames(cov)\n\n[1] \"WT\"     \"AAG\"    \"AGE\"    \"STUDYc\" \"RF\"     \"CPc\"\ncov$WT",
+    "text": "12.1 NPDE-based diagnositcs\nUse npde_panel() to create a standardized panel of common NPDE-based diagnostics\ndata &lt;- pmplots_data_obs()\n\nnpde_panel(data)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Exploratory and diagnostic displays</span>"
+    ]
+  },
+  {
+    "objectID": "displays.html#npde-based-diagnositcs",
+    "href": "displays.html#npde-based-diagnositcs",
+    "title": "12  Exploratory and diagnostic displays",
+    "section": "",
+    "text": "12.1.1 Tag levels\nYou can label the panels with the plot_annotation() function from the patchwork package\n\nnpde_panel(data) + \n  plot_annotation(tag_levels = \"A\")\n\n\n\n\n\n\n\n\n\n\n12.1.2 NPDE scatter\nThis display includes just a subset of the diagnostics which are scatter plots\n\nnpde_scatter(data)\n\n\n\n\n\n\n\n\n\n\n12.1.3 NPDE histogram and qq plot\nThis display is the complement of the scatter plots\n\nnpde_hist_q(data)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Exploratory and diagnostic displays</span>"
+    ]
+  },
+  {
+    "objectID": "displays.html#npde-versus-covariate",
+    "href": "displays.html#npde-versus-covariate",
+    "title": "12  Exploratory and diagnostic displays",
+    "section": "12.2 NPDE versus covariate",
+    "text": "12.2 NPDE versus covariate\nYou can enter a mix of categorical and continuous covariates: here, WT and SCR are continuous covariates and RF and CPc are categorical\n\ncovs &lt;- c(\n  \"WT  // Weight (kg)\", \n  \"SCR // Serum creatinine (mg/dL)\", \n  \"RF  // Renal group\", \n  \"CPc // Child-Pugh\"\n)\nnpde_covariate(data, covs)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Exploratory and diagnostic displays</span>"
+    ]
+  },
+  {
+    "objectID": "displays.html#cwres-based-diagnostics",
+    "href": "displays.html#cwres-based-diagnostics",
+    "title": "12  Exploratory and diagnostic displays",
+    "section": "12.3 CWRES-based diagnostics",
+    "text": "12.3 CWRES-based diagnostics\nThere are a equivalent set of displays which show CWRES rather than NPDE\n\ncwres_panel(data) \n\n\n\n\n\n\n\n\n\n12.3.1 CWRES scatter\n\ncwres_scatter(data)\n\n\n\n\n\n\n\n\n\n\n12.3.2 CWRES histogram and qq plot\n\ncwres_hist_q(data)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Exploratory and diagnostic displays</span>"
+    ]
+  },
+  {
+    "objectID": "displays.html#cwres-versus-covariate",
+    "href": "displays.html#cwres-versus-covariate",
+    "title": "12  Exploratory and diagnostic displays",
+    "section": "12.4 CWRES versus covariate",
+    "text": "12.4 CWRES versus covariate\n\ncovs &lt;- c(\n  \"WT  // Weight (kg)\", \n  \"SCR // Serum creatinine (mg/dL)\", \n  \"RF  // Renal group\", \n  \"CPc // Child-Pugh\"\n)\ncwres_covariate(data, covs)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Exploratory and diagnostic displays</span>"
+    ]
+  },
+  {
+    "objectID": "displays.html#eta-versus-covariate",
+    "href": "displays.html#eta-versus-covariate",
+    "title": "12  Exploratory and diagnostic displays",
+    "section": "12.5 ETA versus covariate",
+    "text": "12.5 ETA versus covariate\nThese displays are created with eta_covariate(). Since there are typically several ETAs to look at, this function returns a list of arranged plots\n\nid &lt;- pmplots_data_id()\n\n\netas &lt;- eta_col_labs(CL, V2, KA)\netas\n\n        ETA-CL         ETA-V2         ETA-KA \n\"ETA1//ETA-CL\" \"ETA2//ETA-V2\" \"ETA3//ETA-KA\" \n\n\nFor ETA diagnostics, we can plot versus a mix of categorical and continuous covariates\n\ncovs &lt;- c(\n  \"WT // Weight (kg)\", \n  \"AAG // AAG (mg/dL)\", \n  \"AGE // Age (years)\", \n  \"STUDYc // Study\", \n  \"RF // Renal function\", \n  \"CPc // Child-Pugh\"\n)\n\ncov &lt;- eta_covariate(id, x = covs , y = etas, byrow = FALSE) \n\nBy default, the plots are collected by the ETA\n\nnames(cov)\n\n[1] \"ETA1\" \"ETA2\" \"ETA3\"\n\ncov$ETA1\n\n\n\n\n\n\n\n\nUse the transpose argument to collect by the covariate\n\ncov &lt;- eta_covariate(id, covs, etas, transpose = TRUE, ncol = 1)\n\nnames(cov)\n\n[1] \"WT\"     \"AAG\"    \"AGE\"    \"STUDYc\" \"RF\"     \"CPc\"   \n\n\n\ncov$WT",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Exploratory and diagnostic displays</span>"
     ]

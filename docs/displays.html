@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kyle Baron, Pharm.D., Ph.D.">
 
-<title>The pmplots Gallery</title>
+<title>The pmplots Gallery - 12&nbsp; Exploratory and diagnostic displays</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./quick-start.html" rel="next">
+<link href="./data-summary.html" rel="next">
+<link href="./vectorized.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -120,18 +120,18 @@ background: #00b4f1;
 </style>
 
 
-<meta property="og:title" content="The pmplots Gallery">
+<meta property="og:title" content="The pmplots Gallery - 12&nbsp; Exploratory and diagnostic displays">
 <meta property="og:description" content="Easy standardized plots for pharmacometrics.">
 <meta property="og:image" content="https://metrumresearchgroup.github.io/pmp-book/pmp-hex.png">
 <meta property="og:site_name" content="The pmplots Gallery">
-<meta name="twitter:title" content="The pmplots Gallery">
+<meta name="twitter:title" content="The pmplots Gallery - 12&nbsp; Exploratory and diagnostic displays">
 <meta name="twitter:description" content="Easy standardized plots for pharmacometrics.">
 <meta name="twitter:image" content="https://metrumresearchgroup.github.io/pmp-book/pmp-hex.png">
 <meta name="twitter:creator" content="@kylebtwin">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -184,7 +184,7 @@ background: #00b4f1;
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./displays.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Exploratory and diagnostic displays</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -197,27 +197,14 @@ background: #00b4f1;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">The pmplots Gallery</h1>
-            <p class="subtitle lead">Plots for Pharmacometrics</p>
+      <h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Exploratory and diagnostic displays</span></h1>
                       </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Kyle Baron, Pharm.D., Ph.D. </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">Jun 4, 2024</p>
-      </div>
-    </div>
     
       
     </div>
@@ -235,7 +222,7 @@ background: #00b4f1;
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
@@ -301,7 +288,7 @@ background: #00b4f1;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./displays.html" class="sidebar-item-text sidebar-link">
+  <a href="./displays.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Exploratory and diagnostic displays</span></span></a>
   </div>
 </li>
@@ -322,7 +309,28 @@ background: #00b4f1;
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#npde-based-diagnositcs" id="toc-npde-based-diagnositcs" class="nav-link active" data-scroll-target="#npde-based-diagnositcs"><span class="header-section-number">12.1</span> NPDE-based diagnositcs</a>
+  <ul class="collapse">
+  <li><a href="#tag-levels" id="toc-tag-levels" class="nav-link" data-scroll-target="#tag-levels"><span class="header-section-number">12.1.1</span> Tag levels</a></li>
+  <li><a href="#npde-scatter" id="toc-npde-scatter" class="nav-link" data-scroll-target="#npde-scatter"><span class="header-section-number">12.1.2</span> NPDE scatter</a></li>
+  <li><a href="#npde-histogram-and-qq-plot" id="toc-npde-histogram-and-qq-plot" class="nav-link" data-scroll-target="#npde-histogram-and-qq-plot"><span class="header-section-number">12.1.3</span> NPDE histogram and qq plot</a></li>
+  </ul></li>
+  <li><a href="#npde-versus-covariate" id="toc-npde-versus-covariate" class="nav-link" data-scroll-target="#npde-versus-covariate"><span class="header-section-number">12.2</span> NPDE versus covariate</a></li>
+  <li><a href="#cwres-based-diagnostics" id="toc-cwres-based-diagnostics" class="nav-link" data-scroll-target="#cwres-based-diagnostics"><span class="header-section-number">12.3</span> CWRES-based diagnostics</a>
+  <ul class="collapse">
+  <li><a href="#cwres-scatter" id="toc-cwres-scatter" class="nav-link" data-scroll-target="#cwres-scatter"><span class="header-section-number">12.3.1</span> CWRES scatter</a></li>
+  <li><a href="#cwres-histogram-and-qq-plot" id="toc-cwres-histogram-and-qq-plot" class="nav-link" data-scroll-target="#cwres-histogram-and-qq-plot"><span class="header-section-number">12.3.2</span> CWRES histogram and qq plot</a></li>
+  </ul></li>
+  <li><a href="#cwres-versus-covariate" id="toc-cwres-versus-covariate" class="nav-link" data-scroll-target="#cwres-versus-covariate"><span class="header-section-number">12.4</span> CWRES versus covariate</a></li>
+  <li><a href="#eta-versus-covariate" id="toc-eta-versus-covariate" class="nav-link" data-scroll-target="#eta-versus-covariate"><span class="header-section-number">12.5</span> ETA versus covariate</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/displays.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -330,23 +338,204 @@ background: #00b4f1;
 
 
 
-<p><img src="pmp-hex.png" align="right" width="150px">This is a simple introduction to the pmplots package for R. I hope this will be useful for those who are new to the package and those who just need a reminder on the syntax. The goal with this package isn’t to create a new grammar of graphics, but rather to create a standard set of commonly-used plots in pharmacometrics analyses.</p>
-<p>This is truly intended to be a Gallery. In some chapters, you will see a great deal of repetition in plots (like CWRES versus TIME, WRES versus TIME, RES versus TIME). This is by design with the intention to make the reader aware of the different functions available in the package. One exception to this is the page on <a href="custom.html">customization</a>. Please take a moment to look through this page; it is long but you will find some very helpful examples of what you can do with pmplots.</p>
-<p>You can find <code>documentation</code> for pmplots <a href="https://metrumresearchgroup.github.io/pmplots/">here</a>.</p>
-<section id="source" class="level1 unnumbered">
-<h1 class="unnumbered">Source</h1>
-<p>The pmtables package is maintained <a href="https://github.com/metrumresearchgroup/pmplots">here</a>. The code for this book is maintained <a href="https://github.com/metrumresearchgroup/pmp-book">here</a>.</p>
-</section>
-<section id="build" class="level1 unnumbered">
-<h1 class="unnumbered">Build</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"pmplots"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] '0.4.1'</code></pre>
+<p>Displays of exploratory or diagnostic plots have several figures sharing a common theme arranged on a single page. Displays can include ETA, NPDE or CWRES based plots.</p>
+<section id="npde-based-diagnositcs" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="npde-based-diagnositcs"><span class="header-section-number">12.1</span> NPDE-based diagnositcs</h2>
+<p>Use <code>npde_panel()</code> to create a standardized panel of common NPDE-based diagnostics</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">pmplots_data_obs</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">npde_panel</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<section id="tag-levels" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="tag-levels"><span class="header-section-number">12.1.1</span> Tag levels</h3>
+<p>You can label the panels with the <code>plot_annotation()</code> function from the patchwork package</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">npde_panel</span>(data) <span class="sc">+</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="npde-scatter" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="npde-scatter"><span class="header-section-number">12.1.2</span> NPDE scatter</h3>
+<p>This display includes just a subset of the diagnostics which are scatter plots</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">npde_scatter</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="npde-histogram-and-qq-plot" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="npde-histogram-and-qq-plot"><span class="header-section-number">12.1.3</span> NPDE histogram and qq plot</h3>
+<p>This display is the complement of the scatter plots</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">npde_hist_q</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="npde-versus-covariate" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="npde-versus-covariate"><span class="header-section-number">12.2</span> NPDE versus covariate</h2>
+<p>You can enter a mix of categorical and continuous covariates: here, <code>WT</code> and <code>SCR</code> are continuous covariates and <code>RF</code> and <code>CPc</code> are categorical</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"WT  // Weight (kg)"</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SCR // Serum creatinine (mg/dL)"</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"RF  // Renal group"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CPc // Child-Pugh"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">npde_covariate</span>(data, covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cwres-based-diagnostics" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="cwres-based-diagnostics"><span class="header-section-number">12.3</span> CWRES-based diagnostics</h2>
+<p>There are a equivalent set of displays which show <code>CWRES</code> rather than <code>NPDE</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_panel</span>(data) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="cwres-scatter" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="cwres-scatter"><span class="header-section-number">12.3.1</span> CWRES scatter</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_scatter</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cwres-histogram-and-qq-plot" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="cwres-histogram-and-qq-plot"><span class="header-section-number">12.3.2</span> CWRES histogram and qq plot</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_hist_q</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cwres-versus-covariate" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="cwres-versus-covariate"><span class="header-section-number">12.4</span> CWRES versus covariate</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"WT  // Weight (kg)"</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SCR // Serum creatinine (mg/dL)"</span>, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"RF  // Renal group"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CPc // Child-Pugh"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cwres_covariate</span>(data, covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eta-versus-covariate" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="eta-versus-covariate"><span class="header-section-number">12.5</span> ETA versus covariate</h2>
+<p>These displays are created with <code>eta_covariate()</code>. Since there are typically several ETAs to look at, this function returns a list of arranged plots</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">pmplots_data_id</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>etas <span class="ot">&lt;-</span> <span class="fu">eta_col_labs</span>(CL, V2, KA)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>etas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Tue Jun  4 15:28:00 2024"</code></pre>
+<pre><code>        ETA-CL         ETA-V2         ETA-KA 
+"ETA1//ETA-CL" "ETA2//ETA-V2" "ETA3//ETA-KA" </code></pre>
+</div>
+</div>
+<p>For ETA diagnostics, we can plot versus a mix of categorical and continuous covariates</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"WT // Weight (kg)"</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AAG // AAG (mg/dL)"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AGE // Age (years)"</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"STUDYc // Study"</span>, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"RF // Renal function"</span>, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CPc // Child-Pugh"</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>cov <span class="ot">&lt;-</span> <span class="fu">eta_covariate</span>(id, <span class="at">x =</span> covs , <span class="at">y =</span> etas, <span class="at">byrow =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>By default, the plots are collected by the <code>ETA</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ETA1" "ETA2" "ETA3"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cov<span class="sc">$</span>ETA1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Use the <code>transpose</code> argument to collect by the covariate</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cov <span class="ot">&lt;-</span> <span class="fu">eta_covariate</span>(id, covs, etas, <span class="at">transpose =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "WT"     "AAG"    "AGE"    "STUDYc" "RF"     "CPc"   </code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cov<span class="sc">$</span>WT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="displays_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -765,10 +954,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./vectorized.html" class="pagination-link" aria-label="Vectorized plots">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vectorized plots</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./quick-start.html" class="pagination-link" aria-label="Quick start">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quick start</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-summary.html" class="pagination-link" aria-label="Data summary">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -777,4 +969,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/metrumresearchgroup/pmp-book/blob/main/displays.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/metrumresearchgroup/pmp-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
