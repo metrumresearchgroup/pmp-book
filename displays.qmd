@@ -13,8 +13,12 @@ library(patchwork)
 # Exploratory and diagnostic displays
 
 Displays of exploratory or diagnostic plots have several figures
-sharing a common theme arranged on a single page. Displays can
-include ETA, NPDE or CWRES based plots. 
+sharing a common theme arranged on a single page. These displays tend to 
+have fixed composition and arrangement, with some customization allowed. If 
+you want a totally custom display, it is best to create your own from base
+pmplots functions, arranging as you like with the patchwork package. 
+
+Displays can include ETA, NPDE or CWRES based plots. 
 
 
 ## NPDE-based diagnositcs
