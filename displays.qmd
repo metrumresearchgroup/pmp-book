@@ -123,7 +123,7 @@ id <- pmplots_data_id()
 ```
 
 ```{r}
-etas <- eta_col_labs(CL, V2, KA)
+etas <- eta_col_labs(CL, V2)
 etas
 ```
 
@@ -132,12 +132,10 @@ continuous covariates
 
 ```{r}
 covs <- c(
-  "WT // Weight (kg)", 
-  "AAG // AAG (mg/dL)", 
-  "AGE // Age (years)", 
+  "WT     // Weight (kg)", 
+  "AAG    // AAG (mg/dL)",
   "STUDYc // Study", 
-  "RF // Renal function", 
-  "CPc // Child-Pugh"
+  "RF     // Renal function"
 )
 
 cov <- eta_covariate(id, x = covs , y = etas, byrow = FALSE) 
@@ -163,7 +161,65 @@ names(cov)
 cov$WT
 ```
 
+## Panel as list
 
+You can request one of the panel displays as a list of the 
+component plots. In general, you can call the function with 
+`_list` suffix. For example, `x` here is a named list of plots
 
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+x <- npde_panel_list(data)
+names(x)
+x$tad
+```
 
+Similar for the covariate plots, but the result will be a 
+list of lists
+
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+x <- eta_covariate_list(id, x = covs , y = etas) 
+names(x)
+names(x$ETA1)
+x$ETA1$AAG
+```
+
+### Arranging lists of plots
+
+Plots can be arrranged in a grid with `pm_grid()`
+
+```{r}
+x <- cwres_panel_list(data)
+pm_grid(x, ncol = 2)
+```
+
+Or, use `pm_with()` to arrange them using `patchwork` syntax
+
+```{r}
+library(patchwork)
+
+names(x)
+
+pm_with(x,  time / (hist+q) / (tad+pred)) 
+```
+
+### Rotating axis-tick marks 
+
+Use `rot_xy()` to rotate axis tick marks on a plot. There are
+methods for `gg` objects, `patchwork` objects, and lists of 
+these objects. 
+
+```{r}
+#| fig-height: 6
+#| fig-width: 6 
+x <- eta_covariate(id, x = covs , y = etas, transpose = TRUE, 
+                   ncol = 1) 
+
+x <- rot_xy(x, at = c("STUDYc", "RF"))
+
+pm_with(x, STUDYc | WT)
+```
 

@@ -2,6 +2,8 @@
 fig-width: 4.5
 fig-height: 4
 fig-align: center
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -188,6 +190,11 @@ dv_time(df) + ylab("Concentration (centrigrams/gallon)")
 
 ### Rotate x and y axis labels
 
+There are two types of functions to rotate x and y axis labels. 
+One type is `rot_x()` and `rot_y()`; these get "added" into your
+ggplot (just like you would a geom). The other is `rot_xy()`
+which takes your ggplot object as the first argument. 
+
 #### Specify the angle {.unnumbered .unlisted}
 
 ```{r}
@@ -207,6 +214,57 @@ cwres_cat(df, x = "STUDYc") +
   facet_wrap(~CPc) + rot_x(vertical = TRUE)
 ```
 
+#### How to use `rot_xy()`
+
+First, make a plot
+
+```{r}
+p <- cwres_cat(df, x = "STUDYc")
+```
+
+Then, pass that plot into `rot_xy()` as the first argument. This
+is equivalent to `p + rot_x()`
+
+```{r}
+rot_xy(p)
+```
+
+You can work on the y-axis, turn vertical, etc
+
+```{r}
+rot_xy(p, axis = "y", vertical = TRUE)
+```
+
+`rot_xy()` can work on `patchwork` objects
+
+```{r}
+x <- npde_scatter(df)
+
+rot_xy(x)
+```
+
+or lists of plots
+
+```{r}
+etas <- paste0("ETA", 1:2)
+
+pp <- eta_covariate(id, x = c("CPc", "WT"), y = etas) 
+
+pp <- rot_xy(pp, axis = "y")
+
+pp$ETA3
+```
+
+`rot_xy()` can work on a specific plot in a list
+
+```{r}
+pp <- rot_xy(pp, at = "ETA2") 
+
+pp$ETA2
+```
+
+Currently, `rot_xy()` will apply axis rotation to **all** plots on 
+a page. 
 
 ### Flip coordinates when labels get cramped
 
